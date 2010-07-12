@@ -1,4 +1,6 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
+  Typus::Routes.draw(map)
+
   match "/tags/:id", :to => redirect("/tags/%{id}/posts")
   resources :tags, :only => :show do
     resources :posts, :only => :index
@@ -13,7 +15,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
 
   resource :user_session
 
-  root :to => redirect("/posts")
+  root :to => "posts#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
