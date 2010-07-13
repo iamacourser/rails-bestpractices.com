@@ -4,7 +4,7 @@
     %h3 Comments
     - parent.comments.each do |comment|
       - unless comment.new_record?
-        .comment
+        .comment{:class => cycle('odd', 'even')}
           %p
             - if comment.user
               = image_tag comment.user.gravatar_url(:size => 32), :class => 'user-avatar'

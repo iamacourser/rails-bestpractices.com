@@ -20,11 +20,8 @@
     = user_link(@post.user)
     on 
     = @post.created_at.to_date.strftime("%B %d, %Y")
-  %p
     = render 'shared/add_this_link'
-  %p
-    %strong Short Description: 
-    = @post.description
+  %p.description= @post.description
   .wikistyle= raw @post.formatted_html
   - if @post.implementation
     = link_to 'Implemented in rails_best_practices gem', post_implementation_path(@post, @post.implementation), :class => 'implemented'

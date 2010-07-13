@@ -7,6 +7,7 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/border-radius";
 @import "compass/css3/inline-block";
+@import "compass/css3/text-shadow";
 
 body.bp {
   background-color: #EEE;
@@ -26,13 +27,14 @@ body.bp {
 #header {
   margin: 2em 0;
   .logo {
-    @include column(11);
+    @include column(9);
     h1 {
       font-weight: bold;
-      margin-bottom: 0;
+      margin-bottom: 0.2em;
+      @include text-shadow;
     }
     p {
-      margin: 0;
+      margin: 0 0 0 5em;
       font-weight: bold;
       @include float-right;
     }
@@ -40,8 +42,7 @@ body.bp {
   .nav {
     background-color: #fff;
     padding: 1em 0;
-    @include column(13);
-    @include last;
+    @include column(15, true);
     @include border-radius(1em);
     ul {
       @include float-right;

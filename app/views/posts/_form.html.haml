@@ -1,6 +1,6 @@
 = f.inputs do
   = f.input :title, :label => 'Title'
-  = f.input :description, :label => 'Short Description', :hint => 'Please give a short description about this best practices', :input_html => { :class => 'wmd-ignore', :rows => 6 }
+  = f.input :description, :label => 'Short Description', :hint => 'Please give a short description about this best practices', :input_html => { :class => 'wmd-ignore', :rows => 4 }
   = f.input :tag_list, :hint => 'Split by comma ( , )'
   = f.input :body, :label => 'Content'
   .wmd-preview.wikistyle
@@ -8,4 +8,3 @@
 :javascript
   var tags = #{all_tags};
   wmd_options = {"output": "Markdown"};
-= javascript_include_tag 'wmd'
