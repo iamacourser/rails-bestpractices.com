@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712152326) do
+ActiveRecord::Schema.define(:version => 20100713040251) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20100712152326) do
     t.integer  "comments_count", :default => 0
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -55,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20100712152326) do
     t.text     "description"
     t.integer  "comments_count", :default => 0
     t.integer  "vote_points",    :default => 0
+    t.integer  "view_count"
   end
 
   create_table "taggings", :force => true do |t|

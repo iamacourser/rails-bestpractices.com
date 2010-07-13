@@ -5,11 +5,13 @@
 .comments {
   margin-top: 2em;
   .comment {
-    background-color: #eee;
     padding: 1em 1em 0 1em;
     margin: 1em 0;
     @include clearfix;
-    @include border-radius(1em);
+    &.odd {
+      background-color: #eee;
+      @include border-radius(1em);
+    }
     p.info {
       @include float-right;
       clear: both;

@@ -2,7 +2,7 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
   %head
     %title rails-bestpractices.com
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'prettify', 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
@@ -12,8 +12,8 @@
   %body.bp.two-col
     #container
       #header
-        %h1= link_to 'Rails Best Practices', root_path
-        .desc
+        .logo
+          %h1 Rails Best Practices
           %p Follow The Rails Best Practices Here
           %p Share Your Rails Best Practices Here
         .nav
@@ -26,7 +26,10 @@
               %li= link_to 'Submit', new_post_path, :class => 'highlight'
               %li= link_to current_user.login, edit_user_path(current_user)
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
-            %li= link_to "About", '#'
+            %li= link_to "About", page_path(:name => 'about-us')
+          = form_tag search_posts_path, :method => :get do
+            = label_tag 'Search'
+            = text_field_tag 'q'
 
       .flash
         - flash.each do |type, message|
@@ -42,13 +45,12 @@
           %h3 Tags
           %ul
             - ActsAsTaggableOn::Tag.order("name").each do |tag|
-              %li= link_to tag.name, tag_posts_path(tag)
+              %li= link_to tag.name, tag_posts_path(tag.name)
       #content
         = yield
       #footer
       
-    = javascript_include_tag :defaults
-    = javascript_include_tag 'jquery.autocomplete'
+    = javascript_include_tag :all
     :javascript
       $(function() {
         // tag list auto complete
@@ -67,4 +69,7 @@
           });
           $(element).text(output.join('\n'));
         });
+        
+        $('pre').addClass('prettyprint');
+        prettyPrint();
       });

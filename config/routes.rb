@@ -1,12 +1,12 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
 
-  match "/tags/:id", :to => redirect("/tags/%{id}/posts")
   resources :tags, :only => :show do
     resources :posts, :only => :index
   end
   resources :posts do
     get :archive, :on => :collection
+    get :search, :on => :collection
     resources :comments, :only => :create
     resources :votes, :only => [:create, :destroy]
     resources :implementation, :only => [:show, :new, :create, :edit, :update]
@@ -18,6 +18,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   resources :users, :only => [:new, :create, :edit, :update]
 
   resource :user_session
+  
+  match 'page/:name' => 'pages#show', :as => :page
 
   root :to => "posts#index"
 

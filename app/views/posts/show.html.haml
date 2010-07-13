@@ -20,18 +20,17 @@
     = user_link(@post.user)
     on 
     = @post.created_at.to_date.strftime("%B %d, %Y")
-  %p
-    = render 'shared/add_this'
-  %p
-    %strong Short Description: 
-    = @post.description
+    = render 'shared/add_this_link'
+  %p.description= @post.description
   .wikistyle= raw @post.formatted_html
   - if @post.implementation
     = link_to 'Implemented in rails_best_practices gem', post_implementation_path(@post, @post.implementation), :class => 'implemented'
   .tags
     %strong tags: 
     - @post.tags.each do |tag|
-      = link_to tag.name, tag_posts_path(tag)
+      = link_to tag.name, tag_posts_path(tag.name)
 
   = render 'comments/comments', :parent => @post
   = render 'comments/comment_form', :parent => @post
+
+= render 'shared/add_this_script'
