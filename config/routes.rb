@@ -1,7 +1,6 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
 
-  match "/tags/:name", :to => "posts#index"
   resources :tags, :only => :show do
     resources :posts, :only => :index
   end
