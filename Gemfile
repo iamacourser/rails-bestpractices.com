@@ -58,3 +58,7 @@ gem "database_cleaner", :group => :cucumber
 gem "spork", :group => :cucumber
 gem "launchy", :group => :cucumber
 gem "pickle", :git => "git://github.com/codegram/pickle.git", :group => :cucumber
+gem "oauth"
+gem "authlogic-oauth", :git => "git://github.com/magagnon/authlogic_oauth.git",
+:branch => "rails3", :require => "authlogic_oauth"
+gem "ruby-debug"

@@ -1,3 +1,4 @@
+
 %h2 Login
 
 = semantic_form_for @user_session, :url => user_session_path do |form|
@@ -7,3 +8,6 @@
     = form.input :remember_me, :as => :boolean
   = form.buttons do
     = form.submit "Login"
+    != oauth_login_button :value => "Sign In with Twitter"
+    
+
