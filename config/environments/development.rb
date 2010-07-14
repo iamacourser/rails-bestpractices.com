@@ -21,10 +21,5 @@ RailsBestpracticesCom::Application.configure do
     Bullet.enable = true
     Bullet.alert = true
     Bullet.rails_logger = true
-    begin
-      require 'ruby-growl'
-      Bullet.growl = true
-    rescue MissingSourceFile
-    end
   end
 end

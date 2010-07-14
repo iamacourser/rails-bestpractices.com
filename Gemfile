@@ -43,7 +43,6 @@ gem "css_sprite", ">= 1.4.9"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development
-gem "ruby-growl", :group => :development
 gem "bullet", :git => "git://github.com/flyerhzm/bullet.git", :group => :development
 
 gem "autotest-rails", ">= 4.1.0", :group => :test
