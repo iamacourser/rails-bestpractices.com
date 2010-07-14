@@ -24,6 +24,6 @@ class PostsController < InheritedResources::Base
     end
     
     def collection
-      @posts ||= end_of_association_chain.paginate(:page => params[:page])
+      @posts ||= end_of_association_chain.includes(:user).paginate(:page => params[:page])
     end
 end

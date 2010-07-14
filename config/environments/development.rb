@@ -18,8 +18,13 @@ RailsBestpracticesCom::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.after_initialize do
-    Bullet.enable = true 
+    Bullet.enable = true
     Bullet.alert = true
-    Bullet.bullet_logger = true  
+    Bullet.rails_logger = true
+    begin
+      require 'ruby-growl'
+      Bullet.growl = true
+    rescue MissingSourceFile
+    end
   end
 end
