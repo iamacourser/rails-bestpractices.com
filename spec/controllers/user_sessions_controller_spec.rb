@@ -15,7 +15,7 @@ describe UserSessionsController do
 
   describe "Post create" do
     before :each do
-      @user = Factory.create(:user_flyerhzm)
+      @user = Factory.create(:flyerhzm)
     end
 
     it "should create user session" do
@@ -35,7 +35,7 @@ describe UserSessionsController do
 
   describe "DELETE destroy" do
     before :each do
-      @user = Factory.create(:user_flyerhzm)
+      @user = Factory.create(:flyerhzm)
     end
 
     it "should destroy user session" do

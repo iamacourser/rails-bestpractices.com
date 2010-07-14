@@ -7,7 +7,7 @@ describe User do
   should_have_many :implementations
   
   it "should succeed creating a new :valid_user from the Factory" do
-    Factory.create(:user_flyerhzm)
+    Factory.create(:flyerhzm)
   end
     
   it "should invalid :invalid_user factory" do
