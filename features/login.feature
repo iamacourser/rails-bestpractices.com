@@ -1,6 +1,6 @@
 Feature: Login
   Scenario: login successful
-    Given a user_flyerhzm exists
+    Given flyerhzm exists
     When I go to login page
     And I fill in "Username" with "flyerhzm"
     And I fill in "Password" with "flyerhzm"

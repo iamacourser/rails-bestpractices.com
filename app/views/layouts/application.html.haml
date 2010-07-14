@@ -73,3 +73,5 @@
         $('pre').addClass('prettyprint');
         prettyPrint();
       });
+    - if RAILS_ENV == 'production'
+      = render 'shared/google_analytics'

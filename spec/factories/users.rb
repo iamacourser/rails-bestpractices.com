@@ -5,7 +5,7 @@ Factory.define :user do |u|
   u.email "user@gmail.com"
 end
 
-Factory.define :user_flyerhzm, :parent => :user do |u|
+Factory.define :flyerhzm, :parent => :user do |u|
   u.login "flyerhzm"
   u.password "flyerhzm"
   u.password_confirmation "flyerhzm"
