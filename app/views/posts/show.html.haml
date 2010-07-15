@@ -1,5 +1,6 @@
-%h2= @post.title
+- title @post.title
 
+%h2= @post.title
 .post
   - if @post.belongs_to? current_user
     .command
