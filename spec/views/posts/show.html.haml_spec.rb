@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "posts/show.html.haml" do
   before(:each) do
-    view.stub(:current_user).and_return(Factory.build(:user_flyerhzm))
+    view.stub(:current_user).and_return(Factory.build(:flyerhzm))
     @post = assign(:post, stub_model(Post,
       :title => "Title",
       :body => "MyText",

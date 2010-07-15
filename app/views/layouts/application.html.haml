@@ -1,11 +1,11 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
   %head
-    %title rails-bestpractices.com
     = stylesheet_link_tag 'prettify', 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+    = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
     = auto_discovery_link_tag(:atom, posts_path(:format => 'atom'))
     = auto_discovery_link_tag(:rss, posts_path(:format => 'xml'))
     = csrf_meta_tag
@@ -73,3 +73,5 @@
         $('pre').addClass('prettyprint');
         prettyPrint();
       });
+    - if RAILS_ENV == 'production'
+      = render 'shared/google_analytics'

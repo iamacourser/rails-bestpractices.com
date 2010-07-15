@@ -8,3 +8,8 @@ en:
     users:
       create:
         notice: Register successful!
+    posts:
+      create:
+        notice: Best Practice was successfully created!
+      update:
+        notice: Best Practice was successfully updated!
