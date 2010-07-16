@@ -2,7 +2,7 @@ Feature: SharePost
   Scenario: Share a rails best practices
     Given flyerhzm exists
     When I login as flyerhzm with password: "flyerhzm"
-    And follow "Submit"
+    And I follow "Submit"
     Then I should see "Share a Rails Best Practice"
     When I fill in the following:
       | Title              | first best practices           |

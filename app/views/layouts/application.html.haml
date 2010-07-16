@@ -73,5 +73,5 @@
         $('div.post pre').addClass('prettyprint');
         prettyPrint();
       });
-    - if RAILS_ENV == 'production'
+    - if Rails.env == 'production'
       = render 'shared/google_analytics'
