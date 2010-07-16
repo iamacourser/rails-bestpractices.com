@@ -58,7 +58,16 @@
               %li= link_to tag.name, tag_posts_path(tag.name)
       #content
         = yield
+
       #footer
+        %ul
+          %li= link_to 'Help', '#'
+          %li= link_to 'Feedback', '#'
+          %li= link_to 'Contact Us', '#'
+          %li= link_to 'About Us', '#'
+        .share
+          = link_to 'FOLLOW US ON TWITTER', '#', :class => 'twitter-icon'
+          = link_to 'SUBSCRIBE TO OUR RSSFEED', '#', :class => 'rss-icon'
       
     = javascript_include_tag :all
     :javascript

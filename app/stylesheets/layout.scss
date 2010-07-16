@@ -27,7 +27,7 @@ body {
   width: 980px;
 }
 #header {
-  background: url(/images/header_bg.png) repeat-x 0 0 #fff;
+  background: url(/images/header-bg.png) repeat-x 0 0 #fdfdfd;
   height: 157px;
   .nav {
     @include float-right;
@@ -70,19 +70,8 @@ body {
   }
   .share {
     margin: 50px 40px 0 0;
-    @include float-right;
     a {
       @include inline-block;
-      padding-left: 35px;
-      margin-left: 15px;
-      line-height: 25px;
-      color: #282828;
-      &.rss-icon {
-        width: 245px;
-      }
-      &.twitter-icon {
-        width: 205px;
-      }
     }
   }
   .main-nav {
@@ -103,7 +92,7 @@ body {
       li a {
         padding: 0 12px;
         line-height: 30px;
-        color: #fff;
+        color: #ebd5d6;
         font-weight: bold;
       }
     }
@@ -162,8 +151,46 @@ body {
   }
 }
 #footer {
-  border-top: 0.2em solid #999;
-  margin: 2em 0;
+  background: url(/images/footer-bg.png) repeat-x 0 0 #ededed;
+  height: 130px;
+  ul {
+    @include no-bullets;
+    @include horizontal-list;
+    @include float-left;
+    padding: 40px 0 0 20px;
+    li {
+      margin: 0 8px;
+      a {
+        font-weight: bold;
+        color: #1767af;
+      }
+    }
+  }
+  .share {
+    @include float-right;
+    margin: 12px 30px 0 0;
+    a {
+      display: block;
+      margin-top: 18px;
+    }
+  }
+}
+#header, #footer {
+  .share {
+    @include float-right;
+    a {
+      padding-left: 35px;
+      margin-left: 15px;
+      line-height: 25px;
+      color: #282828;
+      &.rss-icon {
+        width: 245px;
+      }
+      &.twitter-icon {
+        width: 205px;
+      }
+    }
+  }
 }
 .page {
   margin: 2em;
