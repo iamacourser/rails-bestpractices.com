@@ -1,15 +1,16 @@
 @import "partials/pagination";
+@import "partials/wikistyle";
 @import "partials/tags";
 @import "compass/utilities/lists/bullets";
 @import "compass/utilities/general/float";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
-.posts {
+table.posts {
   &.archive .post {
     min-height: 10px
   }
-  .post {
+  tr {
     td {
       border-bottom: 1px dashed #b7b7b7;
     }
@@ -30,9 +31,6 @@
       }
       .description {
         padding: 5px 0;
-        margin: 0;
-        border: 0;
-        min-height: 0;
         color: #727272;
       }
     }
@@ -50,10 +48,20 @@
     }
   }
 }
+.command {
+  @include float-right;
+  margin: 0 20px 0 0;
+  a {
+    @include inline-block;
+  }
+}
 .post {
-  margin: 0 2em 1em;
+  margin: 15px 20px;
   .vote-info, .post-info {
     @include float-left;
+  }
+  .vote-info {
+    margin-right: 20px;
   }
   .like-icon, .unlike-icon, .like-icon.active, unlike-icon.active {
     border: none;
@@ -67,17 +75,26 @@
     text-align: center;
     margin: 0;
   }
-  a.addthis_button {
-    margin-left: 1em;
+  .addthis_toolbox {
+    @include float-right;
   }
-  img.user-avatar {
-    margin: 0 0.2em;
-  }
-  p.description {
-    border: 1px solid #dedede;
-    margin-left: 3em;
-    padding: 0.2em;
-    min-height: 3em;
+  .description {
+    background-color: #e7f2fd;
+    min-height: 50px;
+    margin: 9px 0;
+    width: 580px;
+    position: relative;
+    @include inline-block;
+    @include border-bottom-radius(5px);
+    @include border-top-right-radius(5px);
+    .point-to-icon {
+      position: absolute;
+      top: -9px;
+      left: 0;
+    }
+    p {
+      margin: 5px 20px;
+    }
   }
   .implemented {
     background-color: #eee;
@@ -85,20 +102,15 @@
     @include border-radius(0.5em);
     @include float-right;
   }
+  .wikistyle {
+    @include wikistyle;
+  }
   .tags {
     strong {
       font-size: 1.4em;
       @include inline-block;
     }
     @include tags;
-  }
-  .command {
-    @include float-right;
-    margin: 0 2em 0 0;
-    a {
-      @include inline-block;
-      font-size: 1.2em;
-    }
   }
 }
 div.ac_results ul {
@@ -135,6 +147,7 @@ div.ac_results ul {
     }
     ul {
       padding: 0;
+      margin-left: 20px;
       @include no-bullets;
       @include tags;
       li {
