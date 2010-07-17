@@ -6,8 +6,7 @@
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
-    = auto_discovery_link_tag(:atom, posts_path(:format => 'atom'))
-    = auto_discovery_link_tag(:rss, posts_path(:format => 'xml'))
+    = auto_discovery_link_tag(:rss, "")
     = csrf_meta_tag
   %body
     #header
@@ -27,7 +26,7 @@
         %p.first Follow The Rails Best Practices Here
         %p.second Share Your Rails Best Practices Here
       .share
-        = link_to 'SUBSCRIBE TO OUR RSSFEED', '#', :class => 'rss-icon'
+        = link_to 'SUBSCRIBE TO OUR RSSFEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
         = link_to 'FOLLOW US ON TWITTER', '#', :class => 'twitter-icon'
       .clear
       .main-nav
@@ -57,7 +56,7 @@
         %li= link_to 'About Us', '#'
       .share
         = link_to 'FOLLOW US ON TWITTER', '#', :class => 'twitter-icon'
-        = link_to 'SUBSCRIBE TO OUR RSSFEED', '#', :class => 'rss-icon'
+        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
       
     = javascript_include_tag :all
     :javascript

@@ -3,7 +3,7 @@ class PostsController < InheritedResources::Base
   belongs_to :tag, :optional => true, :class_name => 'ActsAsTaggableOn::Tag',
     :finder => :find_by_name!, :param => :tag_id
   has_scope :hot
-  respond_to :xml, :atom, :only => :index
+  respond_to :xml, :only => :index
 
   show! do |format|
     @post.increment!(:view_count)
