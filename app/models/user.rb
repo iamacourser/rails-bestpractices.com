@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
 
-  after_create :populate_oauth_user
+  # after_create :populate_oauth_user
   
   def populate_oauth_user
     unless oauth_token.blank?
