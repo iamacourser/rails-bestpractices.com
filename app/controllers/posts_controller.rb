@@ -14,7 +14,7 @@ class PostsController < InheritedResources::Base
   end
   
   def search
-    @posts = Post.where(['title like ?', "%#{params[:q]}%"]).paginate(:page => params[:page])
+    @posts = Post.where(['title like ?', "%#{params[:q]}%"]).paginate(:page => params[:page], :per_page => Post.per_page)
     render :action => :index
   end
   
@@ -24,6 +24,6 @@ class PostsController < InheritedResources::Base
     end
     
     def collection
-      @posts ||= end_of_association_chain.includes(:user).paginate(:page => params[:page])
+      @posts ||= end_of_association_chain.includes(:user).paginate(:page => params[:page], :per_page => Post.per_page)
     end
 end

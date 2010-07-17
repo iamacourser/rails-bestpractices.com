@@ -1,30 +1,42 @@
 @import "compass/utilities/lists/bullets";
 @import "compass/utilities/lists/horizontal-list";
-@import "compass/utilities/links/hover-link";
-@import "compass/utilities/links/link-colors";
 @import "compass/utilities/general/float";
 @import "compass/utilities/general/clearfix";
-@import "compass/css3/border-radius";
 @import "compass/css3/inline-block";
 @import "compass/css3/text-shadow";
 
 body {
   font-family: Tahoma, Helvetica, Arial, simsun, sans-serif;
-  #container a {
-    @include hover-link;
-    @include link-colors(#000);
-  }
   a {
     border: none;
     outline: none;
+    color: #2276bb;
+    text-decoration: none;
   }
   .clear {
     clear: both;
   }
 }
-#container {
+#container, #header, #footer, #flash {
   margin: 0 auto;
   width: 980px;
+}
+#header, #footer {
+  .share {
+    @include float-right;
+    a {
+      padding-left: 35px;
+      margin-left: 15px;
+      line-height: 25px;
+      color: #282828;
+      &.rss-icon {
+        width: 245px;
+      }
+      &.twitter-icon {
+        width: 205px;
+      }
+    }
+  }
 }
 #header {
   background: url(/images/header-bg.png) repeat-x 0 0 #fdfdfd;
@@ -43,6 +55,8 @@ body {
         a {
           font-size: 12px;
           font-weight: bold;
+          color: #000;
+          text-decoration: underline;
           padding: 0 0.5em;
           @include inline-block;
         }
@@ -126,29 +140,41 @@ body {
     }
   }
 }
-.flash {
+#flash {
+  .message {
+    margin-bottom: 12px;
+    padding: 10px;
+  }
+  .notice {
+    background-color: #fff6bf;
+    border: 2px solid #ffd324;
+    color: #514721;
+  }
+  .error {
+    background-color: #fbe3e4;
+    border: 2px solid #fbc2c4;
+    color: #8a1f11;
+  }
 }
-#content, #sidebar {
-  background-color: #fff;
-  @include border-radius(0.5em);
+#container {
+  background-color: #fdfdfd;
+  padding: 20px 0 50px 0;
+  @include clearfix;
+}
+#content {
+  @include float-left;
+  width: 680px;
+  margin-left: 30px;
   > h2 {
-    margin: 0.5em 1em;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #9e9e9e;
   }
 }
 #sidebar {
-  h3 {
-    margin: 0.5em;
-  }
-  ul {
-    padding: 0;
-    margin: 1em;
-    @include no-bullets;
-    li {
-      a {
-        font-size: 1.2em;
-      }
-    }
-  }
+  @include float-right;
+  margin-right: 30px;
+  width: 220px;
 }
 #footer {
   background: url(/images/footer-bg.png) repeat-x 0 0 #ededed;
@@ -172,23 +198,6 @@ body {
     a {
       display: block;
       margin-top: 18px;
-    }
-  }
-}
-#header, #footer {
-  .share {
-    @include float-right;
-    a {
-      padding-left: 35px;
-      margin-left: 15px;
-      line-height: 25px;
-      color: #282828;
-      &.rss-icon {
-        width: 245px;
-      }
-      &.twitter-icon {
-        width: 205px;
-      }
     }
   }
 }

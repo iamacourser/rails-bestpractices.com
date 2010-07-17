@@ -1,24 +1,52 @@
 @import "partials/pagination";
+@import "partials/tags";
+@import "compass/utilities/lists/bullets";
 @import "compass/utilities/general/float";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
 .posts {
-  margin: 0 2em;
   &.archive .post {
     min-height: 10px
   }
   .post {
-    margin: 1em 0;
-    min-height: 40px;
-    .title {
-      font-size: 1.2em;
+    td {
+      border-bottom: 1px dotted #b7b7b7;
     }
-    img.user-avatar {
-      @include float-right;
-      padding: 0.1em;
-      border: 1px solid #eee;
-      margin: 0.5em 0 0.5em 2em;
+    .stat {
+      text-align: right;
+      width: 80px;
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        color: #616161;
+      }
+    }
+    .content {
+      padding: 10px 20px;
+      font-size: 12px;
+      .title a {
+        font-size: 16px;
+      }
+      .description {
+        padding: 5px 0;
+        margin: 0;
+        border: 0;
+        min-height: 0;
+        color: #727272;
+      }
+    }
+    .author {
+      width: 80px;
+      text-align: left;
+      font-size: 12px;
+    }
+    .avatar {
+      width: 50px;
+      img.user-avatar {
+        padding: 2px;
+        border: 1px solid #eee;
+      }
     }
   }
 }
@@ -62,13 +90,7 @@
       font-size: 1.4em;
       @include inline-block;
     }
-    a {
-      margin-left: 0.2em;
-      padding: 0.1em 0.2em;
-      background-color: #eee;
-      border-right: 2px solid #7f9fb6;
-      border-bottom: 2px solid #3e6d8e;
-    }
+    @include tags;
   }
   .command {
     @include float-right;
@@ -82,6 +104,47 @@
 div.ac_results ul {
   margin: 0;
   padding: 0;
+}
+#sidebar {
+  .share-section {
+    @include border-radius(5px);
+    background-color: #fdeec5;
+    width: 220px;
+    height: 85px;
+    text-align: center;
+    a {
+      background-color: #fd9800;
+      color: #fff;
+      width: 80px;
+      height: 28px;
+      line-height: 28px;
+      margin: 20px 0 10px 0;
+      @include inline-block;
+    }
+    p {
+      color: #c34237;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .tag-section {
+    margin-top: 20px;
+    h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    ul {
+      padding: 0;
+      @include no-bullets;
+      @include tags;
+      li {
+        padding: 5px 0;
+        a {
+          @include inline-block;
+        }
+      }
+    }
+  }
 }
 
 .pagination {
