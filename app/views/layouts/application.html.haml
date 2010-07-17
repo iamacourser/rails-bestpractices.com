@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
@@ -33,7 +33,7 @@
         = link_to 'Home', root_path, :class => 'home-icon'
         %ul
           %li= link_to 'Rails Best Practices', posts_path
-          %li= link_to 'rails_best_practices gem', '#'
+          %li= link_to 'rails_best_practices gem', implementations_path
         = form_tag search_posts_path, :method => :get do
           .search-label
           = text_field_tag 'q', '', :class => 'search-text'
@@ -49,14 +49,14 @@
         = yield
 
     #footer
-      %ul
-        %li= link_to 'Help', '#'
-        %li= link_to 'Feedback', '#'
-        %li= link_to 'Contact Us', '#'
-        %li= link_to 'About Us', '#'
       .share
         = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
         = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
+      %ul
+        %li= link_to 'Help', page_path('help')
+        %li= link_to 'Contact Us', page_path('contact-us')
+        %li= link_to 'About Us', page_path('about-us')
+      .copyright © 2010 rails-bestpractices.com
       
     = javascript_include_tag :all
     :javascript

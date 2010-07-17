@@ -1,0 +1,7 @@
+@import "partials/wikistyle";
+
+.page {
+  .wikistyle {
+    @include wikistyle;
+  }
+}
