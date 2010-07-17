@@ -12,7 +12,7 @@ Feature: SharePost
     And I press "Create"
     Then I should see "Best Practice was successfully created!"
     And I should see "first best practices" within "h2"
-    And I should see "first short description" within "p.description"
+    And I should see "first short description" within ".description"
     And I should see "rails" within ".tags a"
     And I should see "test" within ".tags a"
     And I should see "italic" within ".wikistyle em"
