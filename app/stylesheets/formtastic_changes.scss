@@ -29,7 +29,6 @@ form.formtastic {
         padding-left: 0;
       }
       label {
-        font-size: 1.2em;
         font-weight: bold;
         width: 100%;
       }
@@ -39,8 +38,7 @@ form.formtastic {
     }
     &.buttons {
       input {
-        padding: 0.2em 0.5em;
-        font-size: 1.2em;
+        padding: 3px 9px;
       }
       a {
         font-size: 1.2em;

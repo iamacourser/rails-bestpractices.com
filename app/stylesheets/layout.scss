@@ -204,3 +204,17 @@ body {
 .page {
   margin: 2em;
 }
+.register-hint {
+  color: #7e7e7e;
+  line-height: 18px;
+  margin: 75px 50px 0 0;
+  padding: 20px 20px 40px 20px;
+  border: 1px dashed #d3d3d3;
+  ul {
+    margin: 20px 0 0 20px;
+    list-style:	disc inside none;
+    li {
+      line-height: 20px;
+    }
+  }
+}
