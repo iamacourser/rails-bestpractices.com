@@ -17,13 +17,14 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 form.formtastic {
   legend {
     font-size: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
   fieldset {
+    width: 100%;
     &.inputs > ol > li {
+      display: block;
       &.password input {
-        max-width: 409px;
-        width: 409px;
+        max-width: 74%;
       }
       &.boolean label {
         padding-left: 0;
@@ -41,6 +42,7 @@ form.formtastic {
     }
     &.buttons {
       padding: 0;
+      display: block;
       input {
         padding: 3px 9px;
       }
@@ -67,8 +69,6 @@ form.post, form.implementation, form.formtastic.user_session, form.formtastic.us
 }
 form.formtastic.user {
   input#user_email {
-    width: 409px;
-    max-width: 409px;
   }
 }
 form.post, form.implementation {
