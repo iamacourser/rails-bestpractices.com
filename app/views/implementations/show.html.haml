@@ -1,11 +1,17 @@
+- title "implementation of #{@post.title}"
+
+- if current_user.developer? and @implementation.belongs_to? current_user
+  .command= link_to 'Edit', edit_post_implementation_path(@post, @implementation)
+
 %h2 
   Implementation for 
   = link_to @post.title, post_path(@post)
 
 .implementation
+  = render 'shared/addthis'
   %p
+    = image_tag @implementation.user.gravatar_url(:size => 32), :class => 'user-avatar'
     Posted by 
-    = image_tag @implementation.user.gravatar_url(:size => 16), :class => 'user-avatar'
     = user_link(@implementation.user)
     on 
     = @implementation.created_at.to_date.strftime("%B %d, %Y")

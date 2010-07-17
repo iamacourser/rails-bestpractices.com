@@ -1,15 +1,17 @@
 %h2 Rails Best Practices
-.posts
+%table.posts
   - @posts.each do |post|
-    .post
-      = image_tag post.user.gravatar_url(:size => 32), :class => 'user-avatar'
-      %span.title= link_to post.title, post_path(post)
-      %span.description= post.description
-      %p
+    %tr
+      %td.stat
+        %p= "#{post.vote_points} votes"
+        %p= "#{post.view_count} views"
+      %td.content
+        %p.title= link_to post.title, post_path(post)
+        %p.description= post.description
+        %p= link_to (post.comments.size == 0 ? "post a comment" : "#{post.comments.size} comments"), post_path(post, :anchor => 'comments')
+      %td.author
         by
         = user_link(post.user)
-        &nbsp;|&nbsp;
-        = "#{post.vote_points} votes"
-        &nbsp;|&nbsp;
-        = link_to (post.comments.size == 0 ? "post a comment" : "#{post.comments.size} comments"), post_path(post, :anchor => 'comments')
-= will_paginate @posts, :previous_label => "<< Newer", :next_label => "Older >>"
+      %td.avatar= image_tag post.user.gravatar_url(:size => 32), :class => 'user-avatar'
+
+= will_paginate @posts, :previous_label => "<< Previous", :next_label => "Next >>"

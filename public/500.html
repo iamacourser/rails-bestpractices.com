@@ -2,25 +2,65 @@
 <html>
 <head>
   <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+  <link type="text/css" rel="stylesheet" meda="screen, projection" href="/stylesheets/compiled/layout.css"></link>
+  <link type="text/css" rel="stylesheet" meda="screen, projection" href="/stylesheets/compiled/page.css"></link>
+  <link type="text/css" rel="stylesheet" meda="screen, projection" href="/stylesheets/compiled/css_sprite.css"></link>
 </head>
-
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+  <div id='header'>
+    <div class='nav'>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users/new">Register</a></li>
+        <li><a href="/user_session/new">Login</a></li>
+        <li class='last'><a href="/page/about-us">About</a></li>
+      </ul>
+    </div>
+    <div class='logo'>
+      <h1>Rails Best Practices</h1>
+      <p class='first'>Follow The Rails Best Practices Here</p>
+      <p class='second'>Share Your Rails Best Practices Here</p>
+    </div>
+    <div class='share'>
+      <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
+      <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
+    </div>
+    <div class='clear'></div>
+    <div class='main-nav'>
+      <a href="/" class="home-icon">Home</a>
+      <ul>
+        <li><a href="/posts">Rails Best Practices</a></li>
+        <li><a href="/implementations">rails_best_practices gem</a></li>
+      </ul>
+      <form action="/posts/search" method="get">
+        <div class='search-label'></div>
+        <input class="search-text" id="q" name="q" type="text" value="" />
+        <input class="search-icon" name="commit" type="submit" value="Search" />
+      </form>
+    </div>
+  </div>
+  <div id="container">
+    <div id="page">
+      <h2>Sorry, server error</h2>
+      <div class="error-image"></div>
+      <div class="description">
+        <p>Something is technically wrong.</p>
+        <p>Thanks for noticing -- we're going to fix it up and have things back to normal soon.</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div id='footer'>
+    <div class='share'>
+      <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
+      <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
+    </div>
+    <ul>
+      <li><a href="/page/help">Help</a></li>
+      <li><a href="/page/contact-us">Contact Us</a></li>
+      <li><a href="/page/about-us">About Us</a></li>
+    </ul>
+    <div class='copyright'>&copy; 2010 rails-bestpractices.com</div>
   </div>
 </body>
 </html>
