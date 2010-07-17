@@ -1,21 +1,20 @@
 @import "compass/utilities/general/float";
-@import "compass/utilities/general/clearfix";
-@import "compass/css3/inline-block";
+@import "compass/css3/box-shadow";
 
 @mixin pagination {
-  margin: 1em 2em;
-  @include clearfix;
-  span, a, em {
-    display: none;
+  margin-top: 25px;
+  @include float-right;
+  a {
+    text-align: center;
+    line-height: 30px;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: 1px solid #ebebeb;
+    @include box-shadow(#aeaeae);
   }
-  .previous_page, .next_page {
-    @include inline-block;
-  }
-  .previous_page {
-    @include float-left;
-  }
-  .next_page {
-    @include float-right;
+  em {
+    color: #928e8f;
+    padding: 0 5px;
   }
   .disabled {
     display: none;

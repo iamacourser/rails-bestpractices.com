@@ -1,54 +1,62 @@
 !!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+%html
   %head
-    = stylesheet_link_tag 'prettify', 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
-    = auto_discovery_link_tag(:atom, posts_path(:format => 'atom'))
-    = auto_discovery_link_tag(:rss, posts_path(:format => 'xml'))
+    = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices")
     = csrf_meta_tag
-  %body.bp.two-col
-    #container
-      #header
-        .logo
-          %h1 Rails Best Practices
-          %p Follow The Rails Best Practices Here
-          %p Share Your Rails Best Practices Here
-        .nav
-          %ul
-            %li= link_to "Home", root_path
-            - if !current_user
-              %li= link_to "Register", new_user_path
-              %li= link_to "Login", new_user_session_path
-            - else
-              %li= link_to 'Submit', new_post_path, :class => 'highlight'
-              %li= link_to current_user.login, edit_user_path(current_user)
-              %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
-            %li= link_to "About", page_path(:name => 'about-us')
-          = form_tag search_posts_path, :method => :get do
-            = label_tag 'Search'
-            = text_field_tag 'q'
+  %body
+    #header
+      .nav
+        %ul
+          %li= link_to "Home", root_path
+          - if !current_user
+            %li= link_to "Register", new_user_path
+            %li= link_to "Login", new_user_session_path
+          - else
+            %li= link_to 'Submit', new_post_path
+            %li= link_to current_user.login, edit_user_path(current_user)
+            %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
+          %li.last= link_to "About", page_path(:name => 'about-us')
+      .logo
+        %h1 Rails Best Practices
+        %p.first Follow The Rails Best Practices Here
+        %p.second Share Your Rails Best Practices Here
+      .share
+        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
+        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
+      .clear
+      .main-nav
+        = link_to 'Home', root_path, :class => 'home-icon'
+        %ul
+          %li= link_to 'Rails Best Practices', posts_path
+          %li= link_to 'rails_best_practices gem', '#'
+        = form_tag search_posts_path, :method => :get do
+          .search-label
+          = text_field_tag 'q', '', :class => 'search-text'
+          = submit_tag 'Search', :class => 'search-icon'
 
-      .flash
-        - flash.each do |type, message|
-          .message{:class => type}= message
+    #flash
+      - flash.each do |type, message|
+        .message{:class => type}= message
+    #container
       #sidebar
-        .section
-          %h3 Navigation
-          %ul
-            %li= link_to 'Recent Best Practices', posts_url
-            %li= link_to 'Hot Best Practices', posts_url(:hot => true)
-            %li= link_to 'All Best Practices', archive_posts_url
-        .section
-          %h3 Tags
-          %ul
-            - ActsAsTaggableOn::Tag.order("name").each do |tag|
-              %li= link_to tag.name, tag_posts_path(tag.name)
+        = render 'sidebar'
       #content
         = yield
-      #footer
+
+    #footer
+      %ul
+        %li= link_to 'Help', '#'
+        %li= link_to 'Feedback', '#'
+        %li= link_to 'Contact Us', '#'
+        %li= link_to 'About Us', '#'
+      .share
+        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
+        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
       
     = javascript_include_tag :all
     :javascript
@@ -70,8 +78,8 @@
           $(element).text(output.join('\n'));
         });
         
-        $('pre').addClass('prettyprint');
+        $('div.post pre, div.implementation pre').addClass('prettyprint');
         prettyPrint();
       });
-    - if RAILS_ENV == 'production'
+    - if Rails.env == 'production'
       = render 'shared/google_analytics'

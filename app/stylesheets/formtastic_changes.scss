@@ -15,32 +15,34 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 @import "partials/wikistyle";
 
 form.formtastic {
-  margin: 0 2em;
   legend {
-    font-size: 1.5em;
+    font-size: 20px;
+    margin-bottom: 20px;
   }
   fieldset {
     &.inputs > ol > li {
-      p.inline-errors, p.inline-hints {
-        margin: 0;
+      &.password input {
+        max-width: 409px;
+        width: 409px;
       }
-      label, input {
-        float: none;
+      &.boolean label {
         padding-left: 0;
       }
       label {
-        font-size: 1.2em;
-        font-weight: bold;
         width: 100%;
+        font-weight: bold;
       }
       textarea {
         width: 100%;
       }
+      p.inline-hints, p.inline-errors {
+        margin: 8px 0 0 0;
+      }
     }
     &.buttons {
+      padding: 0;
       input {
-        padding: 0.2em 0.5em;
-        font-size: 1.2em;
+        padding: 3px 9px;
       }
       a {
         font-size: 1.2em;
@@ -51,38 +53,50 @@ form.formtastic {
   }
 }
 form#new_comment {
-  margin: 2em 0;
-  textarea {
-    height: 10em;
+  margin: 32px 0;
+  fieldset {
+    width: 100%;
+    ol li {
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+}
+form.post, form.implementation, form.formtastic.user_session, form.formtastic.user {
+  margin: 32px 20px;
+}
+form.formtastic.user {
+  input#user_email {
+    width: 409px;
+    max-width: 409px;
   }
 }
 form.post, form.implementation {
-  margin: 2em;
-}
-form.formtastic.user_session, form.formtastic.user {
-  margin: 2em;
-  input[type=text], input[type=password] {
-    width: 15em;
-    max-width:15em;
+  li.text {
+    width: 100%;
+  }
+  textarea {
+    height: 200px;
+    &#post_description {
+      height: 50px;
+    }
   }
 }
 
-body.bp, body.bp form.formtastic {
+form.formtastic {
   .wikistyle {
     @include wikistyle;
-  }
-}  
-body.bp form.formtastic .wmd-preview {
-  border: 1px dotted #111;
-  min-height: 2em;
-  ol {
-    list-style-type: decimal;
-  }
-  ul {
-    list-style-type: disc;
-  }
-  ol, ul {
-    margin: 0 1.5em 0.5em 0;
-    padding-left: 3.333em;
+    border: 1px dotted #111;
+    min-height: 2em;
+    ol {
+      list-style-type: decimal;
+    }
+    ul {
+      list-style-type: disc;
+    }
+    ol, ul {
+      margin: 0 1.5em 0.5em 0;
+      padding-left: 3.333em;
+    }
   }
 }
