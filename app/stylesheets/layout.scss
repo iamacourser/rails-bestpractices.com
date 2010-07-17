@@ -44,7 +44,6 @@ body {
 }
 #header {
   background: url(/images/header-bg.png) repeat-x 0 0 #fdfdfd;
-  height: 157px;
   .nav {
     @include float-right;
     margin: 12px 60px 0 0;
