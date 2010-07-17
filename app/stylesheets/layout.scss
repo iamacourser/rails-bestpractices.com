@@ -186,7 +186,6 @@ body {
   ul {
     @include no-bullets;
     @include horizontal-list;
-    @include float-left;
     padding: 40px 0 0 20px;
     li {
       margin: 0 8px;
@@ -195,6 +194,9 @@ body {
         color: #1767af;
       }
     }
+  }
+  .copyright {
+    margin: 20px 0 0 30px;
   }
   .share {
     @include float-right;

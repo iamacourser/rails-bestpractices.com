@@ -49,14 +49,15 @@
         = yield
 
     #footer
+      .share
+        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
+        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
       %ul
         %li= link_to 'Help', '#'
         %li= link_to 'Feedback', '#'
         %li= link_to 'Contact Us', '#'
         %li= link_to 'About Us', '#'
-      .share
-        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
+      .copyright © 2010 rails-bestpractices.com
       
     = javascript_include_tag :all
     :javascript
