@@ -4,4 +4,4 @@
   = render 'form', :f => form
   = form.buttons do
     = form.submit "Save"
-    = link_to 'Back', post_path(@post)
+    = link_to 'Back', post_implementation_path(@post, @implementation)
