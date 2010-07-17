@@ -62,10 +62,7 @@ form#new_comment {
     }
   }
 }
-form.post, form.implementation {
-  margin: 32px 20px;
-}
-form.formtastic.user_session, form.formtastic.user {
+form.post, form.implementation, form.formtastic.user_session, form.formtastic.user {
   margin: 32px 20px;
 }
 form.formtastic.user {
@@ -74,23 +71,32 @@ form.formtastic.user {
     max-width: 409px;
   }
 }
+form.post, form.implementation {
+  li.text {
+    width: 100%;
+  }
+  textarea {
+    height: 200px;
+    &#post_description {
+      height: 50px;
+    }
+  }
+}
 
 form.formtastic {
   .wikistyle {
     @include wikistyle;
-  }
-}  
-form.formtastic .wmd-preview {
-  border: 1px dotted #111;
-  min-height: 2em;
-  ol {
-    list-style-type: decimal;
-  }
-  ul {
-    list-style-type: disc;
-  }
-  ol, ul {
-    margin: 0 1.5em 0.5em 0;
-    padding-left: 3.333em;
+    border: 1px dotted #111;
+    min-height: 2em;
+    ol {
+      list-style-type: decimal;
+    }
+    ul {
+      list-style-type: disc;
+    }
+    ol, ul {
+      margin: 0 1.5em 0.5em 0;
+      padding-left: 3.333em;
+    }
   }
 }

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'prettify', 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
@@ -78,7 +78,7 @@
           $(element).text(output.join('\n'));
         });
         
-        $('div.post pre').addClass('prettyprint');
+        $('div.post pre, div.implementation pre').addClass('prettyprint');
         prettyPrint();
       });
     - if Rails.env == 'production'

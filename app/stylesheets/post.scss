@@ -48,13 +48,6 @@ table.posts {
     }
   }
 }
-.command {
-  @include float-right;
-  margin: 0 20px 0 0;
-  a {
-    @include inline-block;
-  }
-}
 .post {
   margin: 15px 20px;
   .vote-info, .post-info {
@@ -62,18 +55,18 @@ table.posts {
   }
   .vote-info {
     margin-right: 20px;
+    p {
+      width: 40px;
+      font-size: 2em;
+      text-align: center;
+      margin: 0;
+    }
   }
   .like-icon, .unlike-icon, .like-icon.active, unlike-icon.active {
     border: none;
     display: block;
     text-indent: 9999px;
     cursor: pointer;
-  }
-  .vote-info p {
-    width: 40px;
-    font-size: 2em;
-    text-align: center;
-    margin: 0;
   }
   .addthis_toolbox {
     @include float-right;
@@ -97,9 +90,13 @@ table.posts {
     }
   }
   .implemented {
-    background-color: #eee;
-    padding: 0.2em 0.5em;
-    @include border-radius(0.5em);
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 10px;
+    background-color: #fd9800;
+    color: #fff;
+    display: block;
     @include float-right;
   }
   .wikistyle {
@@ -107,7 +104,7 @@ table.posts {
   }
   .tags {
     strong {
-      font-size: 1.4em;
+      font-size: 18px;
       @include inline-block;
     }
     @include tags;

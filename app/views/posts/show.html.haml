@@ -9,13 +9,15 @@
         = link_to 'Edit Implementation', edit_post_implementation_path(@post, @post.implementation)
       - else
         = link_to 'New Implement', new_post_implementation_path(@post)
+
 %h2= @post.title
+
 .post
   .vote-info
     = vote_like_link(@post)
     %p= @post.vote_points
     = vote_unlike_link(@post)
-  = render 'shared/add_this'
+  = render 'shared/addthis'
   %p
     = image_tag @post.user.gravatar_url(:size => 32), :class => 'user-avatar'
     Posted by 
