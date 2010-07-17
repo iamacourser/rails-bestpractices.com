@@ -1,6 +1,6 @@
 - title "implementation of #{@post.title}"
 
-- if current_user.developer? and @implementation.belongs_to? current_user
+- if current_user and current_user.developer? and @implementation.belongs_to? current_user
   .command= link_to 'Edit', edit_post_implementation_path(@post, @implementation)
 
 %h2 
