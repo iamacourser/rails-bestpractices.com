@@ -13,7 +13,7 @@ Feature: EditPost
     And I press "Save"
     Then I should see "Best Practice was successfully updated!"
     And I should see "edit best practices" within "h2"
-    And I should see "edit short description" within "p.description"
+    And I should see "edit short description" within ".description"
     And I should see "edit" within ".tags a"
     And I should see "test" within ".tags a"
     And I should see "italic" within ".wikistyle em"
