@@ -21,7 +21,9 @@ class Post < ActiveRecord::Base
   end
 
   def tweet_content
-    "#{self.title}"
+    bitly = load_bitly
+    url = bitly.shorten("http://rails-bestpractices/posts/#{self.to_param}").short_url
+    "#{self.title} #{url}"
   end
   
   def belongs_to?(user)
