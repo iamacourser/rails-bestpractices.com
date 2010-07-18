@@ -6,4 +6,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   Post.all.each do |p|
     sitemap.add post_path(p), :lastmod => p.updated_at, :priority => 1.0, :changefreq => 'daily'
   end
+  Implementation.all.each do |i|
+    sitemap.add post_implementation_path(i.post), :lastmod => i.updated_at, :priority => 1.0, :changefreq => 'daily'
+  end
 end
