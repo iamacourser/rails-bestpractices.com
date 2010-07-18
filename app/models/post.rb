@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include Markdownable
+  include Tweetable
   acts_as_taggable
   
   belongs_to :user
@@ -17,6 +18,10 @@ class Post < ActiveRecord::Base
   
   def self.per_page
     10
+  end
+
+  def tweet_content
+    "#{self.title}"
   end
   
   def belongs_to?(user)
