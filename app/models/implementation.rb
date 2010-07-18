@@ -1,5 +1,6 @@
 class Implementation < ActiveRecord::Base
   include Markdownable
+  include Tweetable
 
   belongs_to :user
   belongs_to :post
@@ -11,5 +12,9 @@ class Implementation < ActiveRecord::Base
   
   def belongs_to?(user)
     user && user_id == user.id
+  end
+
+  def tweet_content
+    "Implementation of #{post.title}"
   end
 end
