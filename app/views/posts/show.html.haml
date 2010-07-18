@@ -1,14 +1,14 @@
 - title @post.title
 
-- if @post.belongs_to? current_user
-  .command
+.command
+  - if @post.belongs_to? current_user
     = link_to 'Edit', edit_post_path(@post)
-    - if current_user and current_user.developer?
-      &nbsp;|&nbsp;
-      - if @post.implementation
-        = link_to 'Edit Implementation', edit_post_implementation_path(@post, @post.implementation)
-      - else
-        = link_to 'New Implement', new_post_implementation_path(@post)
+  - if current_user and current_user.developer?
+    &nbsp;|&nbsp;
+    - if @post.implementation
+      = link_to 'Edit Implementation', edit_post_implementation_path(@post)
+    - else
+      = link_to 'New Implement', new_post_implementation_path(@post)
 
 %h2= @post.title
 
@@ -29,7 +29,7 @@
     %p= @post.description
   .wikistyle= raw @post.formatted_html
   - if @post.implementation
-    = link_to 'Implemented in rails_best_practices gem', post_implementation_path(@post, @post.implementation), :class => 'implemented'
+    = link_to 'Implemented in rails_best_practices gem', post_implementation_path(@post), :class => 'implemented'
   .tags
     %strong tags: 
     - @post.tags.each do |tag|

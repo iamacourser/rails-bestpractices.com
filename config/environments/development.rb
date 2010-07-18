@@ -18,7 +18,7 @@ RailsBestpracticesCom::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.after_initialize do
-    Bullet.enable = true
+    Bullet.enable = false
     Bullet.alert = true
     Bullet.rails_logger = true
   end

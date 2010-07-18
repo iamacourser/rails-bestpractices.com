@@ -1,9 +1,11 @@
+- set_meta_tags :title => 'implementation of rails best practices list', :noindex => true
+
 %h2 Implementation of Rails Best Practices
 .implementations
   - @implementations.each do |implementation|
     .implementation
-      .title= link_to "implementation of #{implementation.post.title}", post_implementation_path(implementation.post, implementation)
-      .comment= link_to (implementation.comments.size == 0 ? "post a comment" : "#{implementation.comments.size} comments"), implementation_path(implementation, :anchor => 'comments')
+      .title= link_to "implementation of #{implementation.post.title}", post_implementation_path(implementation.post)
+      .comment= link_to (implementation.comments.size == 0 ? "post a comment" : "#{implementation.comments.size} comments"), post_implementation_path(implementation.post, :anchor => 'comments')
       .author
         by
         = image_tag implementation.user.gravatar_url(:size => 16), :class => 'user-avatar'
