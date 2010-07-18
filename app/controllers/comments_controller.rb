@@ -10,7 +10,7 @@ class CommentsController < InheritedResources::Base
   private
     def parent_url
       if params[:implementation_id]
-        post_implementation_path(@implementation.post, @implementation)
+        post_implementation_path(@implementation.post)
       elsif params[:post_id]
         post_path(@post)
       end

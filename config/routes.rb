@@ -9,7 +9,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     get :search, :on => :collection
     resources :comments, :only => :create
     resources :votes, :only => [:create, :destroy]
-    resources :implementation
+    resource :implementation
   end
   resources :implementations do
     resources :comments, :only => :create
