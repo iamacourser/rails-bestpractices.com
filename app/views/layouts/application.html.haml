@@ -61,6 +61,10 @@
       
     = javascript_include_tag :all
     :javascript
+      function recover() {
+        var $preview_elem = $('.wmd-preview pre code');
+        $preview_elem.text($preview_elem.text().replace(/&#95;/g, '_'));
+      }
       $(function() {
         // tag list auto complete
         if (typeof tags != 'undefined') {
@@ -78,9 +82,14 @@
           });
           $(element).text(output.join('\n'));
         });
-        
+        // pretty print the wikistyle pre code
         $('div.post pre, div.implementation pre').addClass('prettyprint');
         prettyPrint();
+        // replace &#95; to _ in wmd-preview
+        if ($('.wmd-preview pre code')) {
+          recover();
+          window.setInterval("recover();", 500);
+        }
       });
     - if Rails.env == 'production'
       = render 'shared/google_analytics'
