@@ -59,8 +59,8 @@ body {
           font-size: 12px;
           font-weight: bold;
           color: #000;
-          text-decoration: underline;
-          padding: 0 0.5em;
+          line-height: 18px;
+          padding: 0 6px;
           @include inline-block;
         }
       }
