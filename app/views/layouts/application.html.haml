@@ -21,6 +21,7 @@
             %li= link_to current_user.login, edit_user_path(current_user)
             %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
           %li.last= link_to "About", page_path(:name => 'about-us')
+      .clear
       .logo
         %h1 Rails Best Practices
         %p.first Follow The Rails Best Practices Here
