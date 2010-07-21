@@ -9,4 +9,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   Implementation.all.each do |i|
     sitemap.add post_implementation_path(i.post), :lastmod => i.updated_at, :priority => 1.0, :changefreq => 'daily'
   end
+  Page.all.each do |p|
+    sitemap.add page_path(p.name), :lastmod => p.updated_at, :priority => 0.5, :changefreq => 'monthly'
+  end
 end
