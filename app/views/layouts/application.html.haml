@@ -10,54 +10,58 @@
     = csrf_meta_tag
   %body
     #header
-      .nav
-        %ul
-          %li= link_to "Home", root_path
-          - if !current_user
-            %li= link_to "Register", new_user_path
-            %li= link_to "Login", new_user_session_path
-          - else
-            %li= link_to 'Submit', new_post_path
-            %li= link_to current_user.login, edit_user_path(current_user)
-            %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
-          %li.last= link_to "About", page_path(:name => 'about-us')
-      .clear
-      .logo
-        %h1 Rails Best Practices
-        %p.first Follow The Rails Best Practices Here
-        %p.second Share Your Rails Best Practices Here
-      .share
-        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
-        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-      .clear
+      .container
+        .nav
+          %ul
+            %li= link_to "Home", root_path
+            - if !current_user
+              %li= link_to "Register", new_user_path
+              %li= link_to "Login", new_user_session_path
+            - else
+              %li= link_to 'Submit', new_post_path
+              %li= link_to current_user.login, edit_user_path(current_user)
+              %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
+            %li.last= link_to "About", page_path(:name => 'about-us')
+        .clear
+        .logo
+          %h1 Rails Best Practices
+          %p.first Follow The Rails Best Practices Here
+          %p.second Share Your Rails Best Practices Here
+        .share
+          = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
+          = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
+        .clear
       .main-nav
-        = link_to 'Home', root_path, :class => 'home-icon'
-        %ul
-          %li= link_to 'Rails Best Practices', posts_path
-          %li= link_to 'rails_best_practices gem', implementations_path
-        = form_tag search_posts_path, :method => :get do
-          .search-label
-          = text_field_tag 'q', '', :class => 'search-text'
-          = submit_tag 'Search', :class => 'search-icon'
+        .container
+          = link_to 'Home', root_path, :class => 'home-icon'
+          %ul
+            %li= link_to 'Rails Best Practices', posts_path
+            %li= link_to 'rails_best_practices gem', implementations_path
+          = form_tag search_posts_path, :method => :get do
+            .search-label
+            = text_field_tag 'q', '', :class => 'search-text'
+            = submit_tag 'Search', :class => 'search-icon'
 
-    #flash
-      - flash.each do |type, message|
-        .message{:class => type}= message
     #container
       #sidebar
         = render 'sidebar'
       #content
+        - unless flash.blank?
+          #flash
+            - flash.each do |type, message|
+              .message{:class => type}= message
         = yield
 
     #footer
-      .share
-        = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-        = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
-      %ul
-        %li= link_to 'Help', page_path('help')
-        %li= link_to 'Contact Us', page_path('contact-us')
-        %li= link_to 'About Us', page_path('about-us')
-      .copyright &copy; 2010 rails-bestpractices.com
+      .container
+        .share
+          = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
+          = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
+        %ul
+          %li= link_to 'Help', page_path('help')
+          %li= link_to 'Contact Us', page_path('contact-us')
+          %li= link_to 'About Us', page_path('about-us')
+        .copyright &copy; 2010 rails-bestpractices.com
       
     = javascript_include_tag :all
     :javascript

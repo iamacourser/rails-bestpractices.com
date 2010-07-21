@@ -12,7 +12,7 @@ table.posts {
   }
   tr {
     td {
-      border-bottom: 1px dashed #b7b7b7;
+      border-bottom: 1px dotted #b7b7b7;
     }
     .stat {
       text-align: right;
@@ -28,6 +28,7 @@ table.posts {
       font-size: 12px;
       .title a {
         font-size: 16px;
+        font-weight: bold;
       }
       .description {
         padding: 5px 0;
@@ -140,7 +141,7 @@ div.ac_results ul {
   .tag-section {
     margin-top: 20px;
     h3 {
-      font-size: 18px;
+      font: 18px verdana;
       margin-bottom: 5px;
     }
     ul {
