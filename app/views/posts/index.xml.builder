@@ -9,7 +9,7 @@ xml.rss(:version => '2.0') do
     @posts.each do |post|
       xml.item do
         xml.title post.title
-        xml.description post.description
+        xml.description "#{post.description}    #{link_to 'see more', post_url(post)}"
         xml.author post.user.login
         xml.pubDate post.created_at
         xml.link post_url(post)
