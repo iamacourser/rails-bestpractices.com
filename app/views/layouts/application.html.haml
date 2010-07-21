@@ -43,14 +43,15 @@
             = submit_tag 'Search', :class => 'search-icon'
 
     #container
-      #sidebar
-        = render 'sidebar'
-      #content
-        - unless flash.blank?
-          #flash
-            - flash.each do |type, message|
-              .message{:class => type}= message
-        = yield
+      .container
+        #sidebar
+          = render 'sidebar'
+        #content
+          - unless flash.blank?
+            #flash
+              - flash.each do |type, message|
+                .message{:class => type}= message
+          = yield
 
     #footer
       .container

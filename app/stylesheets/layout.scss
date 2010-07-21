@@ -25,14 +25,13 @@ body {
   }
 }
 #container {
+  background-color: #fff;
+}
+.container {
   margin: 0 auto;
   width: 980px;
 }
 #header, #footer {
-  .container {
-    margin: 0 auto;
-    width: 980px;
-  }
   .share {
     @include float-right;
     a {
@@ -100,6 +99,7 @@ body {
     }
   }
   .main-nav {
+    font-size: 16px;
     margin-top: 12px;
     height: 29px;
     background-color: #971920;
@@ -171,7 +171,9 @@ body {
 #container {
   background-color: #fdfdfd;
   padding: 20px 0 50px 0;
-  @include clearfix;
+  .container {
+    @include clearfix;
+  }
 }
 #content {
   @include float-left;
@@ -210,6 +212,7 @@ body {
     @include float-right;
     margin: 12px 40px 0 0;
     a {
+      font-size: 16px;
       display: block;
       margin-top: 18px;
     }
