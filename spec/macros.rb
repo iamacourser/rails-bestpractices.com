@@ -36,16 +36,20 @@ module RailsBestPractices
         end
       end
 
-      def should_have_user_ownership(klass=nil)
-        klass ||= context_klass
-        it 'should belong to someone if he is the owner of it' do
-          someone = Factory(:user)
-          Factory(klass.to_s.tableize.singularize.to_sym, :user => someone).
-            belongs_to?(someone).should be_true
-        end
-        it 'should not belong to someone if he is not the owner of it' do
-          someone = Factory(:user)
-          Factory(klass.to_s.tableize.singularize.to_sym).belongs_to?(someone).should be_false
+      def should_have_user_ownership(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe 'having user ownership' do
+
+          it 'should belong to someone if he is the owner of it' do
+            someone = Factory(:user)
+            Factory(factory_id, :user => someone).belongs_to?(someone).should be_true
+          end
+
+          it 'should not belong to someone if he is not the owner of it' do
+            someone = Factory(:user)
+            Factory(factory_id).belongs_to?(someone).should be_false
+          end
+
         end
       end
 
@@ -53,11 +57,30 @@ module RailsBestPractices
 
       end
 
-      def should_be_markdownable
+      def should_be_markdownable(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe "being markdownable" do
 
+          it "should generate simple markdown html" do
+            raw = "subject\n=======\ntitle\n-----"
+            formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n"
+            Factory(factory_id, :body => raw).formatted_html.should == formatted
+          end
+
+          it "should generate markdown html with <pre><code>" do
+            raw = "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
+            formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
+            Factory(factory_id, :body => raw).formatted_html.should == formatted
+          end
+
+        end
       end
 
       private
+
+        def default_factory_id
+          context_klass.to_s.tableize.singularize.to_sym
+        end
 
         def context_klass
           # NOTE: This part is abit brittle, assumes the the context description to be a
