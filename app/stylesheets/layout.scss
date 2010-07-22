@@ -6,7 +6,10 @@
 @import "compass/css3/text-shadow";
 
 body {
-  font-family: Tahoma, Helvetica, Arial, simsun, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  background-color: #ededed;
+  margin-top: 0;
   a {
     border: none;
     outline: none;
@@ -21,7 +24,10 @@ body {
     clear: both;
   }
 }
-#container, #header, #footer, #flash {
+#container {
+  background-color: #fff;
+}
+.container {
   margin: 0 auto;
   width: 980px;
 }
@@ -29,6 +35,7 @@ body {
   .share {
     @include float-right;
     a {
+      font-size: 16px;
       padding-left: 35px;
       margin-left: 15px;
       line-height: 25px;
@@ -45,8 +52,9 @@ body {
 #header {
   background: url(/images/header-bg.png) repeat-x 0 0 #fdfdfd;
   .nav {
+    font: 11px verdana;
+    margin: 12px 40px 0 0;
     @include float-right;
-    margin: 12px 60px 0 0;
     ul {
       @include no-bullets;
       @include horizontal-list;
@@ -71,7 +79,7 @@ body {
     h1 {
       font-size: 32px;
       color: #332222;
-      padding: 30px 0 0 45px;
+      padding: 0 0 0 45px;
       @include text-shadow;
     }
     p {
@@ -86,14 +94,15 @@ body {
     }
   }
   .share {
-    margin: 50px 40px 0 0;
+    margin: 40px 40px 0 0;
     a {
       @include inline-block;
     }
   }
   .main-nav {
+    font-size: 16px;
     margin-top: 12px;
-    height: 30px;
+    height: 29px;
     background-color: #971920;
     .home-icon {
       text-indent: -9999px;
@@ -114,7 +123,7 @@ body {
       }
     }
     form {
-      margin: 2px 32px 0 0;
+      margin: 2px 40px 0 0;
       width: 280px;
       height: 26px;
       @include float-right;
@@ -163,22 +172,19 @@ body {
 #container {
   background-color: #fdfdfd;
   padding: 20px 0 50px 0;
-  @include clearfix;
+  .container {
+    @include clearfix;
+  }
 }
 #content {
   @include float-left;
   width: 680px;
   margin-left: 30px;
   > h2 {
-    font-size: 20px;
+    font: 20px verdana;
     padding-bottom: 5px;
-    border-bottom: 2px solid #9e9e9e;
+    border-bottom: 1px solid #9e9e9e;
   }
-}
-#sidebar {
-  @include float-right;
-  margin-right: 30px;
-  width: 220px;
 }
 #footer {
   background: url(/images/footer-bg.png) repeat-x 0 0 #ededed;
@@ -186,7 +192,7 @@ body {
   ul {
     @include no-bullets;
     @include horizontal-list;
-    padding: 40px 0 0 20px;
+    padding: 40px 0 0 45px;
     li {
       margin: 0 8px;
       a {
@@ -196,11 +202,11 @@ body {
     }
   }
   .copyright {
-    margin: 20px 0 0 30px;
+    margin: 20px 0 0 60px;
   }
   .share {
     @include float-right;
-    margin: 12px 30px 0 0;
+    margin: 12px 40px 0 0;
     a {
       display: block;
       margin-top: 18px;

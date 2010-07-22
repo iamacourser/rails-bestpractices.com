@@ -1,0 +1,77 @@
+@import "partials/tags";
+@import "compass/utilities/lists/bullets";
+@import "compass/utilities/general/float";
+@import "compass/css3/inline-block";
+@import "compass/css3/border-radius";
+
+#sidebar {
+  @include float-right;
+  margin-right: 30px;
+  width: 220px;
+  .share-section {
+    @include border-radius(5px);
+    background-color: #fdeec5;
+    width: 220px;
+    height: 85px;
+    text-align: center;
+    a {
+      background-color: #fd9800;
+      color: #fff;
+      width: 80px;
+      height: 28px;
+      line-height: 28px;
+      margin: 20px 0 10px 0;
+      @include inline-block;
+    }
+    p {
+      color: #c34237;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .tag-section {
+    margin-top: 20px;
+    h3 {
+      font: 18px verdana;
+      margin-bottom: 5px;
+    }
+    ul {
+      padding: 0;
+      margin-left: 20px;
+      @include no-bullets;
+      @include tags;
+      li {
+        padding: 5px 0;
+        a {
+          @include inline-block;
+        }
+      }
+    }
+  }
+  .static-section {
+    margin-top: 10px;
+    h3 {
+      font: 18px verdana;
+      margin-bottom: 5px;
+    }
+    p {
+      padding: 0 5px;
+      line-height: 1.2;
+    }
+    ol {
+      list-style-type: decimal;
+    }
+    ul {
+      list-style-type: disc;
+    }
+    ol, ul {
+      margin: 0 1.5em 0.5em 0;
+      padding-left: 3.333em;
+      line-height: 1.2;
+    }
+    ul ul, ul ol, ol ol, ol ul {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+}
