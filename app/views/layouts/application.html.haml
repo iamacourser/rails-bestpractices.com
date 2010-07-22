@@ -11,6 +11,10 @@
   %body
     #header
       .container
+        .logo
+          %h1 Rails Best Practices
+          %p.first Follow The Rails Best Practices Here
+          %p.second Share Your Rails Best Practices Here
         .nav
           %ul
             %li= link_to "Home", root_path
@@ -22,15 +26,9 @@
               %li= link_to current_user.login, edit_user_path(current_user)
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
             %li.last= link_to "About", page_path(:name => 'about-us')
-        .clear
-        .logo
-          %h1 Rails Best Practices
-          %p.first Follow The Rails Best Practices Here
-          %p.second Share Your Rails Best Practices Here
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
           = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-        .clear
       .main-nav
         .container
           = link_to 'Home', root_path, :class => 'home-icon'

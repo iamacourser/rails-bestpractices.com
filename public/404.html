@@ -8,59 +8,67 @@
 </head>
 <body>
   <div id='header'>
-    <div class='nav'>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users/new">Register</a></li>
-        <li><a href="/user_session/new">Login</a></li>
-        <li class='last'><a href="/page/about-us">About</a></li>
-      </ul>
+    <div class='container'>
+      <div class='nav'>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/users/new">Register</a></li>
+          <li><a href="/user_session/new">Login</a></li>
+          <li class='last'><a href="/page/about-us">About</a></li>
+        </ul>
+      </div>
+      <div class='logo'>
+        <h1>Rails Best Practices</h1>
+        <p class='first'>Follow The Rails Best Practices Here</p>
+        <p class='second'>Share Your Rails Best Practices Here</p>
+      </div>
+      <div class='share'>
+        <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
+        <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
+      </div>
+      <div class='clear'></div>
     </div>
-    <div class='logo'>
-      <h1>Rails Best Practices</h1>
-      <p class='first'>Follow The Rails Best Practices Here</p>
-      <p class='second'>Share Your Rails Best Practices Here</p>
-    </div>
-    <div class='share'>
-      <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
-      <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
-    </div>
-    <div class='clear'></div>
     <div class='main-nav'>
-      <a href="/" class="home-icon">Home</a>
-      <ul>
-        <li><a href="/posts">Rails Best Practices</a></li>
-        <li><a href="/implementations">rails_best_practices gem</a></li>
-      </ul>
-      <form action="/posts/search" method="get">
-        <div class='search-label'></div>
-        <input class="search-text" id="q" name="q" type="text" value="" />
-        <input class="search-icon" name="commit" type="submit" value="Search" />
-      </form>
+      <div class="container">
+        <a href="/" class="home-icon">Home</a>
+        <ul>
+          <li><a href="/posts">Rails Best Practices</a></li>
+          <li><a href="/implementations">rails_best_practices gem</a></li>
+        </ul>
+        <form action="/posts/search" method="get">
+          <div class='search-label'></div>
+          <input class="search-text" id="q" name="q" type="text" value="" />
+          <input class="search-icon" name="commit" type="submit" value="Search" />
+        </form>
+      </div>
     </div>
   </div>
   <div id="container">
-    <div id="page">
-      <h2>Sorry, page not found</h2>
-      <div class="not-found-image"></div>
-      <div class="description">
-        <p>We could't find the page you requested.</p>
-        <p>If you feel something is missing that should be here, <a href="mailto:team@rails-bestpractices.com">contact us</a>.</p>
+    <div class="container">
+      <div id="page">
+        <h2>Sorry, page not found</h2>
+        <div class="not-found-image"></div>
+        <div class="description">
+          <p>We could't find the page you requested.</p>
+          <p>If you feel something is missing that should be here, <a href="mailto:team@rails-bestpractices.com">contact us</a>.</p>
+        </div>
+        <div class="clear"></div>
       </div>
-      <div class="clear"></div>
     </div>
   </div>
   <div id='footer'>
-    <div class='share'>
-      <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
-      <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
+    <div class='container'>
+      <div class='share'>
+        <a href="http://twitter.com/railsbp" class="twitter-icon">FOLLOW US ON TWITTER</a>
+        <a href="http://feeds.feedburner.com/rails-bestpractices" class="rss-icon">SUBSCRIBE TO OUR RSS FEED</a>
+      </div>
+      <ul>
+        <li><a href="/page/help">Help</a></li>
+        <li><a href="/page/contact-us">Contact Us</a></li>
+        <li><a href="/page/about-us">About Us</a></li>
+      </ul>
+      <div class='copyright'>&copy; 2010 rails-bestpractices.com</div>
     </div>
-    <ul>
-      <li><a href="/page/help">Help</a></li>
-      <li><a href="/page/contact-us">Contact Us</a></li>
-      <li><a href="/page/about-us">About Us</a></li>
-    </ul>
-    <div class='copyright'>&copy; 2010 rails-bestpractices.com</div>
   </div>
 </body>
 </html>
