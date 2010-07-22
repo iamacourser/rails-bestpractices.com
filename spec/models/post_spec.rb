@@ -1,57 +1,46 @@
-require 'spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Post do
+
   before :each do
     @post = Factory.create(:post)
   end
-  
+
+  include RailsBestPractices::Macros
+  should_act_as_taggable
+  should_be_tweetable
+  should_be_markdownable
+  should_have_entries_per_page 10
+  should_have_user_ownership
+
   should_belong_to :user
-  should_have_many :comments
-  should_have_many :votes
-  should_have_one :implementation
+  should_have_many :comments, :dependent => :destroy
+  should_have_many :votes, :dependent => :destroy
+  should_have_one :implementation, :dependent => :destroy
   should_validate_presence_of :title, :body
   should_validate_uniqueness_of :title
-  
-  describe "generated formatted html" do
-    it "generate markdown html" do
-      @post.formatted_html.should == "<h1>subject</h1>\n\n<h2>title</h2>\n"
-    end
-    
-    it "generate markdown html with <pre><code>" do
-      @post = Factory.create(:code_post)
-      @post.formatted_html.should == "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
-    end
+
+  it 'should be sorted descendingly by creation time given default scope' do
+    Post.delete_all
+    posts = %w{1 2}.map{|day| Factory(:post, :created_at => "2010-01-0#{day} 09:00") }
+    Post.all.map(&:id).should == posts.map(&:id).reverse
   end
 
-  describe "vote_points" do
-    before :each do
-      @user = Factory.create(:user)
+  it 'should exclusively be sorted descendingly by vote_points given hot scope' do
+    Post.delete_all
+    posts = [[1, 2], [2,1]].map do |(point,day)|
+      Factory(:post, :vote_points => point, :created_at => "2010-01-0#{day} 09:00")
     end
-
-    it "should increase vote_points when creating a vote" do
-      @post.votes.create(:like => true, :user_id => @user.id)
-      @post.reload
-      @post.vote_points.should == 1
-    end
-
-    it "should decrease vote_points when creating a vote" do
-      @post.votes.create(:like => false, :user_id => @user.id)
-      @post.reload
-      @post.vote_points.should == -1
-    end
-
-    it "should decrease vote_points when destroying a vote" do
-      vote = @post.votes.create(:like => true, :user_id => @user.id)
-      vote.destroy
-      @post.reload
-      @post.vote_points.should == 0
-    end
-
-    it "should increase vote_points when creating a vote" do
-      vote = @post.votes.create(:like => false, :user_id => @user.id)
-      vote.destroy
-      @post.reload
-      @post.vote_points.should == 0
-    end
+    Post.hot.map(&:id).should == posts.map(&:id).reverse
   end
+
+  it "should support retrieving of any user's 1st vote" do
+    jane, peter = (0..1).map{|_| Factory(:user) }
+    post = Factory(:post)
+    post.votes.create(:user => peter)
+    post.votes.create(:user => jane)
+    post.votes.create(:user => jane)
+    post.vote(jane).should == post.votes[1]
+  end
+
 end

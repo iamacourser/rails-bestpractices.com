@@ -25,3 +25,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+# Some home-baked macros to sweeten specs writing
+require File.join(File.dirname(__FILE__), 'macros')
