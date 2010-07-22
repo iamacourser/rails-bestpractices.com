@@ -1,7 +1,6 @@
+@import "partials/tags";
 @import "partials/pagination";
 @import "partials/wikistyle";
-@import "partials/tags";
-@import "compass/utilities/lists/bullets";
 @import "compass/utilities/general/float";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
@@ -116,49 +115,6 @@ div.ac_results ul {
   margin: 0;
   padding: 0;
 }
-#sidebar {
-  .share-section {
-    @include border-radius(5px);
-    background-color: #fdeec5;
-    width: 220px;
-    height: 85px;
-    text-align: center;
-    a {
-      background-color: #fd9800;
-      color: #fff;
-      width: 80px;
-      height: 28px;
-      line-height: 28px;
-      margin: 20px 0 10px 0;
-      @include inline-block;
-    }
-    p {
-      color: #c34237;
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
-  .tag-section {
-    margin-top: 20px;
-    h3 {
-      font: 18px verdana;
-      margin-bottom: 5px;
-    }
-    ul {
-      padding: 0;
-      margin-left: 20px;
-      @include no-bullets;
-      @include tags;
-      li {
-        padding: 5px 0;
-        a {
-          @include inline-block;
-        }
-      }
-    }
-  }
-}
-
 .pagination {
   @include pagination;
 }

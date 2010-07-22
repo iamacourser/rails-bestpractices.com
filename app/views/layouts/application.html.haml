@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
@@ -46,6 +46,9 @@
       .container
         #sidebar
           = render 'sidebar'
+          .static-section
+            = render_sidebar_content
+
         #content
           - unless flash.blank?
             #flash
