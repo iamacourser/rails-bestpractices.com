@@ -23,9 +23,10 @@ class Post < ActiveRecord::Base
   end
 
   def tweet_content
-    bitly = load_bitly
-    url = bitly.shorten("http://rails-bestpractices.com/posts/#{self.to_param}").short_url
-    "#{self.title} #{url} #railsbp"
+    {
+      :title => title,
+      :path => "posts/#{to_param}"
+    }
   end
 
   def vote(user)
@@ -33,7 +34,7 @@ class Post < ActiveRecord::Base
   end
 
   def to_param
-    return "#{id}-#{title.parameterize}"
+    "#{id}-#{title.parameterize}"
   end
 
 end

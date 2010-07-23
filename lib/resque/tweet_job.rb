@@ -1,17 +1,28 @@
 class Resque::TweetJob
+
   @queue = :tweet
 
+  TWIITER_YAML = Rails.root.join('config', 'twitter.yml')
+  TWIITER_CONFIG = YAML.load_file(TWIITER_YAML)[RAILS_ENV] rescue nil
+
+  BITLY_YAML = Rails.root.join('config', 'bitly.yml')
+  BITLY_CONFIG = YAML.load_file(BITLY_YAML)[RAILS_ENV] rescue nil
+
   def self.perform(content)
-    config = self.load_configuration
-    httpauth = Twitter::HTTPAuth.new(config['email'], config['password'])
-    base = Twitter::Base.new(httpauth)
-    base.update(content)
+    title, path = content[:title], content[:path]
+    url = bitly.shorten("http://rails-bestpractices.com/#{path}").short_url
+    twitter.update("#{title} #{url} #railsbp")
   end
 
-  TWIITER_YAML = Rails.root.join('config', 'twitter.yml')
+  def self.twitter
+    config = TWIITER_CONFIG
+    httpauth = Twitter::HTTPAuth.new(config['email'], config['password'])
+    Twitter::Base.new(httpauth)
+  end
 
-  private
-    def self.load_configuration
-      YAML.load_file(TWIITER_YAML)[RAILS_ENV]
-    end
+  def self.bitly
+    config = BITLY_CONFIG
+    Bitly.new(config['username'], config['api_key'])
+  end
+
 end

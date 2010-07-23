@@ -55,8 +55,16 @@ module RailsBestPractices
         end
       end
 
-      def should_be_tweetable
-
+      def should_be_tweetable(&block)
+        factory_id ||= default_factory_id
+        describe "being tweetable" do
+          it "should enqueue Resque::TweetJob with tweet content when created" do
+            next_running_id = Factory(factory_id).id.succ
+            instance = Factory.build(factory_id, :id => next_running_id)
+            Resque.should_receive(:enqueue).with(Resque::TweetJob, block.call(instance))
+            instance.save
+          end
+        end
       end
 
       def should_be_markdownable(factory_id = nil)

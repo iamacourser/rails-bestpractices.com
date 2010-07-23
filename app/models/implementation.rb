@@ -13,9 +13,10 @@ class Implementation < ActiveRecord::Base
   end
 
   def tweet_content
-    bitly = load_bitly
-    url = bitly.shorten("http://rails-bestpractices.com/posts/#{post.to_param}/implementation").short_url
-    "Implementation of #{post.title} #{url} #railsbp"
+    {
+      :title => "Implementation of #{post.title}",
+      :path => "posts/#{post.to_param}/implementation"
+    }
   end
 
 end

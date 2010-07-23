@@ -8,10 +8,16 @@ describe Post do
 
   include RailsBestPractices::Macros
   should_act_as_taggable
-  should_be_tweetable
   should_be_markdownable
   should_be_user_ownable
   should_have_entries_per_page 10
+
+  should_be_tweetable do |post|
+    {
+      :title => post.title,
+      :path => "posts/#{post.to_param}"
+    }
+  end
 
   should_have_many :comments, :dependent => :destroy
   should_have_many :votes, :dependent => :destroy
@@ -40,6 +46,11 @@ describe Post do
     post.votes.create(:user => jane)
     post.votes.create(:user => jane)
     post.vote(jane).should == post.votes[1]
+  end
+
+  it "should reflect :id & :title when converted to param" do
+    @post.title = 'Super Mighty Proc'
+    @post.to_param.should == @post.instance_exec{"#{id}-#{title.parameterize}"}
   end
 
 end
