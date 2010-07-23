@@ -6,3 +6,5 @@ unless ENV['RAILS_ENV'] == 'production'
     end
   end
 end
+
+require 'resque/server'
