@@ -3,10 +3,10 @@ class Resque::TweetJob
   @queue = :tweet
 
   TWIITER_YAML = Rails.root.join('config', 'twitter.yml')
-  TWIITER_CONFIG = YAML.load_file(TWIITER_YAML)[RAILS_ENV] rescue nil
+  TWIITER_CONFIG = YAML.load_file(TWIITER_YAML)[Rails.env] rescue nil
 
   BITLY_YAML = Rails.root.join('config', 'bitly.yml')
-  BITLY_CONFIG = YAML.load_file(BITLY_YAML)[RAILS_ENV] rescue nil
+  BITLY_CONFIG = YAML.load_file(BITLY_YAML)[Rails.env] rescue nil
 
   def self.perform(content)
     title, path = content[:title], content[:path]
