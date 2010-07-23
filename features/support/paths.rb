@@ -20,6 +20,8 @@ module NavigationHelpers
       users_path
     when /create post failure page/
       posts_path
+    when /update post failure page/
+      post_path(Post.last) # this is super brittle
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)

@@ -1,9 +1,10 @@
 Given %r{^I am already signed in as "([^"]*)"$} do |someone|
-  Given "#{someone} exists"
-  And 'I go to login page'
-  And 'I fill in "Username" with "flyerhzm"'
-  And 'I fill in "Password" with "flyerhzm"'
-  And 'I press "Login"'
+  user = Factory.build(someone)
+  Given "#{someone} exists" rescue nil
+  And %|I go to login page|
+  And %|I fill in "Username" with "#{user.login}"|
+  And %|I fill in "Password" with "#{user.password}"|
+  And %|I press "Login"|
 end
 
 Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
@@ -15,6 +16,11 @@ Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
       assert page.has_content?(message)
     end
   end
+end
+
+
+Given /^I follow "([^"]*)" \/ "([^"]*)"$/ do |link1, link2|
+  [link1, link2].each{|link| Given %|I follow "#{link}"| }
 end
 
 Then %r{^I should see error fields?:? (.*)$} do |fields|
