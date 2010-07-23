@@ -11,6 +11,7 @@ Feature: Login
     When I press "Login"
     Then I should be on the home page
     And I should see success message "Login successful!"
+    And I should see "Logout"
 
   Scenario Outline: Unsuccessful login with empty info
     Given I fill in the following:
