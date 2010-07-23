@@ -1,1 +1,1 @@
-default: -f progress -r features/support -r features/step_definitions
+default: --drb -f progress -r features/support -r features/step_definitions
