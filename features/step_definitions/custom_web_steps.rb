@@ -41,3 +41,8 @@ Then %r{^I should see "([^"]*)" with error "([^"]*)"$} do |field, message|
     assert page.has_xpath?(xpath)
   end
 end
+
+Then %r{^I should see "([^"]*)" page$} do |title|
+  Then 'I should see "%s" within "h2"' % title
+end
+

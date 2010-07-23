@@ -18,6 +18,8 @@ module NavigationHelpers
       new_user_path
     when /register failure page/
       users_path
+    when /create post failure page/
+      posts_path
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)
