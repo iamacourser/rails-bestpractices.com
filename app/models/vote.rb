@@ -1,8 +1,8 @@
 class Vote < ActiveRecord::Base
 
-  belongs_to :user
-  belongs_to :post
+  include UserOwnable
 
+  belongs_to :post
   after_create :update_create_vote
   before_destroy :update_destroy_vote
 

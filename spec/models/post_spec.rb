@@ -10,10 +10,9 @@ describe Post do
   should_act_as_taggable
   should_be_tweetable
   should_be_markdownable
+  should_be_user_ownable
   should_have_entries_per_page 10
-  should_have_user_ownership
 
-  should_belong_to :user
   should_have_many :comments, :dependent => :destroy
   should_have_many :votes, :dependent => :destroy
   should_have_one :implementation, :dependent => :destroy

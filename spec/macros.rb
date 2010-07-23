@@ -31,14 +31,16 @@ module RailsBestPractices
 
       def should_have_entries_per_page(count)
         klass = context_klass
-        it 'should have 10 posts per page' do
+        it "should have #{count} posts per page" do
           klass.per_page.should equal(count)
         end
       end
 
-      def should_have_user_ownership(factory_id = nil)
+      def should_be_user_ownable(factory_id = nil)
         factory_id ||= default_factory_id
-        describe 'having user ownership' do
+        describe 'being user ownable' do
+
+          should_belong_to :user
 
           it 'should belong to someone if he is the owner of it' do
             someone = Factory(:user)

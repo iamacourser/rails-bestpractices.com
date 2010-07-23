@@ -2,7 +2,9 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Vote do
 
-  should_belong_to :user
+  include RailsBestPractices::Macros
+  should_be_user_ownable
+
   should_belong_to :post
 
   describe 'when created' do
