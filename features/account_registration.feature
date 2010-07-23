@@ -22,7 +22,7 @@ Feature: Account Registration
       | Password              | flyerhzm           |
       | Password confirmation | flyerhzm           |
     When I press "Register"
-    Then I should be back on "Register" page
+    Then I should be on register failure page
     And I should see error field "<field>"
 
     Examples:
@@ -39,6 +39,6 @@ Feature: Account Registration
       | Password              | |
       | Password confirmation | |
     When I press "Register"
-    Then I should be back on "Register" page
+    Then I should be on register failure page
     And I should see error fields: "Username", "Email", "Password" & "Password confirmation"
 

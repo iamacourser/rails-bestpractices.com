@@ -9,16 +9,6 @@ Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
   end
 end
 
-Then %r{^I should be back on "([^"]*)" page$} do |page_title|
-  within('h2') do
-    if page.respond_to? :should
-      page.should have_content(page_title)
-    else
-      assert page.has_content?(page_title)
-    end
-  end
-end
-
 Then %r{^I should see error fields?:? (.*)$} do |fields|
   while match = fields.match(/((.*?)"([^"]+)")/)
     xpath = '//li[contains(@class,"error")]/label[text()="%s"]' % match[3]

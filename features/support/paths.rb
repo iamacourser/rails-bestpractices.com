@@ -14,6 +14,8 @@ module NavigationHelpers
       new_user_session_path
     when /register page/
       new_user_path
+    when /register failure page/
+      users_path
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)
