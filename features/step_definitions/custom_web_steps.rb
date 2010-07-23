@@ -1,3 +1,11 @@
+Given %r{^I am already signed in as "([^"]*)"$} do |someone|
+  Given "#{someone} exists"
+  And 'I go to login page'
+  And 'I fill in "Username" with "flyerhzm"'
+  And 'I fill in "Password" with "flyerhzm"'
+  And 'I press "Login"'
+end
+
 Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
   type = 'notice' if type == 'success'
   within("#flash .message.#{type}") do
