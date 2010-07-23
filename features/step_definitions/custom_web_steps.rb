@@ -18,7 +18,6 @@ Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
   end
 end
 
-
 Given /^I follow "([^"]*)" \/ "([^"]*)"$/ do |link1, link2|
   [link1, link2].each{|link| Given %|I follow "#{link}"| }
 end
@@ -50,5 +49,18 @@ end
 
 Then %r{^I should see "([^"]*)" page$} do |title|
   Then 'I should see "%s" within "h2"' % title
+end
+
+Then %r{^I should see "([^"]*)" in (\w+) search result$} do |title, model|
+  Then %|I should see "#{title}" within ".#{model} .title"|
+end
+
+Then %r{^I should see empty (\w+) search result$} do |model|
+  selector = ".#{model} .title"
+  if page.respond_to? :should
+    page.should have_no_css(selector)
+  else
+    assert page.has_no_css?(selector)
+  end
 end
 
