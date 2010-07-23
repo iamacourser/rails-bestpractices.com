@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /login page/
       new_user_session_path
+    when /login failure page/
+      user_session_path
     when /register page/
       new_user_path
     when /register failure page/

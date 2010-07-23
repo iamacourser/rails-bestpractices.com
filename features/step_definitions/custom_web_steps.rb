@@ -11,7 +11,7 @@ end
 
 Then %r{^I should see error fields?:? (.*)$} do |fields|
   while match = fields.match(/((.*?)"([^"]+)")/)
-    xpath = '//li[contains(@class,"error")]/label[text()="%s"]' % match[3]
+    xpath = '//li[contains(concat(" ",@class," ")," error ")]/label[text()="%s"]' % match[3]
     fields.sub!(match[1],'')
     if page.respond_to? :should
       page.should have_xpath(xpath)
@@ -21,3 +21,15 @@ Then %r{^I should see error fields?:? (.*)$} do |fields|
   end
 end
 
+Then %r{^I should see "([^"]*)" with error "([^"]*)"$} do |field, message|
+  xpath = [
+    '//li[contains(concat(" ",@class," "),"error")]',
+    'label[text()="%s"]' % field,
+    'following-sibling::*[text()="%s"]' % message
+  ].join('/')
+  if page.respond_to? :should
+    page.should have_xpath(xpath)
+  else
+    assert page.has_xpath?(xpath)
+  end
+end
