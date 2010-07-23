@@ -1,4 +1,4 @@
-Feature: Account Registration
+Feature: Register Account
 
   Background:
     Given I am on the homepage

@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Account Login
 
   Background:
     Given flyerhzm exists

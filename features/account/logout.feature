@@ -1,4 +1,4 @@
-Feature: Logout
+Feature: Account Logout
 
   Background:
     Given I am already signed in as "flyerhzm"
