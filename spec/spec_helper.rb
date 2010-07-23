@@ -26,13 +26,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-# Quick fixes
-module Resque
-  class << self
-    alias_method :orig_enqueue, :enqueue
-    def Resque.enqueue(*args) ; end
-  end
-end
-
 # Some home-baked macros to sweeten specs writing
 require File.join(File.dirname(__FILE__), 'macros')
