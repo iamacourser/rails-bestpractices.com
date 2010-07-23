@@ -1,5 +1,6 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
+  mount Resque::Server.new, :at => '/resque'
 
   resources :tags, :only => :show do
     resources :posts, :only => :index

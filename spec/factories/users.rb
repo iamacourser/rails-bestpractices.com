@@ -1,8 +1,8 @@
 Factory.define :user do |u|
-  u.login "user"
-  u.password "user"
-  u.password_confirmation "user"
-  u.email "user@gmail.com"
+  u.sequence(:login) {|i| "user#{i}" }
+  u.password {|u| u.login }
+  u.password_confirmation {|u| u.login }
+  u.email {|u| "#{u.login}@gmail.com" }
 end
 
 Factory.define :flyerhzm, :parent => :user do |u|

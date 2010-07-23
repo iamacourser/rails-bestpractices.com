@@ -1,11 +1,13 @@
 class Vote < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :post
 
+  include UserOwnable
+
+  belongs_to :post
   after_create :update_create_vote
   before_destroy :update_destroy_vote
 
   private
+
     def update_create_vote
       if like?
         post.increment!(:vote_points)
@@ -21,4 +23,5 @@ class Vote < ActiveRecord::Base
         post.increment!(:vote_points)
       end
     end
+
 end
