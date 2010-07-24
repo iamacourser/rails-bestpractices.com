@@ -19,7 +19,7 @@
     = vote_unlike_link(@post)
   = render 'shared/addthis'
   %p
-    = image_tag @post.user.gravatar_url(:size => 32), :class => 'user-avatar'
+    = image_tag @post.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => @post.user.login
     Posted by 
     = user_link(@post.user)
     on 

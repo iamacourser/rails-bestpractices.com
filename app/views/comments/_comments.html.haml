@@ -7,7 +7,7 @@
         .comment
           %p.info
             - if comment.user
-              = image_tag comment.user.gravatar_url(:size => 32), :class => 'user-avatar'
+              = image_tag comment.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => comment.user.login
             Posted by 
             = comment_user_link(comment)
             on 
