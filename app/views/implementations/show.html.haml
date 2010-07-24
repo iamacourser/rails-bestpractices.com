@@ -18,4 +18,4 @@
   .wikistyle= raw @implementation.formatted_html
 
   = render 'comments/comments', :parent => @implementation
-  = render 'comments/comment_form', :parent => @implementation
+  = render 'comments/comment_form', {:parent => @implementation, :comment => @comment}
