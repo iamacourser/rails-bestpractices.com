@@ -45,6 +45,7 @@ gem "sitemap_generator", ">= 0.3.3"
 gem "twitter"
 gem "resque"
 gem "bitly"
+gem "SystemTimer"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development
