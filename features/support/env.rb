@@ -76,6 +76,10 @@ Spork.prefork do
     end
   end
 
+  # Cross-process stubbing support (which also provides in-process stubbing)
+  require 'cross-stub'
+  Before { CrossStub.setup :redis => 'localhost:6379/cross-stub.cache' }
+
 end
 
 Spork.each_run do

@@ -64,3 +64,4 @@ gem "database_cleaner", :group => :cucumber
 gem "spork", :group => :cucumber
 gem "launchy", :group => :cucumber
 gem "pickle", :git => "git://github.com/codegram/pickle.git", :group => :cucumber
+gem "cross-stub", "= 0.2.0", :group => :cucumber
