@@ -13,3 +13,4 @@ public/*.xml.gz
 config/twitter.yml
 config/bitly.yml
 *.swp
+dump.rdb

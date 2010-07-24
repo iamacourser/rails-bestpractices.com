@@ -10,7 +10,7 @@
 .implementation
   = render 'shared/addthis'
   %p
-    = image_tag @implementation.user.gravatar_url(:size => 32), :class => 'user-avatar'
+    = image_tag @implementation.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => @implementation.user.login
     Posted by 
     = user_link(@implementation.user)
     on 
