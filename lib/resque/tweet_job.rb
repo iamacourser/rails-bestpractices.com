@@ -10,7 +10,7 @@ module Resque
     BITLY_CONFIG = YAML.load_file(BITLY_YAML)[Rails.env] rescue nil
 
     def self.perform(content)
-      title, path = content[:title], content[:path]
+      title, path = content['title'], content['path']
       url = bitly.shorten("http://rails-bestpractices.com/#{path}").short_url
       twitter.update("#{title} #{url} #railsbp")
     end
