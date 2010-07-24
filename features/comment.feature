@@ -22,3 +22,12 @@ Feature: PostComment
     Then I should see "Comment was successfully created"
     And I should see "good post" within ".comment"
     And I should see "richard" within ".comment"
+
+  Scenario: Post a comment with nothing
+    Given flyerhzm exists
+    And a post exists with user: the user
+    When I go to the home page
+    And I follow "post"
+    And I press "Comment"
+    Then I should see "can't be blank" within "#comment_username_input"
+    And I should see "can't be blank" within "#comment_body_input"

@@ -7,6 +7,7 @@ class PostsController < InheritedResources::Base
 
   show! do |format|
     @post.increment!(:view_count)
+    @comment = @post.comments.build
   end
   
   def archive
