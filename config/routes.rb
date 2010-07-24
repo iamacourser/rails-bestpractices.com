@@ -7,7 +7,6 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   end
   resources :posts do
     get :archive, :on => :collection
-    get :search, :on => :collection
     resources :comments, :only => :create
     resources :votes, :only => [:create, :destroy]
     resource :implementation

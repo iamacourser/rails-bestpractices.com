@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title
 
   default_scope order('created_at desc')
+  scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
   with_exclusive_scope do
     scope :hot, order('vote_points desc').limit(20)
   end
