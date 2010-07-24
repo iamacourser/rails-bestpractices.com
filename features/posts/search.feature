@@ -6,11 +6,11 @@ Feature: Search Post
     And I am already signed in as "flyerhzm"
 
   Scenario: Successful search result
-    Given I fill in "q" with "first best"
+    Given I fill in "search" with "first best"
     When I press "Search"
     Then I should see "first best practice" in posts search result
 
   Scenario: Unsuccessful search result
-    Given I fill in "q" with "1st best"
+    Given I fill in "search" with "1st best"
     When I press "Search"
     Then I should see empty posts search result
