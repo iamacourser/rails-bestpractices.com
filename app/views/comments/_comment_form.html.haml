@@ -1,4 +1,4 @@
-= semantic_form_for [parent, parent.comments.build] do |form|
+= semantic_form_for [parent, comment] do |form|
   = form.inputs :name => "Post a comment" do
     - if current_user
       = form.input :user_id, :as => :hidden, :value => current_user.id

@@ -36,4 +36,4 @@
       = link_to tag.name, tag_posts_path(tag.name)
 
   = render 'comments/comments', :parent => @post
-  = render 'comments/comment_form', :parent => @post
+  = render 'comments/comment_form', {:parent => @post, :comment => @comment}
