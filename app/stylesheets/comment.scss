@@ -38,3 +38,11 @@
     }
   }
 }
+
+// HACKISH !! Basically we just wanna hide the label for comment body textarea,
+// yet still allow more elegant writing of feature.
+#comment_body_input {
+  label {
+    display: none;
+  }
+}
