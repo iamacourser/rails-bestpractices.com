@@ -3,6 +3,7 @@ class PostsController < InheritedResources::Base
   belongs_to :tag, :optional => true, :class_name => 'ActsAsTaggableOn::Tag',
     :finder => :find_by_name!, :param => :tag_id
   has_scope :hot
+  has_scope :search
   respond_to :xml, :only => :index
 
   show! do |format|
@@ -12,11 +13,6 @@ class PostsController < InheritedResources::Base
   
   def archive
     @posts = Post.all
-  end
-  
-  def search
-    @posts = Post.where(['title like ?', "%#{params[:q]}%"]).paginate(:page => params[:page], :per_page => Post.per_page)
-    render :action => :index
   end
   
   protected

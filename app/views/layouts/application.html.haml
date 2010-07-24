@@ -35,9 +35,9 @@
           %ul
             %li= link_to 'Rails Best Practices', posts_path
             %li= link_to 'rails_best_practices gem', implementations_path
-          = form_tag search_posts_path, :method => :get do
+          = form_tag posts_path, :method => :get do
             .search-label
-            = text_field_tag 'q', '', :class => 'search-text'
+            = text_field_tag 'search', '', :class => 'search-text'
             = submit_tag 'Search', :class => 'search-icon'
 
     #container
