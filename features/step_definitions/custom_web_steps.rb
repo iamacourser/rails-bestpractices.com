@@ -103,3 +103,7 @@ Then %r{^I should see the following new entry under "([^"]*)":$} do |title, stri
     assert page.has_xpath?(xpath)
   end
 end
+
+Then %r{^I should not be able to press "([^"]*)"$} do |button|
+  lambda{ When %|I press "#{button}"| }.should raise_error(Capybara::ElementNotFound)
+end
