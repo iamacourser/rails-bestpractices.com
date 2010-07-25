@@ -41,17 +41,16 @@
 
     #container
       .container
-        #sidebar
-          = render 'sidebar'
-          .static-section
-            = render_sidebar_content
-
         #content
           - unless flash.blank?
             #flash
               - flash.each do |type, message|
                 .message{:class => type}= message
           = yield
+        #sidebar
+          = render 'sidebar'
+          .static-section
+            = render_sidebar_content
 
     #footer
       .container
