@@ -65,7 +65,7 @@
           %li= link_to 'About Us', page_path('about-us')
         .copyright &copy; 2010 rails-bestpractices.com
       
-    = javascript_include_tag :all
+    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'showdown', 'wmd-base', 'wmd-plus', :cache => true
     :javascript
       function recover() {
         var $preview_elem = $('.wmd-preview pre code');
