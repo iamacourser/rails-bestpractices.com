@@ -16,7 +16,7 @@
   .vote-info
     = vote_like_link(@post)
     %p= @post.vote_points
-    = vote_unlike_link(@post)
+    = vote_dislike_link(@post)
   = render 'shared/addthis'
   %p
     = image_tag @post.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => @post.user.login

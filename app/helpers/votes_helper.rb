@@ -15,19 +15,19 @@ module VotesHelper
     end
   end
   
-  def vote_unlike_link(post)
+  def vote_dislike_link(post)
     unless current_user
-      return link_to_function('Unlike', "javascript:alert('You should log in before vote!');", :class => 'unlike-icon')
+      return link_to_function('Dislike', "javascript:alert('You should log in before vote!');", :class => 'dislike-icon')
     end
     vote = post.vote current_user
     if vote
       if vote.like?
-        button_to 'Unlike', post_vote_path(post, vote), :method => :delete, :class => 'unlike-icon'
+        button_to 'Dislike', post_vote_path(post, vote), :method => :delete, :class => 'dislike-icon'
       else
-        link_to 'Unlike', "javascript:alert('You have voted unlike this best practices!');", :class => 'unlike-icon active'
+        link_to 'Dislike', "javascript:alert('You have voted dislike this best practices!');", :class => 'dislike-icon active'
       end
     else
-      button_to 'Unlike', post_votes_path(@post, :like => false), :class => 'unlike-icon'
+      button_to 'Dislike', post_votes_path(@post, :like => false), :class => 'dislike-icon'
     end
   end
 end
