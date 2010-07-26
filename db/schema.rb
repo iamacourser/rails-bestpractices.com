@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726133723) do
+ActiveRecord::Schema.define(:version => 20100726144246) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100726133723) do
     t.integer  "comments_count", :default => 0
     t.integer  "vote_points",    :default => 0
     t.integer  "view_count"
+    t.boolean  "implemented",    :default => false, :null => false
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"

@@ -10,7 +10,10 @@
       %td.content
         %p.title= link_to post.title, post_path(post)
         %p.description= post.description
-        %p= link_to (post.comments.size == 0 ? "post a comment" : "#{post.comments.size} comments"), post_path(post, :anchor => 'comments')
+        %p
+          = link_to (post.comments.size == 0 ? "post a comment" : "#{post.comments.size} comments"), post_path(post, :anchor => 'comments')
+          - if post.implemented?
+            = link_to 'implemented in rails_best_practices gem', post_implementation_path(post), :class => 'implemented'
       %td.author
         by
         = user_link(post.user)

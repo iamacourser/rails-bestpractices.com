@@ -90,16 +90,6 @@ table.posts {
       margin: 5px 20px;
     }
   }
-  .implemented {
-    font-size: 12px;
-    height: 22px;
-    line-height: 22px;
-    padding: 0 10px;
-    background-color: #fd9800;
-    color: #fff;
-    display: block;
-    @include float-right;
-  }
   .wikistyle {
     @include wikistyle;
   }
@@ -110,6 +100,16 @@ table.posts {
     }
     @include tags;
   }
+}
+.implemented {
+  font-size: 12px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 10px;
+  background-color: #fd9800;
+  color: #fff;
+  display: block;
+  @include float-right;
 }
 div.ac_results ul {
   margin: 0;
