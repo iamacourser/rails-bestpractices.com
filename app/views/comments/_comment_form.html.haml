@@ -4,6 +4,12 @@
       = form.input :user_id, :as => :hidden, :value => current_user.id
     - else
       = form.input :username, :hint => "Note: if you a registered user, you can log in without input username."
+    .wmd-notice
+      %p 
+        %b You may use ONLY these HTML tags to format your comment:
+      %p= '<a href="" title=""> <b> <blockquote> <pre> <code> <em> <i> <strong>'
+      %p
+        %b= "Do not use <p> tags. Just use newlines."
     = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 4 }
   = form.buttons do
     = form.submit "Comment"
