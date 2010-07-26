@@ -1,0 +1,23 @@
+- set_meta_tags :title => 'recent comments', :noindex => true
+
+%h2 Recent Comments
+
+.comments
+  - @comments.each do |comment|
+    .comment
+      .info
+        - if comment.user
+          = image_tag comment.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => comment.user.login
+        %p
+          Comments on 
+          = link_to comment.parent_name, comment_parent_link(comment)
+        %p
+          Posted by 
+          = comment_user_link(comment)
+          on 
+          = comment.created_at.strftime("%B %d, %Y %H:%M")
+      .content
+        .point-to-icon
+        %p= comment.body
+
+= will_paginate @comments

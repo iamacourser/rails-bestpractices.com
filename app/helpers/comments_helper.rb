@@ -8,4 +8,12 @@ module CommentsHelper
       comment.username
     end
   end
+
+  def comment_parent_link(comment)
+    if comment.commentable.is_a? Post
+      post_url(comment.commentable)
+    elsif comment.commentable.is_a? Implementation
+      post_implmentation_url(comment.commentable.implementation)
+    end
+  end
 end
