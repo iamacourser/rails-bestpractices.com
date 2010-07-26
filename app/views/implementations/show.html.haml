@@ -4,7 +4,7 @@
   .command= link_to 'Edit', edit_post_implementation_path(@post)
 
 %h2 
-  Implementation for 
+  Implementation of 
   = link_to @post.title, post_path(@post)
 
 .implementation
@@ -19,3 +19,6 @@
 
   = render 'comments/comments', :parent => @implementation
   = render 'comments/comment_form', {:parent => @implementation, :comment => @comment}
+
+- content_for :js do
+  = javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#username=flyerhzm"

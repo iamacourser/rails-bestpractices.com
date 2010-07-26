@@ -1,6 +1,5 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
-  mount Resque::Server.new, :at => '/resque'
 
   resources :tags, :only => :show do
     resources :posts, :only => :index
@@ -11,6 +10,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     resources :votes, :only => [:create, :destroy]
     resource :implementation
   end
+  resources :comments, :only => :index
   resources :implementations do
     resources :comments, :only => :create
   end

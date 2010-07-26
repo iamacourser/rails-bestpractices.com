@@ -16,7 +16,7 @@
   .vote-info
     = vote_like_link(@post)
     %p= @post.vote_points
-    = vote_unlike_link(@post)
+    = vote_dislike_link(@post)
   = render 'shared/addthis'
   %p
     = image_tag @post.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => @post.user.login
@@ -28,8 +28,8 @@
     .point-to-icon
     %p= @post.description
   .wikistyle= raw @post.formatted_html
-  - if @post.implementation
-    = link_to 'Implemented in rails_best_practices gem', post_implementation_path(@post), :class => 'implemented'
+  - if @post.implemented?
+    = link_to 'implemented in rails_best_practices gem', post_implementation_path(@post), :class => 'implemented'
   .tags
     %strong tags: 
     - @post.tags.each do |tag|
@@ -37,3 +37,6 @@
 
   = render 'comments/comments', :parent => @post
   = render 'comments/comment_form', {:parent => @post, :comment => @comment}
+
+- content_for :js do
+  = javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#username=flyerhzm"

@@ -4,6 +4,6 @@
       = form.input :user_id, :as => :hidden, :value => current_user.id
     - else
       = form.input :username, :hint => "Note: if you a registered user, you can log in without input username."
-    = form.input :body, :label => false, :input_html => { :class => 'wmd-ignore', :rows => 4 }
+    = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 4 }
   = form.buttons do
     = form.submit "Comment"

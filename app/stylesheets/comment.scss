@@ -1,3 +1,4 @@
+@import "compass/utilities/general/float";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
@@ -10,8 +11,14 @@
   }
   .comment {
     margin: 20px 20px 0 20px;
-    p.info {
+    .info {
       font-size: 14px;
+      img {
+        @include float-left;
+      }
+      p {
+        line-height: 1.4;
+      }
     }
     .content {
       background-color: #e7f2fd;
@@ -36,5 +43,13 @@
       border: 1px solid #eee;
       margin-right: 20px;
     }
+  }
+}
+
+// HACKISH !! Basically we just wanna hide the label for comment body textarea,
+// yet still allow more elegant writing of feature.
+#comment_body_input {
+  label {
+    display: none;
   }
 }

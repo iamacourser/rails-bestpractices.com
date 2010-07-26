@@ -23,11 +23,12 @@ class Post < ActiveRecord::Base
     10
   end
 
-  def tweet_content
-    {
-      :title => title,
-      :path => "posts/#{to_param}"
-    }
+  def tweet_title
+    title
+  end
+
+  def tweet_path
+    "posts/#{to_param}"
   end
 
   def vote(user)

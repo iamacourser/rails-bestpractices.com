@@ -12,8 +12,18 @@ module NavigationHelpers
       '/'
     when /login page/
       new_user_session_path
+    when /login failure page/
+      user_session_path
     when /register page/
       new_user_path
+    when /register failure page/
+      users_path
+    when /create post failure page/
+      posts_path
+    when /update post failure page/
+      post_path(Post.last) # this is super brittle
+    when /comment post failure page/
+      post_comments_path(Post.last) # this is super brittle
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)

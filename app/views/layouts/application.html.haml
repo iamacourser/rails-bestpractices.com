@@ -2,7 +2,6 @@
 %html
   %head
     = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
@@ -42,17 +41,17 @@
 
     #container
       .container
-        #sidebar
-          = render 'sidebar'
-          .static-section
-            = render_sidebar_content
-
         #content
           - unless flash.blank?
             #flash
               - flash.each do |type, message|
                 .message{:class => type}= message
           = yield
+        #sidebar
+          = render 'shared/pledgie'
+          = render 'sidebar'
+          .static-section
+            = render_sidebar_content
 
     #footer
       .container
@@ -65,7 +64,8 @@
           %li= link_to 'About Us', page_path('about-us')
         .copyright &copy; 2010 rails-bestpractices.com
       
-    = javascript_include_tag :all
+    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'showdown', 'wmd-base', 'wmd-plus', :cache => true
+    = yield :js
     :javascript
       function recover() {
         var $preview_elem = $('.wmd-preview pre code');
