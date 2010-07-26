@@ -37,3 +37,6 @@
 
   = render 'comments/comments', :parent => @post
   = render 'comments/comment_form', {:parent => @post, :comment => @comment}
+
+- content_for :js do
+  = javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#username=flyerhzm"
