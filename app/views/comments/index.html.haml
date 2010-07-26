@@ -18,6 +18,6 @@
           = comment.created_at.strftime("%B %d, %Y %H:%M")
       .content
         .point-to-icon
-        %p= comment.body
+        .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
 = will_paginate @comments
