@@ -12,11 +12,11 @@ class Implementation < ActiveRecord::Base
     10
   end
 
-  def tweet_content
-    {
-      :title => "Implementation of #{post.title}",
-      :path => "posts/#{post.to_param}/implementation"
-    }
+  def tweet_title
+    "Implementation of #{post.title}"
   end
 
+  def tweet_path
+    "posts/#{post.to_param}/implementation"
+  end
 end
