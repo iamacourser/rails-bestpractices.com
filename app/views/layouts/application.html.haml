@@ -48,6 +48,7 @@
                 .message{:class => type}= message
           = yield
         #sidebar
+          = render 'shared/pledgie'
           = render 'sidebar'
           .static-section
             = render_sidebar_content
