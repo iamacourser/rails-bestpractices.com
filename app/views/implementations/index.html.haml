@@ -8,7 +8,7 @@
       .comment= link_to (implementation.comments.size == 0 ? "post a comment" : "#{implementation.comments.size} comments"), post_implementation_path(implementation.post, :anchor => 'comments')
       .author
         by
-        = image_tag implementation.user.gravatar_url(:size => 16), :class => 'user-avatar', :alt => implementation.user.login
+        = image_tag implementation.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => implementation.user.login
         = user_link(implementation.user)
 
 = will_paginate @implementations, :previous_label => "<< Previous", :next_label => "Next >>"

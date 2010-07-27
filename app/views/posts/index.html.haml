@@ -17,6 +17,6 @@
       %td.author
         by
         = user_link(post.user)
-      %td.avatar= image_tag post.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => post.user.login
+      %td.avatar= image_tag post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.user.login
 
 = will_paginate @posts, :previous_label => "<< Previous", :next_label => "Next >>"

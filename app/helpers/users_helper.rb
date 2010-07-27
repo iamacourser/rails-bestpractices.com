@@ -6,4 +6,16 @@ module UsersHelper
       content_tag :span, user.login
     end
   end
+
+  def default_gravatar(size = 32)
+    image_tag "http://gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452.png?d=mm&r=PG&s=#{size}", :class => 'user-avatar', :alt => 'anonymous'
+  end
+
+  def comment_avatar(comment)
+    if comment.user
+      image_tag comment.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.user.login
+    else
+      default_gravatar
+    end
+  end
 end
