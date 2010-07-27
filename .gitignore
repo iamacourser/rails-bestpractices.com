@@ -14,3 +14,4 @@ config/twitter.yml
 config/bitly.yml
 *.swp
 dump.rdb
+tmp/cross-stub.cache
