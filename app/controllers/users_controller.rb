@@ -19,6 +19,6 @@ private
   end
 
   def collection
-    @users = User.order("posts_count * 5 + 2 * votes_count + comments_count desc")
+    @users = User.order("(posts_count * 5 + 2 * votes_count + comments_count) desc").limit(50)
   end
 end

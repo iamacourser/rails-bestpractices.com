@@ -6,7 +6,7 @@ class AddCounterCacheToUsers < ActiveRecord::Migration
     add_column :users, :votes_count, :integer, :default => 0, :null => false
 
     User.all.each do |user|
-      user.update_attributes(:posts_count => user.posts.length, :implementations_count => user.implementations.length, :comments_count => user.comments.length, :votes_count => user.votes.length)
+      User.update_counters user.id, :posts_count => user.posts.length, :implementations_count => user.implementations.length, :comments_count => user.comments.length, :votes_count => user.votes.length
     end
   end
 

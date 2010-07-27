@@ -18,8 +18,7 @@
       %td.comments= user.comments_count
       %td.score= user.posts_count * 10 + user.comments_count * 2 + user.votes_count
 
-- if @users.size > 100
+.rank-hint
   %p lower scoring users not shown
   %p score = posts * 10  + comments * 2 + votes.
-
 
