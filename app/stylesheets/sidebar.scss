@@ -1,6 +1,7 @@
 @import "partials/tags";
 @import "compass/utilities/lists/bullets";
 @import "compass/utilities/general/float";
+@import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
@@ -8,6 +9,11 @@
   @include float-right;
   margin-right: 30px;
   width: 220px;
+  h3 {
+    font: 14px verdana;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
   .share-section {
     @include border-radius(5px);
     background-color: #fdeec5;
@@ -31,22 +37,19 @@
     }
   }
   .posts-section {
-    margin: 20px 0 20px 20px;
+    margin: 20px 0;
     line-height: 1.5;
   }
   .tag-section {
     margin-top: 20px;
-    h3 {
-      font: 18px verdana;
-      margin-bottom: 5px;
-    }
     ul {
       padding: 0;
-      margin-left: 20px;
       @include no-bullets;
+      @include clearfix;
       @include tags;
       li {
-        padding: 5px 0;
+        @include float-left;
+        margin: 5px;
         a {
           @include inline-block;
         }
@@ -55,10 +58,6 @@
   }
   .static-section {
     margin-top: 10px;
-    h3 {
-      font: 18px verdana;
-      margin-bottom: 5px;
-    }
     p {
       padding: 0 5px;
       line-height: 1.2;

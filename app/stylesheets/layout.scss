@@ -236,3 +236,18 @@ body {
     @include inline-block;
   }
 }
+.new {
+  height: 0;
+  position: relative;
+  .new-icon {
+    position: absolute;
+  }
+}
+.nav .new .new-icon {
+  top: -20px;
+  right: -22px;
+}
+.posts-section .new .new-icon {
+  top: -20px;
+  left: 100px;
+}
