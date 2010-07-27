@@ -14,14 +14,12 @@ module Tweetable
   private
     def twitter
       config = TWITTER_CONFIG
-      p config
       httpauth = Twitter::HTTPAuth.new(config['email'], config['password'])
       Twitter::Base.new(httpauth)
     end
 
     def bitly
       config = BITLY_CONFIG
-      p config
       Bitly.new(config['username'], config['api_key'])
     end
 
