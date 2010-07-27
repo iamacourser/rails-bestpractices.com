@@ -1,7 +1,6 @@
 class Post < ActiveRecord::Base
 
   include Markdownable
-  include Tweetable
   include UserOwnable
 
   acts_as_taggable
