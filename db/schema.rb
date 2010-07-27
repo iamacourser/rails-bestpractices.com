@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726144246) do
+ActiveRecord::Schema.define(:version => 20100727124152) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -104,6 +104,10 @@ ActiveRecord::Schema.define(:version => 20100726144246) do
     t.datetime "updated_at"
     t.string   "url"
     t.boolean  "developer"
+    t.integer  "posts_count",           :default => 0, :null => false
+    t.integer  "implementations_count", :default => 0, :null => false
+    t.integer  "comments_count",        :default => 0, :null => false
+    t.integer  "votes_count",           :default => 0, :null => false
   end
 
   create_table "votes", :force => true do |t|

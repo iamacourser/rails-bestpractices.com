@@ -1,0 +1,25 @@
+- set_meta_tags :title => 'leaders'
+
+%h2 Leaders
+%table.users
+  %tr
+    %th #
+    %th User
+    %th Posts
+    %th Votes
+    %th Comments
+    %th Score
+  - @users.each_with_index do |user, index|
+    %tr
+      %td.index= index
+      %td.login= user.login
+      %td.posts= user.posts_count
+      %td.votes= user.votes_count
+      %td.comments= user.comments_count
+      %td.score= user.posts_count * 10 + user.comments_count * 2 + user.votes_count
+
+- if @users.size > 100
+  %p lower scoring users not shown
+  %p score = posts * 10  + comments * 2 + votes.
+
+

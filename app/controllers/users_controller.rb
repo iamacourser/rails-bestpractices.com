@@ -1,5 +1,5 @@
 class UsersController < InheritedResources::Base
-  actions :new, :create, :edit, :update
+  actions :new, :create, :edit, :update, :index
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   
@@ -16,5 +16,9 @@ class UsersController < InheritedResources::Base
 private
   def resource
     @user = @current_user
+  end
+
+  def collection
+    @users = User.order("posts_count * 5 + 2 * votes_count + comments_count desc")
   end
 end
