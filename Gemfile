@@ -43,7 +43,7 @@ gem "css_sprite", ">= 1.4.9"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", ">= 0.3.3"
 gem "twitter"
-gem "resque"
+#gem "resque"
 gem "bitly"
 gem "SystemTimer"
 

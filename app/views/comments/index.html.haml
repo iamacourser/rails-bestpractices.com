@@ -6,8 +6,7 @@
   - @comments.each do |comment|
     .comment
       .info
-        - if comment.user
-          = image_tag comment.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => comment.user.login
+        = comment_avatar(comment)
         %p
           Comments on 
           = link_to comment.parent_name, comment_parent_link(comment)

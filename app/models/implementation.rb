@@ -1,7 +1,6 @@
 class Implementation < ActiveRecord::Base
 
   include Markdownable
-  include Tweetable
   include UserOwnable
 
   belongs_to :post

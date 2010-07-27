@@ -1,0 +1,22 @@
+table.users {
+  margin-top: 20px;
+  table-layout: fixed;
+  width: 100%;
+  tr {
+    height: 28px;
+  }
+  th {
+    background-color: #eee;
+    text-align: center;
+  }
+  td {
+    border-top: 1px solid #aaa;
+    text-align: center;
+    &.index {
+      width: 50px;
+    }
+    &.posts, &.votes, &.comments {
+      width: 50px;
+    }
+  }
+}

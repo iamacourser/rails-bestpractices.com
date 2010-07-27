@@ -15,7 +15,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     resources :comments, :only => :create
   end
 
-  resources :users, :only => [:new, :create, :edit, :update]
+  resources :users, :only => [:new, :create, :edit, :update, :index]
 
   resource :user_session
   

@@ -24,8 +24,8 @@ Comment:
 
 Implementation:
   fields:
-    default: post_id, user_id, post, user
-    form: post_id, user_id, body, formatted_html, post, user
+    default: post_id, user_id, comments_count, post, user
+    form: post_id, user_id, body, formatted_html, comments_count, post, user
   order_by: 
   relationships: post, user
   filters: 
@@ -44,8 +44,8 @@ Page:
 
 Post:
   fields:
-    default: title, user_id, comments_count, vote_points, user
-    form: title, body, user_id, formatted_html, description, comments_count, vote_points, user
+    default: title, user_id, comments_count, vote_points, view_count, user, developer, implemented
+    form: title, body, user_id, formatted_html, description, comments_count, vote_points, view_count, user, developer, implemented
   order_by: 
   relationships: base_tags, comments, implementable, tag_taggings, taggings, tags, user, votes
   filters: 

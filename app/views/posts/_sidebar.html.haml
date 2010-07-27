@@ -2,10 +2,14 @@
   = link_to 'Submit', new_post_path
   %p Share a Rails Best Practice!
 .posts-section
+  %h3 Navigator
   %ul
     %li= link_to 'Recent Best Practices', posts_path
     %li= link_to 'Hot Best Practices', posts_path(:hot => true)
-    %li= link_to 'Recent Comments', comments_path(:post => true)
+    %li
+      = link_to 'Recent Comments', comments_path(:post => true)
+      .new
+        .new-icon
     %li= link_to 'All Best Practices', archive_posts_path
 .tag-section
   %h3 Tags

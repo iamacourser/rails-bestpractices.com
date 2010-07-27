@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
@@ -24,6 +24,10 @@
               %li= link_to 'Submit', new_post_path
               %li= link_to current_user.login, edit_user_path(current_user)
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
+            %li
+              = link_to "Leaders", users_path
+              .new
+                .new-icon
             %li.last= link_to "About", page_path(:name => 'about-us')
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'

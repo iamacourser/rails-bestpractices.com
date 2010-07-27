@@ -12,13 +12,6 @@ describe Post do
   should_be_user_ownable
   should_have_entries_per_page 10
 
-  should_be_tweetable do |post|
-    {
-      :title => post.title,
-      :path => "posts/#{post.to_param}"
-    }
-  end
-
   should_have_many :comments, :dependent => :destroy
   should_have_many :votes, :dependent => :destroy
   should_have_one :implementation, :dependent => :destroy
