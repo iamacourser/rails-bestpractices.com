@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100727124152) do
+ActiveRecord::Schema.define(:version => 20100728143142) do
+
+  create_table "access_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type",       :limit => 30
+    t.string   "key"
+    t.string   "token",      :limit => 1024
+    t.string   "secret"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "access_tokens", ["key"], :name => "index_access_tokens_on_key", :unique => true
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -108,7 +121,10 @@ ActiveRecord::Schema.define(:version => 20100727124152) do
     t.integer  "implementations_count", :default => 0, :null => false
     t.integer  "comments_count",        :default => 0, :null => false
     t.integer  "votes_count",           :default => 0, :null => false
+    t.integer  "active_token_id"
   end
+
+  add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"
 
   create_table "votes", :force => true do |t|
     t.boolean  "like"

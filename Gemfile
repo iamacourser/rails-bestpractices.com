@@ -46,6 +46,11 @@ gem "twitter"
 #gem "resque"
 gem "bitly"
 gem "SystemTimer"
+gem "ruby-openid"
+gem "rack-openid", ">=0.2.1", :require => "rack/openid"
+gem "oauth"
+gem "oauth2"
+gem "authlogic-connect"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development
