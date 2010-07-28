@@ -12,6 +12,7 @@ app/stylesheets/css_sprite.scss
 public/*.xml.gz
 config/twitter.yml
 config/bitly.yml
+config/authlogic.yml
 *.swp
 dump.rdb
 tmp/cross-stub.cache
