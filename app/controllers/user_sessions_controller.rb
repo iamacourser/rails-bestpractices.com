@@ -1,7 +1,9 @@
-class UserSessionsController < InheritedResources::Base
-  actions :new, :create, :destroy
-  before_filter :require_no_user, :only => [:new, :create]
+class UserSessionsController < ApplicationController
   before_filter :require_user, :only => :destroy
+  
+  def new
+    @user_session = UserSession.new
+  end
   
   def create
     @user_session = UserSession.new(params[:user_session])
@@ -10,10 +12,10 @@ class UserSessionsController < InheritedResources::Base
     @user_session.save do |result|
       if result
         flash[:notice] = "Login successful!"
-        if @current_user
-          redirect_back_or_default root_url
+        if current_user
+          redirect_to root_url
         else
-          redirect_to new_user_session_path
+          redirect_to new_user_session_url
         end
       else
         if @user_session.errors.on(:user)
@@ -28,7 +30,7 @@ class UserSessionsController < InheritedResources::Base
   
   def destroy
     current_user_session.destroy
-    flash[:notice] = t('flash.user_sessions.destroy.notice')
-    redirect_back_or_default root_url
+    flash[:notice] = "Logout successful!"
+    redirect_to root_url
   end
 end

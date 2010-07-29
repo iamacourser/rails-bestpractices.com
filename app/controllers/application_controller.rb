@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   layout 'application'
-
   helper_method :current_user_session, :current_user
   
   protected
@@ -30,7 +29,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_back_or_default root_url
+        redirect_to root_url
         return false
       end
     end
@@ -43,7 +42,7 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-    
+
     def render_404(exception = nil)
       if exception
         logger.info "Rendering 404 with exception: #{exception.message}"

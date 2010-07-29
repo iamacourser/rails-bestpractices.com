@@ -1,19 +1,29 @@
-class UsersController < InheritedResources::Base
-  actions :new, :create, :edit, :update, :index
-  before_filter :require_no_user, :only => [:new, :create]
+class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.new(params[:user])
     # block! see user_sessions_controller.rb for description
     @user.save do |result|
       if result
-        flash[:notice] = "Account registered!"
+        flash[:notice] = "Register successful!"
         redirect_to root_url
       else
-        redirect_to new_user_url
+        render :action => :new
       end
     end
+  end
+
+  def show
+    @user = @current_user
+  end
+
+  def edit
+    @user = @current_user
   end
 
   def update
@@ -27,14 +37,5 @@ class UsersController < InheritedResources::Base
         render :action => :edit
       end
     end
-  end
-
-private
-  def resource
-    @user = @current_user
-  end
-
-  def collection
-    @users = User.order("(posts_count * 10 + comments_count * 2 + votes_count) desc").limit(50)
   end
 end
