@@ -3,6 +3,7 @@ class PostsController < InheritedResources::Base
   belongs_to :tag, :optional => true, :class_name => 'ActsAsTaggableOn::Tag',
     :finder => :find_by_name!, :param => :tag_id
   has_scope :hot
+  has_scope :implemented
   has_scope :search
   respond_to :xml, :only => :index
 

@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
   scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
   with_exclusive_scope do
     scope :hot, order('vote_points desc').limit(20)
+    scope :implemented, where(:implemented => true).limit(20)
   end
 
   def self.per_page

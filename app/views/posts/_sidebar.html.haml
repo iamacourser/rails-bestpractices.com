@@ -5,7 +5,11 @@
   %h3 Navigator
   %ul
     %li= link_to 'Recent Best Practices', posts_path
-    %li= link_to 'Hot Best Practices', posts_path(:hot => true)
+    %li
+      = link_to 'Hot Best Practices', posts_path(:hot => true)
+      .hot
+        .hot-icon
+    %li= link_to 'Implemented Best Practices', posts_path(:implemented => true)
     %li
       = link_to 'Recent Comments', comments_path(:post => true)
       .new
