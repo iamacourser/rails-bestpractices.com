@@ -3,6 +3,7 @@
 %h2 Login
 
 = semantic_form_for @user_session, :url => user_session_path do |form|
+  = oauth_login_hidden_input
   = form.inputs do
     = form.input :login, :label => "Username"
     = form.input :password

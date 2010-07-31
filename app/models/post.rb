@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
 
   default_scope order('created_at desc')
   scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
+  scope :implemented, where(:implemented => true)
   with_exclusive_scope do
     scope :hot, order('vote_points desc').limit(20)
   end

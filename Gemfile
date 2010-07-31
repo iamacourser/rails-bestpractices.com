@@ -2,32 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.0.beta4'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
 gem 'mysql'
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+gem "json"
 gem "haml", ">= 3.0.13"
 gem "compass", ">= 0.10.2"
 gem "will_paginate", :git => "git://github.com/mislav/will_paginate.git", :branch => "rails3"
@@ -42,10 +20,14 @@ gem "gravtastic", ">= 2.1.0"
 gem "css_sprite", ">= 1.4.9"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", ">= 0.3.3"
-gem "twitter"
-#gem "resque"
+gem "twitter", ">= 0.9.8"
 gem "bitly"
-gem "SystemTimer"
+gem "system_timer"
+gem "ruby-openid"
+gem "rack-openid", ">=0.2.1", :require => "rack/openid"
+gem "oauth"
+gem "oauth2"
+gem "authlogic-connect", '>=0.0.5.1' #
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development

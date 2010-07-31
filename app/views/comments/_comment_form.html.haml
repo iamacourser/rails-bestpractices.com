@@ -9,6 +9,8 @@
         %b You may use ONLY these HTML tags to format your comment:
       %p= '<a href="" title=""> <b> <blockquote> <pre> <code> <em> <i> <strong>'
       %p
+        %b= "Use <pre><code>...</code></pre> for multi-line codes."
+      %p
         %b= "Do not use <p> tags. Just use newlines."
     = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 4 }
   = form.buttons do

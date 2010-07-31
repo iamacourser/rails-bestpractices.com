@@ -248,6 +248,17 @@ body {
   right: -22px;
 }
 .posts-section .new .new-icon {
-  top: -20px;
+  top: -25px;
   left: 110px;
+}
+.hot {
+  height: 0;
+  position: relative;
+  .hot-icon {
+    position: absolute;
+  }
+}
+.posts-section .hot .hot-icon {
+  top: -30px;
+  left: 115px;
 }
