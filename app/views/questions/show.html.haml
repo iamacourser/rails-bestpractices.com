@@ -1,0 +1,25 @@
+- title @question.title
+
+.command
+  - if @question.belongs_to? current_user
+    = link_to 'Edit', edit_question_path(@question)
+
+%h2= @question.title
+
+.question
+  .vote-info
+    = vote_like_link(@question)
+    %p= @question.vote_points
+    = vote_dislike_link(@question)
+  .question-info
+    %p
+      = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
+      Posted by 
+      = user_link(@question.user)
+      on 
+      = @question.created_at.to_date.strftime("%B %d, %Y")
+
+    .wikistyle= raw @question.formatted_html
+    .tags
+      - @question.tags.each do |tag|
+        = link_to tag.name, tag_questions_path(tag.name)

@@ -1,0 +1,11 @@
+.share-section
+  = link_to 'Request', new_question_path
+  %p Request a Rails Best Practice!
+.questions-section
+  %h3 Navigator
+  %ul
+    %li= link_to 'Recent Requests', questions_path
+    %li
+      = link_to 'Hot Requests', questions_path(:hot => true)
+      .hot
+        .hot-icon

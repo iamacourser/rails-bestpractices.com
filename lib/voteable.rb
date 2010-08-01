@@ -6,4 +6,8 @@ module Voteable
     end
   end
 
+  def vote(user)
+    self.votes.where(:user_id => user.id).first
+  end
+
 end

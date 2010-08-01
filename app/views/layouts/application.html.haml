@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/question', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
@@ -38,6 +38,7 @@
           %ul
             %li= link_to 'Rails Best Practices', posts_path
             %li= link_to 'rails_best_practices gem', implementations_path
+            %li= link_to 'Requests', questions_path
           = form_tag posts_path, :method => :get do
             .search-label
             = text_field_tag 'search', '', :class => 'search-text'
@@ -81,7 +82,7 @@
       $(function() {
         // tag list auto complete
         if (typeof tags != 'undefined') {
-          $('#post_tag_list').autocomplete(tags, {
+          $('#post_tag_list, #question_tag_list, #answer_tag_list').autocomplete(tags, {
         		multiple: true,
         		matchContains: true,
         		autoFill: true

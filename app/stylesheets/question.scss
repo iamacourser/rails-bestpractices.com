@@ -3,10 +3,7 @@
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
-table.posts {
-  &.archive .post {
-    min-height: 10px
-  }
+table.questions {
   tr {
     td {
       border-bottom: 1px dotted #b7b7b7;
@@ -23,14 +20,13 @@ table.posts {
     .content {
       padding: 10px 20px;
       font-size: 12px;
+      p.title {
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
       .title a {
         font-size: 16px;
         font-weight: bold;
-      }
-      .description {
-        padding: 5px 0;
-        color: #727272;
-        line-height: 18px;
       }
     }
     .author {
@@ -47,8 +43,11 @@ table.posts {
     }
   }
 }
-.post {
+.question {
   margin: 15px 20px;
+  .question-info {
+    @include float-left;
+  }
   .addthis_toolbox {
     @include float-right;
   }
@@ -73,20 +72,4 @@ table.posts {
   .wikistyle {
     @include wikistyle;
   }
-  .tags {
-    strong {
-      font-size: 18px;
-      @include inline-block;
-    }
-  }
-}
-.implemented {
-  font-size: 12px;
-  height: 22px;
-  line-height: 22px;
-  padding: 0 10px;
-  background-color: #fd9800;
-  color: #fff;
-  display: block;
-  @include float-right;
 }

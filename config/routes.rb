@@ -3,6 +3,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
 
   resources :tags, :only => :show do
     resources :posts, :only => :index
+    resources :questions, :only => :index
   end
   resources :posts do
     get :archive, :on => :collection
@@ -13,6 +14,11 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   resources :comments, :only => :index
   resources :implementations do
     resources :comments, :only => :create
+  end
+  
+  resources :questions do
+    resources :answers
+    resources :votes, :only => [:create, :destroy]
   end
 
   resources :users, :only => [:new, :create, :edit, :update, :index]

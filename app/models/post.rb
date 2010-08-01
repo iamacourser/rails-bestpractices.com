@@ -31,10 +31,6 @@ class Post < ActiveRecord::Base
     "posts/#{to_param}"
   end
 
-  def vote(user)
-    self.votes.where(:user_id => user.id).first
-  end
-
   def to_param
     "#{id}-#{title.parameterize}"
   end
