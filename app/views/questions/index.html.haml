@@ -1,0 +1,21 @@
+- set_meta_tags :title => 'rails best practices requests', :noindex => true
+
+%h2 Rails Best Practices Requests
+%table.questions
+  - @questions.each do |question|
+    %tr
+      %td.stat
+        %p= "#{question.vote_points} votes"
+        %p= "#{question.answers_count} answers"
+        %p= "#{question.view_count} views"
+      %td.content
+        %p.title= link_to question.title, question_path(question)
+        %p.tags 
+          - question.tags.each do |tag|
+            = link_to tag.name, tag_questions_path(tag.name)
+      %td.author
+        by
+        = user_link(question.user)
+      %td.avatar= image_tag question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.user.login
+
+= will_paginate @questions, :previous_label => "<< Previous", :next_label => "Next >>"

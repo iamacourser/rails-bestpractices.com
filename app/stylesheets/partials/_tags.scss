@@ -1,3 +1,5 @@
+@import "compass/css3/inline-block";
+
 @mixin tags {
   a {
     font-size: 12px;
@@ -5,5 +7,6 @@
     background-color: #eee;
     border-right: 2px solid #7f9fb6;
     border-bottom: 2px solid #3e6d8e;
+    @include inline-block;
   }
 }

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/question', 'compiled/answer', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
@@ -21,7 +21,6 @@
               %li= link_to "Register", new_user_path
               %li= link_to "Login", new_user_session_path
             - else
-              %li= link_to 'Submit', new_post_path
               %li= link_to current_user.login, edit_user_path(current_user)
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
             %li
@@ -37,7 +36,8 @@
           = link_to 'Home', root_path, :class => 'home-icon'
           %ul
             %li= link_to 'Rails Best Practices', posts_path
-            %li= link_to 'rails_best_practices gem', implementations_path
+            %li= link_to 'Implementations', implementations_path
+            %li= link_to 'Requests', questions_path
           = form_tag posts_path, :method => :get do
             .search-label
             = text_field_tag 'search', '', :class => 'search-text'
@@ -71,33 +71,8 @@
           %li= link_to 'About Us', page_path('about-us')
         .copyright &copy; 2010 rails-bestpractices.com
       
-    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'showdown', 'wmd-base', 'wmd-plus', :cache => true
+    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'showdown', 'wmd-base', 'wmd-plus', 'application', :cache => true
     = yield :js
-    :javascript
-      function recover() {
-        var $preview_elem = $('.wmd-preview pre code');
-        $preview_elem.text($preview_elem.text().replace(/&#95;/g, '_'));
-      }
-      $(function() {
-        // tag list auto complete
-        if (typeof tags != 'undefined') {
-          $('#post_tag_list').autocomplete(tags, {
-        		multiple: true,
-        		matchContains: true,
-        		autoFill: true
-        	});
-        }
-        // remove the beginning spaces in <pre><code> </code></pre>
-        $.each($('pre code'), function(i, element) {
-          var output = [];
-          $.each($(element).text().split('\n'), function(i, line) {
-            output.push(line.replace(/^ {12}/, ''));
-          });
-          $(element).text(output.join('\n'));
-        });
-        // pretty print the wikistyle pre code
-        $('div.post pre, div.implementation pre').addClass('prettyprint');
-        prettyPrint();
-      });
+
     - if Rails.env == 'production'
       = render 'shared/google_analytics'
