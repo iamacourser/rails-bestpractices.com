@@ -2,11 +2,11 @@ class Post < ActiveRecord::Base
 
   include Markdownable
   include UserOwnable
+  include Voteable
 
   acts_as_taggable
 
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
   has_one :implementation, :dependent => :destroy
 
   validates_presence_of :title, :body

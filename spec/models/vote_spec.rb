@@ -5,7 +5,7 @@ describe Vote do
   include RailsBestPractices::Macros
   should_be_user_ownable
 
-  should_belong_to :post
+  should_belong_to :voteable
 
   describe 'when created' do
 
@@ -15,12 +15,12 @@ describe Vote do
     end
 
     it "should increment corresponding Post#vote_points if indicated as 'like'" do
-      Factory(:vote, :post => @post, :like => true)
+      Factory(:vote, :voteable => @post, :like => true)
       @post.vote_points.should equal(@orig_vote_point.succ)
     end
 
     it "should decrement corresponding Post#vote_points if indicated as 'don like'" do
-      Factory(:vote, :post => @post, :like => false)
+      Factory(:vote, :voteable => @post, :like => false)
       @post.vote_points.should equal(@orig_vote_point.pred)
     end
 
@@ -34,12 +34,12 @@ describe Vote do
     end
 
     it "should decrement corresponding Post#vote_points if indicated as 'like'" do
-      (vote = Factory(:vote, :post => @post, :like => true)).destroy
+      (vote = Factory(:vote, :voteable => @post, :like => true)).destroy
       @post.vote_points.should equal(@orig_vote_point)
     end
 
     it "should increment corresponding Post#vote_points if indicated as 'don like'" do
-      (vote = Factory(:vote, :post => @post, :like => false)).destroy
+      (vote = Factory(:vote, :voteable => @post, :like => false)).destroy
       @post.vote_points.should equal(@orig_vote_point)
     end
 
