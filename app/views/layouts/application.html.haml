@@ -21,7 +21,6 @@
               %li= link_to "Register", new_user_path
               %li= link_to "Login", new_user_session_path
             - else
-              %li= link_to 'Submit', new_post_path
               %li= link_to current_user.login, edit_user_path(current_user)
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
             %li

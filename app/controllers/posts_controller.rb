@@ -7,6 +7,14 @@ class PostsController < InheritedResources::Base
   has_scope :search
   respond_to :xml, :only => :index
 
+  def new
+    if params[:answer_id]
+      @post = Answer.find(params[:answer_id]).to_post
+    else
+      @post = Post.new
+    end
+  end
+
   show! do |format|
     @post.increment!(:view_count)
     @comment = @post.comments.build

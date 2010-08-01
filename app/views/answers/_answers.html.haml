@@ -7,6 +7,8 @@
           .command
             - if answer.belongs_to? current_user
               = link_to 'Edit', edit_question_answer_path(question, answer)
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              = link_to 'Share', new_post_path(:answer_id => answer.id)
           .vote-info
             = vote_like_link(answer)
             %p= answer.vote_points

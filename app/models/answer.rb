@@ -10,4 +10,8 @@ class Answer < ActiveRecord::Base
   def self.per_page
     10
   end
+
+  def to_post
+    Post.new(:title => self.question.title, :body => self.body, :tag_list => self.question.tag_list)
+  end
 end
