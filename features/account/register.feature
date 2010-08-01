@@ -40,5 +40,5 @@ Feature: Register Account
       | Password confirmation | |
     When I press "Register"
     Then I should be on register failure page
-    And I should see error fields: "Username", "Email", "Password" & "Password confirmation"
+    And I should see error fields: "Username", "Email" & "Password"
 
