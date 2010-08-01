@@ -30,6 +30,6 @@ class User < ActiveRecord::Base
     end
 
     def validate_password?
-      self.access_token.nil? and password_changed?
+      self.access_token.nil? and (new_record? or password_changed?)
     end
 end
