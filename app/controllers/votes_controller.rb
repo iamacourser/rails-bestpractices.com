@@ -6,12 +6,12 @@ class VotesController < InheritedResources::Base
   def create
     @vote = parent.votes.create(:user_id => current_user.id, :like => like_value)
     create! do |format|
-      format.html { redirect_to voteable_path }
+      format.html { redirect_to parent_url }
     end
   end
 
   destroy! do |format|
-    format.html { redirect_to voteable_path }
+    format.html { redirect_to parent_url }
   end
 
   private
@@ -29,7 +29,13 @@ class VotesController < InheritedResources::Base
       end
     end
 
-    def voteable_path
-      polymorphic_path(parent)
+    def parent_url
+      if params[:post_id]
+        post_path(@post)
+      elsif params[:question_id]
+        question_path(@question)
+      elsif params[:answer_id]
+        question_path(@answer.question)
+      end
     end
 end

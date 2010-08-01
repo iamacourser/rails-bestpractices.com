@@ -5,10 +5,15 @@ class QuestionsController < InheritedResources::Base
 
   show! do |format|
     @question.increment!(:view_count)
+    @answer = @question.answers.build
   end
 
   protected
     def begin_of_association_chain
       @current_user
+    end
+
+    def collection
+      @questions ||= end_of_association_chain.includes(:user).paginate(:page => params[:page], :per_page => Question.per_page)
     end
 end

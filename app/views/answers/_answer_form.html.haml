@@ -1,0 +1,10 @@
+= semantic_form_for [question, answer] do |form|
+  = form.inputs :name => "Your Answer" do
+    = form.input :user_id, :as => :hidden, :value => current_user.id
+    = form.input :body, :label => false
+    .wmd-preview.wikistyle
+  = form.buttons do
+    = form.submit "Post Your Answer"
+
+:javascript
+  wmd_options = {"output": "Markdown"};

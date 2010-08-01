@@ -17,3 +17,5 @@
         by
         = user_link(question.user)
       %td.avatar= image_tag question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.user.login
+
+= will_paginate @questions, :previous_label => "<< Previous", :next_label => "Next >>"

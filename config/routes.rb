@@ -20,6 +20,9 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     resources :answers
     resources :votes, :only => [:create, :destroy]
   end
+  resources :answers do
+    resources :votes, :only => [:create, :destroy]
+  end
 
   resources :users, :only => [:new, :create, :edit, :update, :index]
 
