@@ -5,7 +5,6 @@
   %h3 Navigator
   %ul
     %li= link_to 'Recent Requests', questions_path
-    %li
-      = link_to 'Hot Requests', questions_path(:hot => true)
-      .hot
-        .hot-icon
+    %li= link_to 'Most voted Requests', questions_path(:most_voted => true)
+    %li= link_to 'Most answered Requests', questions_path(:most_answered => true)
+    %li= link_to 'Not answered Requests', questions_path(:not_answered => true)
