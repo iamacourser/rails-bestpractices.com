@@ -1,0 +1,13 @@
+%table.posts
+  - comments.each do |comment|
+    %tr
+      %td.stat
+        - if comment.commentable.is_a? Post
+          %p= "#{comment.commentable.vote_points} votes"
+          %p= "#{comment.commentable.view_count} views"
+      %td.content
+        %p.title= link_to comment.parent_name, comment_parent_link(comment)
+      %td.author
+        by
+        = link_to comment.commentable.user.login, user_path(comment.commentable.user)
+      %td.avatar= image_tag comment.commentable.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.commentable.user.login

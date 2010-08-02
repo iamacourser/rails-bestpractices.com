@@ -24,7 +24,7 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     resources :votes, :only => [:create, :destroy]
   end
 
-  resources :users, :only => [:new, :create, :edit, :update, :index]
+  resources :users
 
   resource :user_session
   
