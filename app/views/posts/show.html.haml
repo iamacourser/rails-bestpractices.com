@@ -21,7 +21,7 @@
   %p
     = image_tag @post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.user.login
     Posted by 
-    = user_link(@post.user)
+    = link_to @post.user.login, user_path(@post.user)
     on 
     = @post.created_at.to_date.strftime("%B %d, %Y")
   .description

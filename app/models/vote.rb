@@ -2,9 +2,17 @@ class Vote < ActiveRecord::Base
 
   include UserOwnable
 
-  belongs_to :voteable, :polymorphic => true
+  belongs_to :voteable, :polymorphic => true, :touch => true
   after_create :update_create_vote
   before_destroy :update_destroy_vote
+
+  def voteable_name
+    if voteable.is_a? Answer
+      voteable.question.title
+    else
+      voteable.title
+    end
+  end
 
   private
 

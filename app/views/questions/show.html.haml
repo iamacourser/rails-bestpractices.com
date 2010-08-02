@@ -15,7 +15,7 @@
     %p
       = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
       Posted by 
-      = user_link(@question.user)
+      = link_to @question.user.login, user_path(@question.user)
       on 
       = @question.created_at.to_date.strftime("%B %d, %Y")
 

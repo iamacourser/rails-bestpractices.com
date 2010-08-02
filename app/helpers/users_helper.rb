@@ -18,4 +18,14 @@ module UsersHelper
       default_gravatar
     end
   end
+
+  def statistic_command
+    command =<<-EOF
+    <div class='command'>
+    #{link_to('-  Collapse', '#', :class => 'collapse')}
+    #{link_to('+  Expand', '#', :class => 'expand hide')}
+    </div>
+    EOF
+    command.html_safe
+  end
 end

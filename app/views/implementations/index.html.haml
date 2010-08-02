@@ -9,6 +9,6 @@
       .author
         by
         = image_tag implementation.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => implementation.user.login
-        = user_link(implementation.user)
+        = link_to implementation.user.login, user_path(implementation.user)
 
 = will_paginate @implementations, :previous_label => "<< Previous", :next_label => "Next >>"

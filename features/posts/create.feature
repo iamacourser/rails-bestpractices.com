@@ -1,8 +1,8 @@
-Feature: Create Post
+Feature: Share Post
 
   Background:
     Given I am already signed in as "flyerhzm"
-    And I follow "Submit"
+    And I follow "Share"
 
   Scenario: Accessing create post page
     Then I should see "Share a Rails Best Practice" page
@@ -13,7 +13,7 @@ Feature: Create Post
       | Short Description  | first short description        |
       | Content            | *italic* **bold**              |
       | Tag list           | rails, test                    |
-    When I press "Create"
+    When I press "Share"
     Then I should see success message "Best Practice was successfully created!"
     And I should see "first best practice" page
     # TODO: The following works, but too cryptic ... ideally, feature file shouldn't
@@ -31,7 +31,7 @@ Feature: Create Post
       | Short Description  |           |
       | Content            | <content> |
       | Tag list           |           |
-    When I press "Create"
+    When I press "Share"
     Then I should be on create post failure page
     And I should see "<field>" with error "can't be blank"
 
@@ -47,7 +47,7 @@ Feature: Create Post
       | Short Description  | first short description |
       | Content            | *italic* **bold**       |
       | Tag list           | rails, test             |
-    When I press "Create"
+    When I press "Share"
     Then I should be on create post failure page
     And I should see "Title" with error "has already been taken"
 

@@ -30,4 +30,12 @@ module VotesHelper
       button_to 'Dislike', polymorphic_path([voteable, :votes], :like => false), :class => 'dislike-icon'
     end
   end
+
+  def voteable_link(vote)
+    if vote.voteable.is_a? Answer
+      question_path(vote.voteable.question)
+    else
+      polymorphic_path(vote.voteable)
+    end
+  end
 end

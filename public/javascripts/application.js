@@ -18,4 +18,15 @@ $(function() {
   });
   // pretty print the wikistyle pre code
   prettyPrint();
+
+  $('.collapse').click(function() {
+    $(this).parents('h3').next().hide();
+    $(this).hide();
+    $(this).next().show();
+  });
+  $('.expand').click(function() {
+    $(this).parents('h3').next().show();
+    $(this).hide();
+    $(this).prev().show();
+  });
 });

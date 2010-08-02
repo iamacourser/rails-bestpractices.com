@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20100801071356) do
     t.integer  "comments_count",        :default => 0, :null => false
     t.integer  "votes_count",           :default => 0, :null => false
     t.integer  "active_token_id"
-    t.integer  "question_count",        :default => 0, :null => false
     t.integer  "questions_count",       :default => 0, :null => false
     t.integer  "answers_count",         :default => 0, :null => false
   end

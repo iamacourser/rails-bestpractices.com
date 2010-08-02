@@ -11,11 +11,21 @@ AdminUser:
   filters: 
   search: 
   application: rails-bestpractices.com
+  
+Answer:
+  fields:
+    default: user_id, vote_points, question_id, question, user
+    form: body, formatted_html, user_id, vote_points, question_id, question, user
+  order_by: 
+  relationships: question, user, votes
+  filters: 
+  search: 
+  application: rails-bestpractices.com
 
 Comment:
   fields:
-    default: commentable_id, user_id, username, user
-    form: body, commentable_id, user_id, username, user
+    default: user_id, username, commentable
+    form: body, user_id, username
   order_by: 
   relationships: user
   filters: 
@@ -27,9 +37,9 @@ Implementation:
     default: post_id, user_id, comments_count, post, user
     form: post_id, user_id, body, formatted_html, comments_count, post, user
   order_by: 
-  relationships: post, user
+  relationships: post, user, comments
   filters: 
-  search: 
+  search: title
   application: rails-bestpractices.com
   
 Page:
@@ -39,36 +49,45 @@ Page:
   order_by:
   redlationships:
   filters:
-  search:
+  search: name
   application: rails-bestpractices.com
 
 Post:
   fields:
-    default: title, user_id, comments_count, vote_points, view_count, user, developer, implemented
-    form: title, body, user_id, formatted_html, description, comments_count, vote_points, view_count, user, developer, implemented
+    default: title, user_id, comments_count, vote_points, view_count, user, implemented
+    form: title, body, user_id, formatted_html, description, comments_count, vote_points, view_count, user, implemented
   order_by: 
-  relationships: base_tags, comments, implementable, tag_taggings, taggings, tags, user, votes
+  relationships: base_tags, comments, implementation, tag_taggings, taggings, tags, user, votes
+  filters: 
+  search: title
+  application: rails-bestpractices.com
+
+Question:
+  fields:
+    default: title, user_id, vote_points, view_count, answers_count, user
+    form: title, body, formatted_html, user_id, vote_points, view_count, answers_count, user
+  order_by: 
+  relationships: answers, base_tags, tag_taggings, taggings, tags, user, votes
   filters: 
   search: title
   application: rails-bestpractices.com
 
 User:
   fields:
-    default: login, email, url, developer
-    form: login, email, url, developer
+    default: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
+    form: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
   order_by: 
-  relationships: comments, implementations, posts, votes
+  relationships: comments, implementations, posts, votes, questions, answers
   filters: 
-  search: 
+  search: login
   application: rails-bestpractices.com
 
 Vote:
   fields:
-    default: like, user_id, post_id, post, user
-    form: like, user_id, post_id, post, user
+    default: like, user_id, post, user, voteable
+    form: like, user_id, post, user, voteable
   order_by: 
-  relationships: post, user
+  relationships: voteable, user
   filters: 
   search: 
   application: rails-bestpractices.com
-
