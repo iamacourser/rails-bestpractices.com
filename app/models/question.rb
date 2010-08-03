@@ -22,6 +22,14 @@ class Question < ActiveRecord::Base
     10
   end
 
+  def tweet_title
+    "Question: #{title}"
+  end
+
+  def tweet_path
+    "questions/#{to_param}"
+  end
+
   def to_param
     "#{id}-#{title.parameterize}"
   end
