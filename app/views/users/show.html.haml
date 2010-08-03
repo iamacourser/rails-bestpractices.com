@@ -33,14 +33,14 @@
     - if @user.answers_count > 0
       = statistic_command
     #{@user.answers_count} Answers
-  = render 'users/answers', :answers => @user.answers.includes(:question)
+  = render 'users/answers', :answers => @user.answers.includes(:question => :user)
   %h3
     - if @user.comments_count > 0
       = statistic_command
     #{@user.comments_count} Comments
-  = render 'users/comments', :comments => @user.comments.includes(:commentable)
+  = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
   %h3
     - if @user.votes_count > 0
       = statistic_command
     #{@user.votes_count} Votes
-  = render 'users/votes', :votes => @user.votes.includes(:voteable)
+  = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)

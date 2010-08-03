@@ -14,4 +14,12 @@ class Answer < ActiveRecord::Base
   def to_post
     Post.new(:title => self.question.title, :body => self.body, :tag_list => self.question.tag_list)
   end
+
+  def tweet_title
+    "Answer for #{question.title}"
+  end
+
+  def tweet_path
+    "questions/#{question.to_param}"
+  end
 end

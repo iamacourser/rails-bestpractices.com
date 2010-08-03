@@ -22,11 +22,13 @@ $(function() {
   $('.collapse').click(function() {
     $(this).parents('h3').next().hide();
     $(this).hide();
-    $(this).next().show();
+    $(this).next().show().css('display', 'inline-block');
+    return false;
   });
   $('.expand').click(function() {
     $(this).parents('h3').next().show();
     $(this).hide();
     $(this).prev().show();
+    return false;
   });
 });

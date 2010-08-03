@@ -18,12 +18,7 @@ class UserSessionsController < ApplicationController
           redirect_to new_user_session_url
         end
       else
-        if @user_session.errors.on(:user)
-          # if we set error on the base object, likely it's because we didn't find a user
-          render :action => :confirm
-        else
-          render :action => :new
-        end
+        render :action => :new
       end
     end
   end
