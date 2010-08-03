@@ -21,12 +21,13 @@
               %li= link_to "Register", new_user_path
               %li= link_to "Login", new_user_session_path
             - else
-              %li= link_to current_user.login, user_path(current_user)
+              %li
+                = link_to current_user.login, user_path(current_user)
+                .new
+                  .new-icon
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
             %li
               = link_to "Leaders", users_path
-              .new
-                .new-icon
             %li.last= link_to "About", page_path(:name => 'about-us')
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
@@ -37,7 +38,10 @@
           %ul
             %li= link_to 'Rails Best Practices', posts_path
             %li= link_to 'Implementations', implementations_path
-            %li= link_to 'Requests', questions_path
+            %li
+              = link_to 'Requests', questions_path
+              .new
+                .new-icon
           = form_tag posts_path, :method => :get do
             .search-label
             = text_field_tag 'search', '', :class => 'search-text'
