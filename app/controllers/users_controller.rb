@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   
   def index
-    @users = User.order("(posts_count * 10 + comments_count * 2 + votes_count) desc").limit(50)
+    @users = User.order("(posts_count * 10 + answers_count * 8 + questions_count * 4 + comments_count * 2 + votes_count) desc").limit(50)
   end
   
   def new
