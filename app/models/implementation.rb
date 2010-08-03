@@ -3,7 +3,7 @@ class Implementation < ActiveRecord::Base
   include Markdownable
   include UserOwnable
 
-  belongs_to :post, :touch => true
+  belongs_to :post
   has_many :comments, :as => :commentable, :dependent => :destroy
   validates_presence_of :body
 
