@@ -45,9 +45,6 @@ table.questions {
 }
 .question {
   margin: 15px 20px;
-  .question-info {
-    @include float-left;
-  }
   .addthis_toolbox {
     @include float-right;
   }
