@@ -1,5 +1,3 @@
-@import "partials/tags";
-@import "partials/pagination";
 @import "partials/wikistyle";
 @import "compass/utilities/general/float";
 @import "compass/css3/inline-block";
@@ -51,24 +49,6 @@ table.posts {
 }
 .post {
   margin: 15px 20px;
-  .vote-info, .post-info {
-    @include float-left;
-  }
-  .vote-info {
-    margin-right: 20px;
-    p {
-      width: 40px;
-      font-size: 2em;
-      text-align: center;
-      margin: 0;
-    }
-  }
-  .like-icon, .dislike-icon, .like-icon.active, dislike-icon.active {
-    border: none;
-    display: block;
-    text-indent: 9999px;
-    cursor: pointer;
-  }
   .addthis_toolbox {
     @include float-right;
   }
@@ -98,7 +78,6 @@ table.posts {
       font-size: 18px;
       @include inline-block;
     }
-    @include tags;
   }
 }
 .implemented {
@@ -110,11 +89,4 @@ table.posts {
   color: #fff;
   display: block;
   @include float-right;
-}
-div.ac_results ul {
-  margin: 0;
-  padding: 0;
-}
-.pagination {
-  @include pagination;
 }

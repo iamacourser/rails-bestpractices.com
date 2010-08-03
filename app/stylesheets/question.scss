@@ -1,0 +1,75 @@
+@import "partials/wikistyle";
+@import "compass/utilities/general/float";
+@import "compass/css3/inline-block";
+@import "compass/css3/border-radius";
+
+table.questions {
+  tr {
+    td {
+      border-bottom: 1px dotted #b7b7b7;
+    }
+    .stat {
+      text-align: right;
+      width: 80px;
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        color: #616161;
+      }
+    }
+    .content {
+      padding: 10px 20px;
+      font-size: 12px;
+      p.title {
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+      .title a {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .author {
+      width: 80px;
+      text-align: left;
+      font-size: 12px;
+    }
+    .avatar {
+      width: 50px;
+      img.user-avatar {
+        padding: 2px;
+        border: 1px solid #eee;
+      }
+    }
+  }
+}
+.question {
+  margin: 15px 20px;
+  .question-info {
+    @include float-left;
+  }
+  .addthis_toolbox {
+    @include float-right;
+  }
+  .description {
+    background-color: #e7f2fd;
+    min-height: 50px;
+    margin: 9px 0;
+    width: 580px;
+    position: relative;
+    @include inline-block;
+    @include border-bottom-radius(5px);
+    @include border-top-right-radius(5px);
+    .point-to-icon {
+      position: absolute;
+      top: -9px;
+      left: 0;
+    }
+    p {
+      margin: 5px 20px;
+    }
+  }
+  .wikistyle {
+    @include wikistyle;
+  }
+}

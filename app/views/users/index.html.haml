@@ -12,7 +12,7 @@
   - @users.each_with_index do |user, index|
     %tr
       %td.index= index
-      %td.login= user_link(user)
+      %td.login= link_to user.login, user_path(user)
       %td.posts= user.posts_count
       %td.votes= user.votes_count
       %td.comments= user.comments_count

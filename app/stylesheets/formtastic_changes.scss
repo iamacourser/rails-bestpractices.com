@@ -54,7 +54,7 @@ form.formtastic {
     }
   }
 }
-form#new_comment {
+form#new_comment, form#new_answer {
   margin: 32px 0;
   fieldset {
     width: 100%;
@@ -64,22 +64,24 @@ form#new_comment {
     }
   }
 }
-form.post, form.implementation, form.formtastic.user_session, form.formtastic.user {
+form.post, form.implementation, form.question, form.answer, form.formtastic.user_session, form.formtastic.user {
   margin: 32px 20px;
 }
 form.formtastic.user {
   input#user_email {
   }
 }
-form.post, form.implementation {
+form.post, form.implementation, form.comment, form.question, form.answer {
   li.text {
     width: 100%;
   }
   textarea {
     height: 200px;
-    &#post_description {
-      height: 50px;
-    }
+  }
+}
+form.post {
+  #post_description {
+    height: 50px;
   }
 }
 

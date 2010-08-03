@@ -1,0 +1,10 @@
+.share-section
+  = link_to 'Request', new_question_path
+  %p Request a Rails Best Practice!
+.questions-section
+  %h3 Navigator
+  %ul
+    %li= link_to 'Recent Requests', questions_path
+    %li= link_to 'Most voted Requests', questions_path(:most_voted => true)
+    %li= link_to 'Most answered Requests', questions_path(:most_answered => true)
+    %li= link_to 'Not answered Requests', questions_path(:not_answered => true)

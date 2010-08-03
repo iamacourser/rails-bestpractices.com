@@ -1,0 +1,19 @@
+%table.posts
+  - posts.each do |post|
+    %tr
+      %td.stat
+        %p= "#{post.vote_points} votes"
+        %p= "#{post.view_count} views"
+      %td.content
+        %p.title= link_to post.title, post_path(post)
+        - if description
+          %p.description= post.description
+        %p
+          = link_to (post.comments.size == 0 ? "post a comment" : "#{post.comments.size} comments"), post_path(post, :anchor => 'comments')
+          - if post.implemented?
+            = link_to 'implemented in rails_best_practices gem', post_implementation_path(post), :class => 'implemented'
+      %td.author
+        by
+        = user_link(post.user)
+      %td.avatar= image_tag post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.user.login
+

@@ -1,0 +1,17 @@
+%table.questions
+  - answers.each do |answer|
+    - question = answer.question
+    %tr
+      %td.stat
+        %p= "#{question.vote_points} votes"
+        %p= "#{question.answers_count} answers"
+        %p= "#{question.view_count} views"
+      %td.content
+        %p.title= link_to question.title, question_path(question)
+        %p.tags 
+          - question.tags.each do |tag|
+            = link_to tag.name, tag_questions_path(tag.name)
+      %td.author
+        by
+        = link_to question.user.login, user_path(question.user)
+      %td.avatar= image_tag question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.user.login

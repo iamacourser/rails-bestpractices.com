@@ -1,0 +1,5 @@
+- set_meta_tags :title => 'rails best practices requests', :noindex => true
+
+%h2 Rails Best Practices Requests
+= render 'questions', :questions => @questions
+= will_paginate @questions, :previous_label => "<< Previous", :next_label => "Next >>"

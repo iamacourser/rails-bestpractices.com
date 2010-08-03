@@ -4,6 +4,9 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
 @import "compass/css3/text-shadow";
+@import "partials/pagination";
+@import "partials/tags";
+@import "partials/vote_info";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -120,7 +123,7 @@ body {
       li a {
         padding: 0 12px;
         line-height: 30px;
-        color: #ebd5d6;
+        color: #fff;
         font-weight: bold;
       }
     }
@@ -233,8 +236,27 @@ body {
   @include float-right;
   margin: 0 20px 0 0;
   a {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 30px;
     @include inline-block;
+    &.hide {
+      display: none;
+    }
   }
+}
+.pagination {
+  @include pagination;
+}
+.tags {
+  @include tags;
+}
+.vote-info {
+  @include vote-info;
+}
+div.ac_results ul {
+  margin: 0;
+  padding: 0;
 }
 .new {
   height: 0;
@@ -247,9 +269,9 @@ body {
   top: -20px;
   right: -22px;
 }
-.posts-section .new .new-icon {
-  top: -25px;
-  left: 110px;
+.main-nav .new .new-icon {
+  top: -30px;
+  left: 62px;
 }
 .hot {
   height: 0;

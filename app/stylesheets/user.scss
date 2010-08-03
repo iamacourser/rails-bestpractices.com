@@ -1,3 +1,7 @@
+@import "compass/utilities/general/float";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/inline-block";
+
 table.users {
   margin-top: 20px;
   table-layout: fixed;
@@ -24,4 +28,41 @@ table.users {
   margin-top: 20px;
   line-height: 30px;
 }
-
+.user {
+  margin: 20px 20px 0 20px;
+  @include clearfix;
+  .avatar {
+    @include float-left;
+  }
+  .info {
+    margin-left: 20px;
+    @include float-left;
+  }
+  p {
+    line-height: 20px;
+    span {
+      width: 100px;
+      @include inline-block;
+    }
+  }
+}
+.statistics {
+  margin-top: 10px;
+  > h3 {
+    font-size: 18px;
+    border-bottom: 1px solid #9E9E9E;
+    padding-bottom: 5px;
+    margin-top: 20px;
+  }
+  .like-icon, .dislike-icon {
+    text-indent: 9999px;
+    @include inline-block;
+  }
+  .command {
+    margin: 0 10px 0 0;
+    @include float-left;
+    .minus-sign-icon, .plus-sign-icon {
+      text-indent: 9999px;
+    }
+  }
+}

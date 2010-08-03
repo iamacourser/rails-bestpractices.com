@@ -2,11 +2,11 @@ class Post < ActiveRecord::Base
 
   include Markdownable
   include UserOwnable
+  include Voteable
 
   acts_as_taggable
 
   has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
   has_one :implementation, :dependent => :destroy
 
   validates_presence_of :title, :body
@@ -29,10 +29,6 @@ class Post < ActiveRecord::Base
 
   def tweet_path
     "posts/#{to_param}"
-  end
-
-  def vote(user)
-    self.votes.where(:user_id => user.id).first
   end
 
   def to_param

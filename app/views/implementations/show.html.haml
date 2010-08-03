@@ -12,7 +12,7 @@
   %p
     = image_tag @implementation.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => @implementation.user.login
     Posted by 
-    = user_link(@implementation.user)
+    = link_to @implementation.user.login, user_path(@implementation.user)
     on 
     = @implementation.created_at.to_date.strftime("%B %d, %Y")
   .wikistyle= raw @implementation.formatted_html

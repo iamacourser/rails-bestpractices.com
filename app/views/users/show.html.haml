@@ -1,0 +1,46 @@
+- title @user.login
+
+%h2= @user.login
+
+.user
+  - if @user == current_user
+    .command
+      = link_to 'Edit', edit_user_path(@user)
+  .avatar= image_tag @user.gravatar_url(:size => 64, :default => 'mm'), :class => 'user-avatar', :alt => @user.login
+  .info
+    %p
+      %span Username
+      = @user.login
+    %p
+      %span Email
+      = @user.email
+    %p
+      %span Url
+      = @user.url
+
+.statistics
+  %h3
+    - if @user.posts_count > 0
+      = statistic_command
+    #{@user.posts_count} Rails Best Practices
+  = render 'posts/posts', :posts => @user.posts, :description => false
+  %h3
+    - if @user.questions_count > 0
+      = statistic_command
+    #{@user.questions_count} Questions
+  = render 'questions/questions', :questions => @user.questions
+  %h3
+    - if @user.answers_count > 0
+      = statistic_command
+    #{@user.answers_count} Answers
+  = render 'users/answers', :answers => @user.answers.includes(:question => :user)
+  %h3
+    - if @user.comments_count > 0
+      = statistic_command
+    #{@user.comments_count} Comments
+  = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
+  %h3
+    - if @user.votes_count > 0
+      = statistic_command
+    #{@user.votes_count} Votes
+  = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)

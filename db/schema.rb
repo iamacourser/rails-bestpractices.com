@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100728143142) do
+ActiveRecord::Schema.define(:version => 20100801071356) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20100728143142) do
     t.string   "salt",                                :null => false
     t.string   "crypted_password",                    :null => false
     t.string   "preferences"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answers", :force => true do |t|
+    t.text     "body"
+    t.text     "formatted_html"
+    t.integer  "user_id"
+    t.integer  "vote_points",    :default => 0
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,6 +98,18 @@ ActiveRecord::Schema.define(:version => 20100728143142) do
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.text     "formatted_html"
+    t.integer  "user_id"
+    t.integer  "vote_points",    :default => 0
+    t.integer  "view_count",     :default => 0
+    t.integer  "answers_count",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -122,6 +144,8 @@ ActiveRecord::Schema.define(:version => 20100728143142) do
     t.integer  "comments_count",        :default => 0, :null => false
     t.integer  "votes_count",           :default => 0, :null => false
     t.integer  "active_token_id"
+    t.integer  "questions_count",       :default => 0, :null => false
+    t.integer  "answers_count",         :default => 0, :null => false
   end
 
   add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"
@@ -129,12 +153,13 @@ ActiveRecord::Schema.define(:version => 20100728143142) do
   create_table "votes", :force => true do |t|
     t.boolean  "like"
     t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer  "voteable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "voteable_type"
   end
 
-  add_index "votes", ["post_id"], :name => "index_votes_on_post_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+  add_index "votes", ["voteable_id"], :name => "index_votes_on_post_id"
 
 end
