@@ -23,14 +23,17 @@ table.posts {
     .content {
       padding: 10px 20px;
       font-size: 12px;
-      .title a {
-        font-size: 16px;
-        font-weight: bold;
-      }
+      .title {
+        a {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }      
       .description {
         padding: 5px 0;
         color: #727272;
         line-height: 18px;
+        min-height: 10px;
       }
     }
     .author {

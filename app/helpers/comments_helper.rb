@@ -9,13 +9,14 @@ module CommentsHelper
 
   def comment_parent_link(comment)
     commentable = comment.commentable
-    if commentable.is_a? Post
+    case commentable
+    when Post
       post_url(commentable)
-    elsif commentable.is_a? Question
+    when Question
       question_url(commentable)
-    elsif commentable.is_a? Answer
+    when Answer
       question_url(commentable.question)
-    elsif commentable.is_a? Implementation
+    when Implementation
       post_implementation_url(commentable.post)
     end
   end

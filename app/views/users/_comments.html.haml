@@ -4,6 +4,11 @@
       %td.stat
         - if comment.commentable.is_a? Post
           %p= "#{comment.commentable.vote_points} votes"
+          %p= "#{comment.commentable.comments_count} comments"
+          %p= "#{comment.commentable.view_count} views"
+        - elsif comment.commentable.is_a? Answer or comment.commentable.is_a? Question
+          %p= "#{comment.commentable.vote_points} votes"
+          %p= "#{comment.commentable.answers_count} answers"
           %p= "#{comment.commentable.view_count} views"
       %td.content
         %p.title= link_to comment.parent_name, comment_parent_link(comment)
