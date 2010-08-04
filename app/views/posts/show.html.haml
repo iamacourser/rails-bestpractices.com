@@ -29,7 +29,7 @@
     %p= @post.description
   .wikistyle= raw @post.formatted_html
   - if @post.implemented?
-    = link_to 'implemented in rails_best_practices gem', post_implementation_path(@post), :class => 'implemented'
+    = link_to 'implemented', post_implementation_path(@post), :class => 'implemented'
   .tags
     %strong tags: 
     - @post.tags.each do |tag|

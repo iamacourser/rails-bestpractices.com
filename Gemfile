@@ -27,7 +27,8 @@ gem "ruby-openid"
 gem "rack-openid", ">=0.2.1", :require => "rack/openid"
 gem "oauth"
 gem "oauth2"
-gem "authlogic-connect", '>=0.0.5.1' #
+gem "authlogic-connect", '>=0.0.5.1'
+gem "cancan"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development

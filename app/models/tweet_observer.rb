@@ -1,5 +1,5 @@
 class TweetObserver < ActiveRecord::Observer
-  observe :post, :implementation, :question, :answer
+  observe :post, :implementation, :question
   
   def after_create(model)
     tweet(model.tweet_title, model.tweet_path)

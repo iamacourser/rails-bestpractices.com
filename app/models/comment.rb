@@ -14,10 +14,15 @@ class Comment < ActiveRecord::Base
   end
 
   def parent_name
-    if commentable.is_a? Post
-      commentable.title
-    elsif commentable.is_a? Implementation
-      "#{commentable.post.title} implementation"
+    case commentable
+    when Question
+      "Question #{commentable.title}"
+    when Answer
+      "Answer of #{commentable.question.title}"
+    when Post
+      "Post #{commentable.title}"
+    when Implementation
+      "Implemenation of #{commentable.post.title}"
     end
   end
 end

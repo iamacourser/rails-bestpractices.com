@@ -56,3 +56,39 @@
     display: none;
   }
 }
+
+.question-info, .answer-info {
+  .comments {
+    width: 400px;
+    background-color: #e7f2fd;
+    @include float-right;
+    .comment {
+      margin: 10px 5px;
+    }
+    span {
+      font-size: 10px;
+      line-height: 18px;
+      @include float-right;
+    }
+  }
+  .comment_form {
+    width: 400px;
+    @include float-right;
+    p {
+      @include float-right;
+    }
+    form#new_comment {
+      margin: 0;
+      &.hide {
+        display: none;
+      }
+      textarea {
+        height: 50px;
+        width: 380px;
+      }
+      ol {
+        @include float-right;
+      }
+    }
+  }
+}
