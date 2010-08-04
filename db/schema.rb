@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100801071356) do
+ActiveRecord::Schema.define(:version => 20100804015059) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20100801071356) do
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count", :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20100801071356) do
     t.integer  "answers_count",  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count", :default => 0
   end
 
   create_table "taggings", :force => true do |t|

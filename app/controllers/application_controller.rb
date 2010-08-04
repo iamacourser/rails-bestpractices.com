@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   include InheritedResources::DSL
+  #load_and_authorize_resource
 
   protect_from_forgery
   layout 'application'
   helper_method :current_user_session, :current_user
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to root_url
+  end
   
   protected
     def current_user_session

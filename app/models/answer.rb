@@ -5,6 +5,7 @@ class Answer < ActiveRecord::Base
   include Voteable
 
   belongs_to :question, :counter_cache => true, :touch => true
+  has_many :comments, :as => :commentable, :dependent => :destroy
   validates_presence_of :body
 
   def self.per_page

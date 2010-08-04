@@ -22,3 +22,5 @@
               = answer.created_at.to_date.strftime("%B %d, %Y")
 
             .wikistyle= raw answer.formatted_html
+            = render 'comments/short_comments', :comments => answer.comments
+            = render 'comments/short_comment_form', :parent => answer
