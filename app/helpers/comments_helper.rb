@@ -8,10 +8,15 @@ module CommentsHelper
   end
 
   def comment_parent_link(comment)
-    if comment.commentable.is_a? Post
-      post_url(comment.commentable)
-    elsif comment.commentable.is_a? Implementation
-      post_implementation_url(comment.commentable.post)
+    commentable = comment.commentable
+    if commentable.is_a? Post
+      post_url(commentable)
+    elsif commentable.is_a? Question
+      question_url(commentable)
+    elsif commentable.is_a? Answer
+      question_url(commentable.question)
+    elsif commentable.is_a? Implementation
+      post_implementation_url(commentable.post)
     end
   end
 end

@@ -31,4 +31,14 @@ $(function() {
     $(this).prev().show();
     return false;
   });
+  
+  $('.leave-comment').click(function() {
+    var $form = $(this).parent().next();
+    if ($form.hasClass('hide')) {
+      $form.removeClass('hide');
+    } else {
+      $form.addClass('hide');
+    }
+    return false;
+  });
 });
