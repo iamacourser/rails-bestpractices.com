@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include InheritedResources::DSL
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   protect_from_forgery
   layout 'application'

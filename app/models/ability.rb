@@ -5,6 +5,9 @@ class Ability
     user ||= User.new
     
     can :read, :all
+
+    can :create, UserSession
+    can :create, User
     
     can :create, Comment
     
