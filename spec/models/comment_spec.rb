@@ -4,9 +4,67 @@ describe Comment do
 
   include RailsBestPractices::Macros
   should_be_user_ownable
+  should_have_entries_per_page 20
 
   should_belong_to :commentable, :polymorphic => true
   should_validate_presence_of :body
-  should_validate_presence_of :username
+
+  describe 'validating username when it is required' do
+    subject { Factory(:comment, :user => nil, :username => 'flyerhzm') }
+    should_validate_presence_of :username
+  end
+
+  describe 'validating username when it is not required' do
+    subject { Factory(:comment) }
+    should_not_validate_presence_of :username
+  end
+
+  it 'should be scopable by post type (sorted by creation timing)' do
+    Comment.delete_all
+    comments = [
+      Factory(:post, :created_at => 3.days.ago),
+      Factory(:post, :created_at => 1.day.ago),
+      Factory(:implementation)
+    ].map{|obj| Factory(:comment, :commentable => obj) }
+    Comment.post.should == [1,0].map{|i| comments[i] }
+  end
+
+  it 'should be scopable by implement type' do
+    Comment.delete_all
+    comments = [
+      Factory(:implementation, :created_at => 3.days.ago),
+      Factory(:implementation, :created_at => 1.day.ago),
+      Factory(:post)
+    ].map{|obj| Factory(:comment, :commentable => obj) }
+    Comment.implement.should == [1,0].map{|i| comments[i] }
+  end
+
+  describe 'parent name' do
+
+    it "should return commentable's title when commentable is a Question" do
+      question = Factory(:question, :title => 'Awesome Question')
+      comment = Factory(:comment, :commentable => question)
+      comment.parent_name.should == "Question #{question.title}"
+    end
+
+    it "should return commentable's title when commentable is a Post" do
+      post = Factory(:post, :title => 'Awesome Post')
+      comment = Factory(:comment, :commentable => post)
+      comment.parent_name.should == "Post #{post.title}"
+    end
+
+    it "should return commentable's question title when commentable is an Answer" do
+      question = Factory(:question, :title => 'Awesome Question')
+      comment = Factory(:comment, :commentable => Factory(:answer, :question => question))
+      comment.parent_name.should == "Answer of #{question.title}"
+    end
+
+    it "should return commentable's post title when commentable is an Implementation" do
+      post = Factory(:post, :title => 'Awesome Post')
+      comment = Factory(:comment, :commentable => Factory(:implementation, :post => post))
+      comment.parent_name.should == "Implementation of #{post.title}"
+    end
+
+  end
 
 end
