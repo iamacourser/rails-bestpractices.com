@@ -36,6 +36,24 @@ module RailsBestPractices
         end
       end
 
+      def should_be_voteable(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe 'being voteable' do
+
+          should_have_many :votes, :dependent => :destroy
+
+          it "should support retrieving of any user's 1st vote" do
+            jane, peter = (0..1).map{|_| Factory(:user) }
+            instance = Factory(factory_id)
+            instance.votes.create(:user => peter)
+            instance.votes.create(:user => jane)
+            instance.votes.create(:user => jane)
+            instance.vote(jane).should == instance.votes[1]
+          end
+
+        end
+      end
+
       def should_be_user_ownable(factory_id = nil)
         factory_id ||= default_factory_id
         describe 'being user ownable' do
