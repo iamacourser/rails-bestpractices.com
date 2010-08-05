@@ -36,11 +36,55 @@ module RailsBestPractices
         end
       end
 
+      def should_be_commentable(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe 'being commentable' do
+          should_have_many :comments, :dependent => :destroy
+        end
+      end
+
+      def should_be_tweetable(factory_id = nil, &block)
+        factory_id ||= default_factory_id
+        describe "being tweetable" do
+
+          before do
+            @instance = Factory(factory_id)
+          end
+
+          it 'should have tweet title' do
+            @instance.tweet_title.should == block.call(@instance)[:title]
+          end
+
+          it 'should have tweet path' do
+            @instance.tweet_path.should == block.call(@instance)[:path]
+          end
+
+        end
+      end
+
+      def should_be_voteable(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe 'being voteable' do
+
+          should_have_many :votes, :dependent => :destroy
+
+          it "should support retrieving of any user's 1st vote" do
+            jane, peter = (0..1).map{|_| Factory(:user) }
+            instance = Factory(factory_id)
+            instance.votes.create(:user => peter)
+            instance.votes.create(:user => jane)
+            instance.votes.create(:user => jane)
+            instance.vote(jane).should == instance.votes[1]
+          end
+
+        end
+      end
+
       def should_be_user_ownable(factory_id = nil)
         factory_id ||= default_factory_id
         describe 'being user ownable' do
 
-          should_belong_to :user
+          should_belong_to :user, :counter_cache => true
 
           it 'should belong to someone if he is the owner of it' do
             someone = Factory(:user)

@@ -20,4 +20,32 @@ module CommentsHelper
       post_implementation_url(commentable.post)
     end
   end
+  
+  def comment_statistics(comment)
+    commentable = comment.commentable
+    case commentable
+    when Post
+      <<-EOF
+        <p>#{commentable.vote_points} votes</p>
+        <p>#{commentable.comments_count} comments</p>
+        <p>#{commentable.view_count} views</p>
+      EOF
+    when Question
+      <<-EOF
+        <p>#{commentable.vote_points} votes</p>
+        <p>#{commentable.answers_count} answers</p>
+        <p>#{commentable.comments_count} views</p>
+        <p>#{commentable.view_count} views</p>
+      EOF
+    when Answer
+      <<-EOF
+        <p>#{commentable.vote_points} votes</p>
+        <p>#{commentable.comments_count} views</p>
+      EOF
+    when Implementation
+      <<-EOF
+        <p>#{commentable.comments_count} comments</p>
+      EOF
+    end.html_safe
+  end
 end
