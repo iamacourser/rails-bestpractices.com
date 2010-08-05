@@ -36,6 +36,13 @@ module RailsBestPractices
         end
       end
 
+      def should_be_commentable(factory_id = nil)
+        factory_id ||= default_factory_id
+        describe 'being commentable' do
+          should_have_many :comments, :dependent => :destroy
+        end
+      end
+
       def should_be_voteable(factory_id = nil)
         factory_id ||= default_factory_id
         describe 'being voteable' do
