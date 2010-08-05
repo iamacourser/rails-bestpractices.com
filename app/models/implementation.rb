@@ -2,9 +2,9 @@ class Implementation < ActiveRecord::Base
 
   include Markdownable
   include UserOwnable
+  include Commentable
 
   belongs_to :post, :touch => true
-  has_many :comments, :as => :commentable, :dependent => :destroy
   validates_presence_of :body
 
   def self.per_page
@@ -18,4 +18,5 @@ class Implementation < ActiveRecord::Base
   def tweet_path
     "posts/#{post.to_param}/implementation"
   end
+
 end

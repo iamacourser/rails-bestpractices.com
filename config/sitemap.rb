@@ -13,6 +13,6 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add page_path(p.name), :lastmod => p.updated_at, :priority => 0.5, :changefreq => 'monthly'
   end
   Question.all.each do |q|
-    sitemap.add question_path(q), :lastmod => p.updated_at, :priority => 1.0, :changefreq => 'daily'
+    sitemap.add question_path(q), :lastmod => q.updated_at, :priority => 1.0, :changefreq => 'daily'
   end
 end

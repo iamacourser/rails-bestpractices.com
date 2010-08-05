@@ -5,7 +5,7 @@ describe Vote do
   include RailsBestPractices::Macros
   should_be_user_ownable
 
-  should_belong_to :voteable
+  should_belong_to :voteable, :polymorphic => true
 
   describe 'when created' do
 
@@ -44,5 +44,27 @@ describe Vote do
     end
 
   end
+
+  describe '#voteable_name' do
+
+    before do
+      @vote = Factory(:vote)
+    end
+
+    it "should be voteable's question title if voteable is an answer" do
+      title = 'How to write fantastic tests'
+      answer = Factory(:answer, :question => Factory(:question, :title => title))
+      @vote.update_attributes(:voteable => answer)
+      @vote.voteable_name.should == title
+    end
+
+    it "should be voteable's title if voteable is an answer" do
+      title = 'Writing fantastic tests'
+      @vote.update_attributes(:voteable => Factory(:post, :title => title))
+      @vote.voteable_name.should == title
+    end
+
+  end
+
 
 end
