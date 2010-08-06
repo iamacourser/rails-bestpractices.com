@@ -6,7 +6,7 @@ describe Comment do
   should_be_user_ownable
   should_have_entries_per_page 20
 
-  should_belong_to :commentable, :polymorphic => true
+  should_belong_to :commentable, :counter_cache => true, :polymorphic => true
   should_validate_presence_of :body
 
   describe 'validating username when it is required' do
