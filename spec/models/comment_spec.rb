@@ -4,7 +4,7 @@ describe Comment do
 
   include RailsBestPractices::Macros
   should_be_user_ownable
-  should_have_entries_per_page 20
+  should_have_entries_per_page 10
 
   should_belong_to :commentable, :polymorphic => true
   should_validate_presence_of :body
