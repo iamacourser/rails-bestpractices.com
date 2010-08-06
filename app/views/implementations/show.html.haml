@@ -14,7 +14,7 @@
     Posted by 
     = link_to @implementation.user.login, user_path(@implementation.user)
     on 
-    = @implementation.created_at.to_date.strftime("%B %d, %Y")
+    = I18n.localize(@implementation.created_at.to_date)
   .wikistyle= raw @implementation.formatted_html
 
   = render 'comments/comments', :parent => @implementation

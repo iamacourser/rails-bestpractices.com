@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
 
   include UserOwnable
 
-  belongs_to :commentable, :polymorphic => true, :touch => true
+  belongs_to :commentable, :counter_cache => true, :polymorphic => true, :touch => true
   validates_presence_of :body
   validates_presence_of :username, :if => Proc.new { |comment| !comment.user_id }
 
@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   scope :implement, where(:commentable_type => 'Implementation').order("created_at desc")
 
   def self.per_page
-    20
+    10
   end
 
   def parent_name

@@ -84,8 +84,8 @@ User:
 
 Vote:
   fields:
-    default: like, user_id, post, user, voteable
-    form: like, user_id, post, user, voteable
+    default: like, user, voteable
+    form: like, user, voteable
   order_by: 
   relationships: voteable, user
   filters: 
