@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804015059) do
+ActiveRecord::Schema.define(:version => 20100807150111) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.text     "formatted_html"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :default => 0
   end
 
   add_index "implementations", ["post_id"], :name => "index_implementations_on_post_id"
@@ -146,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.integer  "comments_count",        :default => 0, :null => false
     t.integer  "votes_count",           :default => 0, :null => false
     t.integer  "active_token_id"
+    t.integer  "question_count",        :default => 0, :null => false
     t.integer  "questions_count",       :default => 0, :null => false
     t.integer  "answers_count",         :default => 0, :null => false
   end

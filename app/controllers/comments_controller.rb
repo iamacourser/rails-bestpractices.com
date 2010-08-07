@@ -1,6 +1,6 @@
 class CommentsController < InheritedResources::Base
   actions :create, :index
-  belongs_to :question, :answer, :post, :implementation, :polymorphic => true, :optional => true
+  belongs_to :question, :answer, :post, :polymorphic => true, :optional => true
 
   create! do |success, failure|
     success.html { redirect_to parent_url }
@@ -10,8 +10,6 @@ class CommentsController < InheritedResources::Base
   def index
     if params[:post]
       @comments = Comment.post.includes(:user).paginate(:page => params[:page])
-    elsif params[:implement]
-      @comments = Comment.implement.includes(:user).paginate(:page => params[:page])
     end
   end
 
@@ -23,8 +21,6 @@ class CommentsController < InheritedResources::Base
         question_path(@answer.question)
       elsif params[:post_id]
         post_path(@post)
-      elsif params[:implementation_id]
-        post_implementation_path(@implementation.post)
       end
     end
     
@@ -35,8 +31,6 @@ class CommentsController < InheritedResources::Base
         'questions/show'
       elsif params[:post_id]
         'posts/show'
-      elsif params[:implementation_id]
-        'implementations/show'
       end
     end
 end
