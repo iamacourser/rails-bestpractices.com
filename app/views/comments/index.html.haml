@@ -14,7 +14,7 @@
           Posted by 
           = comment_user_link(comment)
           on 
-          = I18n.localize(comment.created_at)
+          = l(comment.created_at)
       .content
         .point-to-icon
         .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))

@@ -14,11 +14,8 @@
     Posted by 
     = link_to @implementation.user.login, user_path(@implementation.user)
     on 
-    = I18n.localize(@implementation.created_at.to_date)
+    = l(@implementation.created_at.to_date)
   .wikistyle= raw @implementation.formatted_html
-
-  = render 'comments/comments', :parent => @implementation
-  = render 'comments/comment_form', {:parent => @implementation, :comment => @comment}
 
 - content_for :js do
   = javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#username=flyerhzm"

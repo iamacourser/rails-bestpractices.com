@@ -2,7 +2,6 @@ class Implementation < ActiveRecord::Base
 
   include Markdownable
   include UserOwnable
-  include Commentable
 
   belongs_to :post, :touch => true
   validates_presence_of :body

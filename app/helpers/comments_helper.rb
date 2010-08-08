@@ -16,8 +16,6 @@ module CommentsHelper
       question_url(commentable)
     when Answer
       question_url(commentable.question)
-    when Implementation
-      post_implementation_url(commentable.post)
     end
   end
   
@@ -41,10 +39,6 @@ module CommentsHelper
       <<-EOF
         <p>#{commentable.vote_points} votes</p>
         <p>#{commentable.comments_count} views</p>
-      EOF
-    when Implementation
-      <<-EOF
-        <p>#{commentable.comments_count} comments</p>
       EOF
     end.html_safe
   end

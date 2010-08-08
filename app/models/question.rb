@@ -14,6 +14,7 @@ class Question < ActiveRecord::Base
 
   default_scope order('created_at desc')
   scope :not_answered, where(:answers_count => 0)
+  scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
   with_exclusive_scope do
     scope :most_voted, order('vote_points desc')
     scope :most_answered, order('answers_count desc')

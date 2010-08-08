@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804015059) do
+ActiveRecord::Schema.define(:version => 20100808144413) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.integer  "comments_count", :default => 0
   end
 
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
   create_table "comments", :force => true do |t|
     t.text     "body"
     t.integer  "commentable_id"
@@ -70,11 +73,19 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.text     "formatted_html"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :default => 0
   end
 
   add_index "implementations", ["post_id"], :name => "index_implementations_on_post_id"
   add_index "implementations", ["user_id"], :name => "index_implementations_on_user_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "notifierable_type"
+    t.integer  "notifierable_id"
+    t.boolean  "read",              :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -112,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.integer  "comments_count", :default => 0
   end
 
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -146,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
     t.integer  "comments_count",        :default => 0, :null => false
     t.integer  "votes_count",           :default => 0, :null => false
     t.integer  "active_token_id"
+    t.integer  "question_count",        :default => 0, :null => false
     t.integer  "questions_count",       :default => 0, :null => false
     t.integer  "answers_count",         :default => 0, :null => false
   end
@@ -162,6 +176,7 @@ ActiveRecord::Schema.define(:version => 20100804015059) do
   end
 
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+  add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
   add_index "votes", ["voteable_id"], :name => "index_votes_on_post_id"
 
 end

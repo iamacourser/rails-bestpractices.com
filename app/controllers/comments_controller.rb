@@ -1,21 +1,38 @@
 class CommentsController < InheritedResources::Base
   actions :create, :index
-  belongs_to :question, :answer, :post, :implementation, :polymorphic => true, :optional => true
+  belongs_to :question, :answer, :post, :polymorphic => true, :optional => true
 
-  create! do |success, failure|
-    success.html { redirect_to parent_url }
-    failure.html { render failure_url }
+  def create
+    @comment = parent.comments.new(params[:comment].merge(:user => current_user))
+    if current_user or params[:skip] == 'true' or verify_recaptcha(:model => @comment, :message => @comment.body)
+      create! do |success, failure|
+        success.html { redirect_to parent_url }
+        failure.html { render failure_url }
+      end
+    else
+      flash[:error] = "Not correct captcha!"
+      flash.delete :recaptcha_error
+      render failure_url
+    end
   end
 
   def index
     if params[:post]
       @comments = Comment.post.includes(:user).paginate(:page => params[:page])
-    elsif params[:implement]
-      @comments = Comment.implement.includes(:user).paginate(:page => params[:page])
     end
   end
 
   private
+    def parent
+      if params[:question_id]
+        @question = Question.find(params[:question_id])
+      elsif params[:answer_id]
+        @answer = Answer.find(params[:answer_id])
+      elsif params[:post_id]
+        @post = Post.find(params[:post_id])
+      end
+    end
+
     def parent_url
       if params[:question_id]
         question_path(@question)
@@ -23,8 +40,6 @@ class CommentsController < InheritedResources::Base
         question_path(@answer.question)
       elsif params[:post_id]
         post_path(@post)
-      elsif params[:implementation_id]
-        post_implementation_path(@implementation.post)
       end
     end
     
@@ -35,8 +50,6 @@ class CommentsController < InheritedResources::Base
         'questions/show'
       elsif params[:post_id]
         'posts/show'
-      elsif params[:implementation_id]
-        'implementations/show'
       end
     end
 end

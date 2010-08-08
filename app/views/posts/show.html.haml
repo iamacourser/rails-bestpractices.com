@@ -23,7 +23,7 @@
     Posted by 
     = link_to @post.user.login, user_path(@post.user)
     on 
-    = I18n.localize(@post.created_at.to_date)
+    = l(@post.created_at.to_date)
   .description
     .point-to-icon
     %p= @post.description
@@ -33,7 +33,7 @@
   .tags
     %strong tags: 
     - @post.tags.each do |tag|
-      = link_to tag.name, tag_posts_path(tag.name)
+      = link_to tag.name, tag_path(tag.name)
 
   = render 'comments/comments', :parent => @post
   = render 'comments/comment_form', {:parent => @post, :comment => @comment}

@@ -5,8 +5,4 @@ class ImplementationsController < InheritedResources::Base
   def index
     @implementations = Implementation.includes(:user, :post).paginate(:page => params[:page], :per_page => Implementation.per_page)
   end
-
-  show! do |format|
-    @comment = @implementation.comments.build
-  end
 end

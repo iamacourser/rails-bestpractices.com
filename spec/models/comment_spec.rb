@@ -23,20 +23,9 @@ describe Comment do
     Comment.delete_all
     comments = [
       Factory(:post, :created_at => 3.days.ago),
-      Factory(:post, :created_at => 1.day.ago),
-      Factory(:implementation)
+      Factory(:post, :created_at => 1.day.ago)
     ].map{|obj| Factory(:comment, :commentable => obj) }
     Comment.post.should == [1,0].map{|i| comments[i] }
-  end
-
-  it 'should be scopable by implement type' do
-    Comment.delete_all
-    comments = [
-      Factory(:implementation, :created_at => 3.days.ago),
-      Factory(:implementation, :created_at => 1.day.ago),
-      Factory(:post)
-    ].map{|obj| Factory(:comment, :commentable => obj) }
-    Comment.implement.should == [1,0].map{|i| comments[i] }
   end
 
   describe 'parent name' do
@@ -57,12 +46,6 @@ describe Comment do
       question = Factory(:question, :title => 'Awesome Question')
       comment = Factory(:comment, :commentable => Factory(:answer, :question => question))
       comment.parent_name.should == "Answer of #{question.title}"
-    end
-
-    it "should return commentable's post title when commentable is an Implementation" do
-      post = Factory(:post, :title => 'Awesome Post')
-      comment = Factory(:comment, :commentable => Factory(:implementation, :post => post))
-      comment.parent_name.should == "Implementation of #{post.title}"
     end
 
   end
