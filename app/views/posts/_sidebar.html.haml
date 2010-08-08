@@ -1,9 +1,5 @@
 .share-section
   = link_to 'Share', new_post_path
   %p Share a Rails Best Practice!
-.posts-section= render 'shared/navigation'
-.tag-section
-  %h3 Tags
-  %ul.tags
-    - ActsAsTaggableOn::Tag.order("name").each do |tag|
-      %li= link_to tag.name, tag_path(tag.name)
+= render 'shared/posts_navigation'
+= render 'shared/tag_section'
