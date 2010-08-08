@@ -3,7 +3,7 @@ class TagsController < InheritedResources::Base
 
   show! do |format|
     params[:nav] = params[:nav] || "posts"
-    @children = @tag.send(params[:nav])
+    @children = @tag.send(params[:nav]).includes(:user).paginate(:page => params[:page], :per_page => 10)
   end
 
   protected

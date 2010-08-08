@@ -1,8 +1,8 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
 
-  match "/tags/:id/posts", :to => redirect("/tags/%{id}")
-  match "/tags/:id/qestions", :to => redirect("/tags/%{id}")
+  match "/tags/:id/posts" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=posts" }
+  match "/tags/:id/questions" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=questions" }
   resources :tags, :only => :show
 
   resources :posts do
