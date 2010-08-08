@@ -194,6 +194,12 @@ body {
       @include navs;
     }
   }
+  .empty {
+    font-size: 24px;
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+  }
 }
 #footer {
   background: url(/images/footer-bg.png) repeat-x 0 0 #ededed;

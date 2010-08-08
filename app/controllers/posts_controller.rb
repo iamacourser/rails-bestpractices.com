@@ -2,7 +2,6 @@ class PostsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :hot
   has_scope :implemented
-  has_scope :search
   respond_to :xml, :only => :index
 
   def new

@@ -29,6 +29,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   resources :users
 
   resource :user_session
+
+  match 'search' => 'search#show', :as => :search
   
   match 'page/:name' => 'pages#show', :as => :page
 
