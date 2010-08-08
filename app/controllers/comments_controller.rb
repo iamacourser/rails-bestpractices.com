@@ -2,9 +2,18 @@ class CommentsController < InheritedResources::Base
   actions :create, :index
   belongs_to :question, :answer, :post, :polymorphic => true, :optional => true
 
-  create! do |success, failure|
-    success.html { redirect_to parent_url }
-    failure.html { render failure_url }
+  def create
+    @comment = parent.comments.new(params[:comment].merge(:user => current_user))
+    if current_user or params[:skip] == 'true' or verify_recaptcha(:model => @comment, :message => @comment.body)
+      create! do |success, failure|
+        success.html { redirect_to parent_url }
+        failure.html { render failure_url }
+      end
+    else
+      flash[:error] = "Not correct captcha!"
+      flash.delete :recaptcha_error
+      render failure_url
+    end
   end
 
   def index
@@ -14,6 +23,16 @@ class CommentsController < InheritedResources::Base
   end
 
   private
+    def parent
+      if params[:question_id]
+        @question = Question.find(params[:question_id])
+      elsif params[:answer_id]
+        @answer = Answer.find(params[:answer_id])
+      elsif params[:post_id]
+        @post = Post.find(params[:post_id])
+      end
+    end
+
     def parent_url
       if params[:question_id]
         question_path(@question)
