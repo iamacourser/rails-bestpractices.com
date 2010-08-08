@@ -17,7 +17,7 @@
       Posted by 
       = link_to @question.user.login, user_path(@question.user)
       on 
-      = I18n.localize(@question.created_at.to_date)
+      = l(@question.created_at.to_date)
 
     .wikistyle= raw @question.formatted_html
     = render 'comments/short_comments', :comments => @question.comments
@@ -25,7 +25,7 @@
       
     .tags
       - @question.tags.each do |tag|
-        = link_to tag.name, tag_questions_path(tag.name)
+        = link_to tag.name, tag_path(tag.name)
   .clear
 
 = render 'answers/answers', :question => @question

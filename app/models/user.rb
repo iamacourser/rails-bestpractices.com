@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_param
+    "#{id}-#{login.parameterize}"
+  end
+
   private
     def validate_email?
       self.access_token.nil?

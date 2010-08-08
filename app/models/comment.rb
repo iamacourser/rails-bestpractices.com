@@ -7,7 +7,6 @@ class Comment < ActiveRecord::Base
   validates_presence_of :username, :if => Proc.new { |comment| !comment.user_id }
 
   scope :post, where(:commentable_type => 'Post').order("created_at desc")
-  scope :implement, where(:commentable_type => 'Implementation').order("created_at desc")
 
   def self.per_page
     10
@@ -21,8 +20,6 @@ class Comment < ActiveRecord::Base
       "Answer of #{commentable.question.title}"
     when Post
       "Post #{commentable.title}"
-    when Implementation
-      "Implementation of #{commentable.post.title}"
     end
   end
 

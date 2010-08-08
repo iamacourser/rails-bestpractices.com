@@ -1,10 +1,7 @@
 class PostsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
-  belongs_to :tag, :optional => true, :class_name => 'ActsAsTaggableOn::Tag',
-    :finder => :find_by_name!, :param => :tag_id
   has_scope :hot
   has_scope :implemented
-  has_scope :search
   respond_to :xml, :only => :index
 
   def new

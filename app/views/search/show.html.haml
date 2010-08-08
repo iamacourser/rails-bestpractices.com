@@ -1,0 +1,10 @@
+- title 'search result'
+
+%h2 Search Result for Rails Best Practices
+= render 'posts/posts', :posts => @posts, :description => false
+= will_paginate @posts, :param_name => 'posts_page', :previous_label => "<< Previous", :next_label => "Next >>"
+.clear
+
+%h2 Search Result for Requests
+= render 'questions/questions', :questions => @questions
+= will_paginate @questions, :param_name => 'questions_page', :previous_label => "<< Previous", :next_label => "Next >>"

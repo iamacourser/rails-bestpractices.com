@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    params[:nav] = params[:nav] || "posts"
+    @children = @user.send(params[:nav])
   end
 
   def edit

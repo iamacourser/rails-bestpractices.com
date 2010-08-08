@@ -19,7 +19,7 @@
               Answered by 
               = link_to answer.user.login, user_path(answer.user)
               on 
-              = I18n.localize(answer.created_at.to_date)
+              = l(answer.created_at.to_date)
 
             .wikistyle= raw answer.formatted_html
             = render 'comments/short_comments', :comments => answer.comments

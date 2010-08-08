@@ -29,6 +29,7 @@ gem "oauth"
 gem "oauth2"
 gem "authlogic-connect", '>=0.0.5.1'
 gem "cancan"
+gem "recaptcha", :require => "recaptcha/rails"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development

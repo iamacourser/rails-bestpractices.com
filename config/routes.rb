@@ -1,10 +1,10 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
 
-  resources :tags, :only => :show do
-    resources :posts, :only => :index
-    resources :questions, :only => :index
-  end
+  match "/tags/:id/posts" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=posts" }
+  match "/tags/:id/questions" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=questions" }
+  resources :tags, :only => :show
+
   resources :posts do
     get :archive, :on => :collection
     resources :comments, :only => :create
@@ -29,6 +29,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   resources :users
 
   resource :user_session
+
+  match 'search' => 'search#show', :as => :search
   
   match 'page/:name' => 'pages#show', :as => :page
 

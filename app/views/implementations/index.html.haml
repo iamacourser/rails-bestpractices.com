@@ -5,7 +5,6 @@
   - @implementations.each do |implementation|
     .implementation
       .title= link_to "implementation of #{implementation.post.title}", post_implementation_path(implementation.post)
-      .comment= link_to (implementation.comments.size == 0 ? "post a comment" : "#{implementation.comments.size} comments"), post_implementation_path(implementation.post, :anchor => 'comments')
       .author
         by
         = image_tag implementation.user.gravatar_url(:size => 32), :class => 'user-avatar', :alt => implementation.user.login
