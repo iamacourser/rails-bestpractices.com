@@ -23,8 +23,7 @@ describe Comment do
     Comment.delete_all
     comments = [
       Factory(:post, :created_at => 3.days.ago),
-      Factory(:post, :created_at => 1.day.ago),
-      Factory(:implementation)
+      Factory(:post, :created_at => 1.day.ago)
     ].map{|obj| Factory(:comment, :commentable => obj) }
     Comment.post.should == [1,0].map{|i| comments[i] }
   end
