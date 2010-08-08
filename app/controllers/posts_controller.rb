@@ -1,6 +1,8 @@
 class PostsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :hot
+  has_scope :most_voted
+  has_scope :most_commented
   has_scope :implemented
   respond_to :xml, :only => :index
 
