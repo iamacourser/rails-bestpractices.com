@@ -10,7 +10,7 @@
         %p.title= link_to question.title, question_path(question)
         %p.tags 
           - question.tags.each do |tag|
-            = link_to tag.name, tag_questions_path(tag.name)
+            = link_to tag.name, tag_path(tag.name)
       %td.author
         by
         = link_to question.user.login, user_path(question.user)

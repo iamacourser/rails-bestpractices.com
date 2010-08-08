@@ -19,28 +19,27 @@
       = @user.url
 
 .statistics
-  %h3
-    - if @user.posts_count > 0
-      = statistic_command
-    #{@user.posts_count} Rails Best Practices
-  = render 'posts/posts', :posts => @user.posts, :description => false
-  %h3
-    - if @user.questions_count > 0
-      = statistic_command
-    #{@user.questions_count} Questions
-  = render 'questions/questions', :questions => @user.questions
-  %h3
-    - if @user.answers_count > 0
-      = statistic_command
-    #{@user.answers_count} Answers
-  = render 'users/answers', :answers => @user.answers.includes(:question => :user)
-  %h3
-    - if @user.comments_count > 0
-      = statistic_command
-    #{@user.comments_count} Comments
-  = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
-  %h3
-    - if @user.votes_count > 0
-      = statistic_command
-    #{@user.votes_count} Votes
-  = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)
+  .header
+    %ul.navs
+      = nav_class('posts') do
+        = link_to "#{@user.posts_count} Rails Best Practices", user_path(current_user, :nav => 'posts')
+      = nav_class('questions') do
+        = link_to "#{@user.questions_count} Requests", user_path(current_user, :nav => 'questions')
+      = nav_class('answers') do
+        = link_to "#{@user.answers_count} Answers", user_path(current_user, :nav => 'answers')
+      = nav_class('comments') do
+        = link_to "#{@user.comments_count} Comments", user_path(current_user, :nav => 'comments')
+      = nav_class('votes') do
+        = link_to "#{@user.votes_count} Votes", user_path(current_user, :nav => 'votes')
+  - case params[:nav]
+  - when 'posts'
+    = render 'posts/posts', :posts => @children, :description => false
+  - when 'questions'
+    = render 'questions/questions', :questions => @children
+  - when 'answers'
+    = render 'users/answers', :answers => @children.includes(:question => :user)
+  - when 'comments'
+    = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
+  - when 'votes'
+    = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)
+  - else 
