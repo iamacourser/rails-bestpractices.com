@@ -1,0 +1,14 @@
+- set_meta_tags :title => "tag #{@tag.name}"
+
+%h2
+  = "Tag #{@tag.name}"
+  %ul.navs
+    = nav_class('posts') do
+      = link_to "Rails Best Practices", tag_path(@tag.name, :nav => 'posts')
+    = nav_class('questions') do
+      = link_to "Requests", tag_path(@tag.name, :nav => 'questions')
+
+- if params[:nav] == 'posts'
+  = render 'posts/posts', :posts => @children, :description => true
+- elsif params[:nav] == 'questions'
+  = render 'questions/questions', :questions => @children

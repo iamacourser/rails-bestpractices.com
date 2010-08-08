@@ -12,7 +12,7 @@
             = post.description
         %p.tags 
           - post.tags.each do |tag|
-            = link_to tag.name, tag_questions_path(tag.name)
+            = link_to tag.name, tag_path(tag.name)
         - if post.implemented?
           = link_to 'implemented', post_implementation_path(post), :class => 'implemented'
       %td.author

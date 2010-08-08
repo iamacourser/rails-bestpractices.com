@@ -1,0 +1,19 @@
+@import "compass/utilities/lists/bullets";
+@import "compass/utilities/lists/horizontal-list";
+@import "compass/utilities/general/float";
+@import "compass/css3/inline-block";
+
+@mixin navs {
+  @include no-bullets;
+  @include float-right;
+  li {
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid #9e9e9e;
+    margin: 4px 10px 0 0;
+    @include float-left;
+    &.active {
+      border-bottom: 1px solid #fff;
+    }
+  }
+}

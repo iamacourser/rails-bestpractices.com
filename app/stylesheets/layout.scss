@@ -6,6 +6,7 @@
 @import "compass/css3/text-shadow";
 @import "partials/pagination";
 @import "partials/tags";
+@import "partials/navs";
 @import "partials/vote_info";
 
 body {
@@ -189,6 +190,9 @@ body {
     font: 20px verdana;
     padding-bottom: 5px;
     border-bottom: 1px solid #9e9e9e;
+    ul.navs {
+      @include navs;
+    }
   }
 }
 #footer {

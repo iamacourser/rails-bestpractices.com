@@ -1,10 +1,10 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   Typus::Routes.draw(map)
 
-  resources :tags, :only => :show do
-    resources :posts, :only => :index
-    resources :questions, :only => :index
-  end
+  match "/tags/:id/posts", :to => redirect("/tags/%{id}")
+  match "/tags/:id/qestions", :to => redirect("/tags/%{id}")
+  resources :tags, :only => :show
+
   resources :posts do
     get :archive, :on => :collection
     resources :comments, :only => :create
