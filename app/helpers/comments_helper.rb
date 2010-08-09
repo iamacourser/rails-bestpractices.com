@@ -1,7 +1,7 @@
 module CommentsHelper
   def comment_user_link(comment)
     if comment.user
-      link_to comment.user.login, user_path(comment.user), :target => '_blank'
+      link_to comment.user.login, user_path(comment.user)
     else
       comment.username
     end

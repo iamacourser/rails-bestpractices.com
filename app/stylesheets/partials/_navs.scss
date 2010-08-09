@@ -16,6 +16,7 @@
     line-height: 25px;
     @include float-left;
     &.active {
+      font-weight: bold;
       border-bottom: 1px solid #fff;
     }
   }
