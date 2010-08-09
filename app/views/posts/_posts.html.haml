@@ -20,5 +20,5 @@
             = link_to 'implemented', post_implementation_path(post), :class => 'implemented'
         %td.author
           by
-          = user_link(post.user)
+          = link_to post.user.login, user_path(post.user)
         %td.avatar= image_tag post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.user.login
