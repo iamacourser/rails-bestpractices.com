@@ -2,7 +2,7 @@
   %a{:name => 'comments'}
   - if parent.comments.size > 1
     %h3 Comments
-    - parent.comments.each do |comment|
+    - parent.comments.includes(:user).each do |comment|
       - unless comment.new_record?
         .comment
           %p.info

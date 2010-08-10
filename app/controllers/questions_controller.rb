@@ -15,6 +15,6 @@ class QuestionsController < InheritedResources::Base
     end
 
     def collection
-      @questions ||= end_of_association_chain.includes(:user).paginate(:page => params[:page], :per_page => Question.per_page)
+      @questions ||= end_of_association_chain.includes(:user, :tags).paginate(:page => params[:page], :per_page => Question.per_page)
     end
 end
