@@ -33,7 +33,7 @@ gem "recaptcha", :require => "recaptcha/rails"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development
-gem "bullet", ">= 2.0.0.beta.4", :group => :development
+gem "bullet", ">= 2.0.0.rc1", :group => :development
 
 gem "autotest-rails", ">= 4.1.0", :group => :test
 gem "rspec", ">= 2.0.0.beta.12", :group => :test
