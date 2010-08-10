@@ -76,7 +76,7 @@
           %li= link_to 'About Us', page_path('about-us')
         .copyright &copy; 2010 rails-bestpractices.com
       
-    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'showdown', 'wmd-base', 'wmd-plus', 'application', :cache => true
+    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'application', :cache => true
     = yield :js
 
     - if Rails.env == 'production'
