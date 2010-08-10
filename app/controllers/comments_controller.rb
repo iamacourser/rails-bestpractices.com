@@ -18,7 +18,7 @@ class CommentsController < InheritedResources::Base
 
   def index
     if params[:post]
-      @comments = Comment.post.includes(:user).paginate(:page => params[:page])
+      @comments = Comment.post.includes(:user, :commentable).paginate(:page => params[:page])
     end
   end
 

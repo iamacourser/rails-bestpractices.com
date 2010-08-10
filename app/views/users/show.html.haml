@@ -33,11 +33,11 @@
         = link_to "#{@user.votes_count} Votes", user_path(current_user, :nav => 'votes')
   - case params[:nav]
   - when 'posts'
-    = render 'posts/posts', :posts => @children, :description => false
+    = render 'posts/posts', :posts => @children.includes(:user, :tags), :description => false
   - when 'questions'
-    = render 'questions/questions', :questions => @children
+    = render 'questions/questions', :questions => @children.includes(:user, :tags)
   - when 'answers'
-    = render 'users/answers', :answers => @children.includes(:question => :user)
+    = render 'users/answers', :answers => @children.includes(:question => [:user, :tags])
   - when 'comments'
     = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
   - when 'votes'
