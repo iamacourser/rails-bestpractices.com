@@ -20,7 +20,7 @@ RailsBestpracticesCom::Application.configure do
   # config.active_record.observers = :tweet_observer
 
   config.after_initialize do
-    Bullet.enable = false
+    Bullet.enable = true
     Bullet.alert = true
     Bullet.rails_logger = true
   end

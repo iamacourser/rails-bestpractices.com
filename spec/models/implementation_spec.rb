@@ -14,7 +14,7 @@ describe Implementation do
     }
   end
 
-  should_belong_to :post
+  should_belong_to :post, :touch => true
   should_validate_presence_of :body
 
 end
