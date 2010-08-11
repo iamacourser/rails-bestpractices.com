@@ -12,10 +12,7 @@
       %span Username
       = @user.login
     %p
-      %span Email
-      = @user.email
-    %p
-      %span Url
+      %span Webstie
       = @user.url
 
 .statistics
@@ -42,4 +39,3 @@
     = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
   - when 'votes'
     = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)
-  - else 
