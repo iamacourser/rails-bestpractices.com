@@ -16,6 +16,6 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add question_path(q), :lastmod => q.updated_at, :priority => 1.0, :changefreq => 'daily'
   end
   User.all.each do |u|
-    sitemap.add user_path(u), :lastmod => u.updated_at, :priority => 0.8, :changefreq => 'daily'
+    sitemap.add user_path(u), :lastmod => u.updated_at, :priority => 0.1, :changefreq => 'daily'
   end
 end
