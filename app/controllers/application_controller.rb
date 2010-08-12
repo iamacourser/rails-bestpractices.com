@@ -6,9 +6,13 @@ class ApplicationController < ActionController::Base
   layout 'application'
   helper_method :current_user_session, :current_user
   
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied."
-    redirect_to root_url
+  #rescue_from CanCan::AccessDenied do |exception|
+    #flash[:error] = "Access denied."
+    #redirect_to root_url
+  #end
+
+  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+    render_422
   end
   
   protected
@@ -58,6 +62,18 @@ class ApplicationController < ActionController::Base
         format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found, :layout => false }
         format.xml  { head :not_found }
         format.any  { head :not_found }
+      end
+    end
+
+    def render_422(exception = nil)
+      if exception
+        logger.info "Rendering 422 with exception: #{exception.message}"
+      end
+
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/422.html", :status => :unprocessable_entity, :layout => false }
+        format.xml  { header :unprocessable_entity }
+        format.xml  { header :unprocessable_entity }
       end
     end
 end
