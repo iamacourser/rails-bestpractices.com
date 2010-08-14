@@ -1,1 +1,1 @@
-Sitemap: http://rails-bestpractices/sitemap_index.xml.gz
+Sitemap: http://rails-bestpractices/sitemap1.xml.gz
