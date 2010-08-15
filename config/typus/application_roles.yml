@@ -3,6 +3,7 @@
 # Use the README file as a reference to customize settings.
 
 admin:
+  #ActsAsTaggableOn::Tag: read, delete
   AdminUser: create, read, update, delete
   Answer: create, read, update, delete
   Comment: create, read, update, delete
