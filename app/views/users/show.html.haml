@@ -12,7 +12,7 @@
       %span Username
       = @user.login
     %p
-      %span Webstie
+      %span Website
       = @user.url
 
 .statistics
@@ -36,6 +36,6 @@
   - when 'answers'
     = render 'users/answers', :answers => @children.includes(:question => [:user, :tags])
   - when 'comments'
-    = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
+    = render 'users/comments', :comments => @children.includes(:commentable => :user)
   - when 'votes'
-    = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)
+    = render 'users/votes', :votes => @children.includes(:voteable => :user)
