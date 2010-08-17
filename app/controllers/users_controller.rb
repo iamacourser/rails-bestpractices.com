@@ -24,8 +24,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    params[:nav] = params[:nav] || "posts"
-    @children = @user.send(params[:nav])
+    if params[:id] =~ /^\d+$/
+      redirect_to user_path(@user), :status => 301 
+    else
+      params[:nav] = params[:nav] || "posts"
+      @children = @user.send(params[:nav])
+    end
   end
 
   def edit

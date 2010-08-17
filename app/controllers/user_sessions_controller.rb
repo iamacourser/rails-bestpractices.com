@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
       if result
         flash[:notice] = "Login successful!"
         if current_user
-          redirect_to root_url
+          redirect_back_or_default root_url
         else
           redirect_to new_user_session_url
         end
@@ -26,6 +26,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
-    redirect_to root_url
+    redirect_back_or_default root_url
   end
 end

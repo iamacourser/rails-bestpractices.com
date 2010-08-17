@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    self.login
+  end
+
   def to_param
     "#{id}-#{login.parameterize}"
   end
