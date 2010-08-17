@@ -27,6 +27,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
     resources :comments, :only => :create
   end
 
+  resources :notifications, :only => [:index, :show]
+
   resources :users
 
   resource :user_session

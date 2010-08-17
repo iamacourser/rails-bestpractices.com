@@ -12,6 +12,7 @@ describe User do
   should_have_many :implementations, :dependent => :destroy
   should_have_many :questions, :dependent => :destroy
   should_have_many :answers, :dependent => :destroy
+  should_have_many :notifications, :dependent => :destroy
   should_have_one :access_token
 
   describe 'when email validation is required' do
