@@ -12,22 +12,22 @@
       %span Username
       = @user.login
     %p
-      %span Webstie
+      %span Website
       = @user.url
 
 .statistics
   .header
     %ul.navs
       = nav_class('posts') do
-        = link_to "#{@user.posts_count} Rails Best Practices", user_path(current_user, :nav => 'posts')
+        = link_to "#{@user.posts_count} Rails Best Practices", user_path(@user, :nav => 'posts')
       = nav_class('questions') do
-        = link_to "#{@user.questions_count} Requests", user_path(current_user, :nav => 'questions')
+        = link_to "#{@user.questions_count} Requests", user_path(@user, :nav => 'questions')
       = nav_class('answers') do
-        = link_to "#{@user.answers_count} Answers", user_path(current_user, :nav => 'answers')
+        = link_to "#{@user.answers_count} Answers", user_path(@user, :nav => 'answers')
       = nav_class('comments') do
-        = link_to "#{@user.comments_count} Comments", user_path(current_user, :nav => 'comments')
+        = link_to "#{@user.comments_count} Comments", user_path(@user, :nav => 'comments')
       = nav_class('votes') do
-        = link_to "#{@user.votes_count} Votes", user_path(current_user, :nav => 'votes')
+        = link_to "#{@user.votes_count} Votes", user_path(@user, :nav => 'votes')
   - case params[:nav]
   - when 'posts'
     = render 'posts/posts', :posts => @children.includes(:user, :tags), :description => false
@@ -36,6 +36,6 @@
   - when 'answers'
     = render 'users/answers', :answers => @children.includes(:question => [:user, :tags])
   - when 'comments'
-    = render 'users/comments', :comments => @user.comments.includes(:commentable => :user)
+    = render 'users/comments', :comments => @children.includes(:commentable => :user)
   - when 'votes'
-    = render 'users/votes', :votes => @user.votes.includes(:voteable => :user)
+    = render 'users/votes', :votes => @children.includes(:voteable => :user)
