@@ -155,31 +155,36 @@ module RailsBestPractices
 
         def within_observable_scope
           observer_class = self.class.send(:context_klass)
+          has_applied_tweak, tweaks = apply_observer_tweaks(observer_class)
+          begin
+            yield(observer_class.instance)
+          ensure
+            unapply_observer_tweaks(observer_class, tweaks) if has_applied_tweak
+          end
+        end
+
+        def apply_observer_tweaks(observer_class)
           observer, is_unwanted_observer_initialized = nil
           orig_update_meth = :_original_update_observee_xyz_ # some weird name that should never clash with others
 
           if ObjectSpace.each_object(observer_class){|o| observer = o }.zero?
             # This is the case when the observer is never meant to exist in this environment
-            is_unwanted_observer_initialized = true
+            [true, {:method => orig_update_meth}]
           elsif observer.respond_to?(orig_update_meth)
             # This is the case when the observer is never meant to exist in this environment,
             # yet it has already been tampered with, and we want to undo tampering
-            is_unwanted_observer_initialized = true
             (class << observer_class.instance; self; end).class_eval do
               alias_method :update, orig_update_meth
             end
+            [true, {:method => orig_update_meth}]
           end
+        end
 
-          # Run watever specified test
-          yield(observer_class.instance)
-
-          # If the observer is never meant to be activated, we stub it's :update method, such
-          # that it won't impact other subsequent specs
-          if is_unwanted_observer_initialized
-            (class << observer_class.instance; self; end).class_eval do
-              alias_method orig_update_meth, :update
-              def update(*args) ; end
-            end
+        def unapply_observer_tweaks(observer_class, tweaks)
+          orig_update_meth  = tweaks[:method]
+          (class << observer_class.instance; self; end).class_eval do
+            alias_method orig_update_meth, :update
+            def update(*args) ; end
           end
         end
 
