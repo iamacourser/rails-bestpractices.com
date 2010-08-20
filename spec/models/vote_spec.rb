@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Vote do
 
-  include RailsBestPractices::Macros
+  include RailsBestPractices::Spec::Support
   should_be_user_ownable
 
   should_belong_to :voteable, :polymorphic => true
