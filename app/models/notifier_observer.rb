@@ -2,6 +2,10 @@ class NotifierObserver < ActiveRecord::Observer
   observe :comment, :answer
   
   def after_create(model)
-    tweet(model.tweet_title, model.tweet_path)
+    notify(model)
   end
+
+  private
+    def notify(model)
+    end
 end
