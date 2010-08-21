@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Implementation do
 
-  include RailsBestPractices::Macros
+  include RailsBestPractices::Spec::Support
   should_be_markdownable
   should_be_user_ownable
   should_have_entries_per_page 10

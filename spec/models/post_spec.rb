@@ -6,7 +6,7 @@ describe Post do
     @post = Factory.create(:post)
   end
 
-  include RailsBestPractices::Macros
+  include RailsBestPractices::Spec::Support
   should_act_as_taggable
   should_be_markdownable
   should_be_user_ownable

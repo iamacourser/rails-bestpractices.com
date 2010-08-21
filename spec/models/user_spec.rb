@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe User do
 
-  include RailsBestPractices::Macros
+  include RailsBestPractices::Spec::Support
   should_be_gravastic
   should_act_as_authentic # This affects the validity of a user
 
@@ -61,6 +61,11 @@ describe User do
       @user.login.should == @profile_name
     end
 
+  end
+
+  it "should reflect :id & :login when converted to param" do
+    user = Factory(:user, :login => 'flyer_hzm')
+    user.to_param.should == "#{user.id}-flyer_hzm"
   end
 
 end

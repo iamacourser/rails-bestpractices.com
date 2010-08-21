@@ -11,7 +11,7 @@ $(function() {
   $.each($('pre code'), function(i, element) {
     var output = [];
     $.each($(element).text().split('\n'), function(i, line) {
-      output.push(line.replace(/^ {12}/, ''));
+      output.push(line.replace(/^ {12}/, '').replace(/^( *)/, '$1$1'));
     });
     $(element).text(output.join('\n'));
     $(element).addClass('prettyprint');
