@@ -1,13 +1,4 @@
 - set_meta_tags :title => 'Register', :noindex => true
 
 %h2 Register
-
-= semantic_form_for @user do |form|
-  = form.semantic_errors :base
-  = form.inputs do
-    = form.input :login, :label => 'Username'
-    = form.input :email
-    = form.input :password
-    = form.input :password_confirmation
-  = form.buttons do
-    = form.submit "Register"
+= render 'shared/register_form', :user => @user, :return_to => nil

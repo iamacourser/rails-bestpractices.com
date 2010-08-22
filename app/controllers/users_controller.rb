@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user.save do |result|
       if result
         flash[:notice] = "Register successful!"
-        redirect_to root_url
+        redirect_back_or_default root_url
       else
         render :action => :new
       end
