@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100808144413) do
+ActiveRecord::Schema.define(:version => 20100822092944) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -154,14 +154,15 @@ ActiveRecord::Schema.define(:version => 20100808144413) do
     t.datetime "updated_at"
     t.string   "url"
     t.boolean  "developer"
-    t.integer  "posts_count",           :default => 0, :null => false
-    t.integer  "implementations_count", :default => 0, :null => false
-    t.integer  "comments_count",        :default => 0, :null => false
-    t.integer  "votes_count",           :default => 0, :null => false
+    t.integer  "posts_count",               :default => 0, :null => false
+    t.integer  "implementations_count",     :default => 0, :null => false
+    t.integer  "comments_count",            :default => 0, :null => false
+    t.integer  "votes_count",               :default => 0, :null => false
     t.integer  "active_token_id"
-    t.integer  "question_count",        :default => 0, :null => false
-    t.integer  "questions_count",       :default => 0, :null => false
-    t.integer  "answers_count",         :default => 0, :null => false
+    t.integer  "question_count",            :default => 0, :null => false
+    t.integer  "questions_count",           :default => 0, :null => false
+    t.integer  "answers_count",             :default => 0, :null => false
+    t.integer  "unread_notification_count", :default => 0, :null => false
   end
 
   add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"

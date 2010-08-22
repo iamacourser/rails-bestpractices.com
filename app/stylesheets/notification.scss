@@ -1,0 +1,24 @@
+table.notifications {
+  margin-top: 10px;
+  line-height: 20px;
+  td {
+    border-bottom: 1px solid #999;
+    padding: 5px 0;
+  }
+  .icon {
+    width: 30px;
+  }
+  .unread {
+    font-weight: bold;
+  }
+  .time {
+    width: 150px;
+  }
+  .delete {
+    width: 30px;
+    a {
+      text-indent: -9999px;
+      display: block;
+    }
+  }
+}

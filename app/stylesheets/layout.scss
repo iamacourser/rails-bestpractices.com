@@ -3,6 +3,7 @@
 @import "compass/utilities/general/float";
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
+@import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
 @import "partials/pagination";
 @import "partials/tags";
@@ -76,6 +77,19 @@ body {
           line-height: 18px;
           padding: 0 6px;
           @include inline-block;
+          &.user-link {
+            padding-right: 0;
+          }
+          &.notification-link {
+            background-color: #ddd;
+            @include border-radius(5px);
+            color: #999;
+            padding: 0 5px;
+          }
+          &.active {
+            color: #a00;
+            background-color: #f00;
+          }
         }
       }
     }

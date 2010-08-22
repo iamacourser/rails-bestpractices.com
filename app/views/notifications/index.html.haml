@@ -1,0 +1,15 @@
+- set_meta_tags :title => 'notifications', :noindex => true
+
+%h2 Notifications
+- if @notifications.empty?
+  .empty No Notifications Yet
+- else
+  %table.notifications
+    - @notifications.each do |notification|
+      %tr
+        %td.icon
+          %div{:class => "#{notification.notifierable_type.downcase}-icon"}
+        %td{:class => notification.read? ? "read" : "unread"}= raw notification_message(notification)
+        %td.time= "#{time_ago_in_words(notification.created_at)} ago"
+        %td.delete= link_to 'Delete', notification_path(notification), :method => :delete, :class => 'delete-icon'
+= will_paginate @notifications, :previous_label => "<< Previous", :next_label => "Next >>"

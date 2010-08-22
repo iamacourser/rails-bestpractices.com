@@ -64,8 +64,8 @@ describe User do
   end
 
   it "should reflect :id & :login when converted to param" do
-    user = Factory(:user, :login => 'flyer_hzm')
-    user.to_param.should == "#{user.id}-flyer_hzm"
+    user = Factory(:user, :login => 'flyerhzm')
+    user.to_param.should == "#{user.id}-flyerhzm"
   end
 
 end

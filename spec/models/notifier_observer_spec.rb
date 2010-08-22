@@ -21,4 +21,56 @@ describe NotifierObserver do
       instance.save
     end
   end
+
+  it 'should create notification after creating a post comment' do
+    within_observable_scope do |observer|
+      post_user = Factory(:user, :login => 'post_user')
+      post = Factory(:post, :title => 'notifierable post', :user => post_user)
+      comment = Factory(:comment, :commentable => post)
+      post_user.notifications.size.should == 1
+
+      notification = post_user.notifications.first
+      notification.notifierable.should == comment
+      notification.user.should == post_user
+    end
+  end
+
+  it 'should create notification after creating a question comment' do
+    within_observable_scope do |observer|
+      question_user = Factory(:user, :login => 'question_user')
+      question = Factory(:question, :title => 'notifierable question', :user => question_user)
+      comment = Factory(:comment, :commentable => question)
+      question_user.notifications.size.should == 1
+
+      notification = question_user.notifications.first
+      notification.notifierable.should == comment
+      notification.user.should == question_user
+    end
+  end
+
+  it 'should create notification after creating an answer comment' do
+    within_observable_scope do |observer|
+      answer_user = Factory(:user, :login => 'answer_user')
+      answer = Factory(:answer, :user => answer_user)
+      comment = Factory(:comment, :commentable => answer)
+      answer_user.notifications.size.should == 1
+
+      notification = answer_user.notifications.first
+      notification.notifierable.should == comment
+      notification.user.should == answer_user
+    end
+  end
+
+  it 'should create notification after creating a question answer' do
+    within_observable_scope do |observer|
+      question_user = Factory(:user, :login => 'question_user')
+      question = Factory(:question, :title => 'notifierable question', :user => question_user)
+      answer = Factory(:answer, :question => question)
+      question_user.notifications.size.should == 1
+
+      notification = question_user.notifications.first
+      notification.notifierable.should == answer
+      notification.user.should == question_user
+    end
+  end
 end

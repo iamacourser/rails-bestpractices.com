@@ -1,15 +1,16 @@
-require 'spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
-# Specs in this file have access to a helper object that includes
-# the NotificationsHelper. For example:
-#
-# describe NotificationsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe NotificationsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "should notification message" do
+    it "should display for comment" do
+      post_user = Factory(:user, :login => 'post_user')
+      post = Factory(:post, :title => 'notifierable post', :user => post_user)
+      comment_user = Factory(:user, :login => 'comment_user')
+      comment = Factory(:comment, :commentable => post)
+      notification = Factory(:notification, :notifierable => comment, :user => post_user)
+      
+      pending "how to rspec one helper with another helper"
+      #helper.notification_message(notification).should == "#{comment_user_link(comment)} posts a comment on #{comment_parent_link(comment)}"
+    end
+  end
 end
