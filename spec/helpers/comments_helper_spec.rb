@@ -1,15 +1,42 @@
-require 'spec_helper'
+require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
-# Specs in this file have access to a helper object that includes
-# the CommentsHelper. For example:
-# 
-# describe CommentsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe CommentsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "comment_user_link" do
+    it "should get comment user link with logged in user" do
+      comment_user = Factory(:user, :login => 'comment_user')
+      comment = Factory(:comment, :user => comment_user)
+
+      helper.comment_user_link(comment).should == link_to('comment_user', user_path(comment_user))
+    end
+
+    it "should get comment user link with non logged in user" do
+      comment = Factory(:comment, :user => nil, :username => "non logged in user")
+
+      helper.comment_user_link(comment).should == "non logged in user"
+    end
+  end
+
+  describe "comment_parent_link" do
+    it "should get comment parent link for post" do
+      post = Factory(:post)
+      comment = Factory(:comment, :commentable => post)
+
+      helper.comment_parent_link(comment).should == post_url(post)
+    end
+
+    it "should get comment parent link for question" do
+      question = Factory(:question)
+      comment = Factory(:comment, :commentable => question)
+
+      helper.comment_parent_link(comment).should == question_url(question)
+    end
+
+    it "should get comment parent link for answer" do
+      question = Factory(:question)
+      answer = Factory(:answer, :question => question)
+      comment = Factory(:comment, :commentable => answer)
+
+      helper.comment_parent_link(comment).should == question_url(question)
+    end
+  end
 end

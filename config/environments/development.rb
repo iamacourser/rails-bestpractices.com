@@ -18,6 +18,7 @@ RailsBestpracticesCom::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   
   # config.active_record.observers = :tweet_observer
+  config.active_record.observers = :notifier_observer
 
   config.after_initialize do
     Bullet.enable = true

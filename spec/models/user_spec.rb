@@ -12,6 +12,7 @@ describe User do
   should_have_many :implementations, :dependent => :destroy
   should_have_many :questions, :dependent => :destroy
   should_have_many :answers, :dependent => :destroy
+  should_have_many :notifications, :dependent => :destroy
   should_have_one :access_token
 
   describe 'when email validation is required' do
@@ -63,8 +64,8 @@ describe User do
   end
 
   it "should reflect :id & :login when converted to param" do
-    user = Factory(:user, :login => 'flyer_hzm')
-    user.to_param.should == "#{user.id}-flyer_hzm"
+    user = Factory(:user, :login => 'flyerhzm')
+    user.to_param.should == "#{user.id}-flyerhzm"
   end
 
 end

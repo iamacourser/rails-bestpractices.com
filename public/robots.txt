@@ -1,1 +1,5 @@
+User-agent: *
+Disallow: /users/*
+Disallow: /tags/*
+Allow: /
 Sitemap: http://rails-bestpractices/sitemap1.xml.gz
