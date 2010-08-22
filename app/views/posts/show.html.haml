@@ -36,6 +36,7 @@
       = link_to tag.name, tag_path(tag.name)
 
   = render 'comments/comments', :parent => @post
+  = render 'shared/login_register'
   = render 'comments/comment_form', {:parent => @post, :comment => @comment}
 
 - content_for :js do

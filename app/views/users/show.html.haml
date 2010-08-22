@@ -21,7 +21,7 @@
       = nav_class('posts') do
         = link_to "#{@user.posts_count} Rails Best Practices", user_path(@user, :nav => 'posts')
       = nav_class('questions') do
-        = link_to "#{@user.questions_count} Requests", user_path(@user, :nav => 'questions')
+        = link_to "#{@user.questions_count} Questions", user_path(@user, :nav => 'questions')
       = nav_class('answers') do
         = link_to "#{@user.answers_count} Answers", user_path(@user, :nav => 'answers')
       = nav_class('comments') do

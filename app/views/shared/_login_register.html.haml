@@ -1,0 +1,10 @@
+- unless current_user
+  .login-register
+    %h3 Recommend to login or register first
+    .short-login
+      %h4 Login
+      = render 'shared/login_form', :user_session => UserSession.new, :return_to => request.url
+    .short-register
+      %h4 Register
+      = render 'shared/register_form', :user => User.new, :return_to => request.url
+    .clear

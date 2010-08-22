@@ -6,7 +6,7 @@
     = nav_class('posts') do
       = link_to "Rails Best Practices", tag_path(@tag.name, :nav => 'posts')
     = nav_class('questions') do
-      = link_to "Requests", tag_path(@tag.name, :nav => 'questions')
+      = link_to "Questions", tag_path(@tag.name, :nav => 'questions')
 
 - if params[:nav] == 'posts'
   = render 'posts/posts', :posts => @children, :description => true

@@ -39,3 +39,14 @@ Feature: Account Login
       | flyerhzm | 1234     | Password |
       | awesome  | flyerhzm | Username |
 
+  Scenario: Successful login from post show page
+    Given a post exists with title: "first best practice"
+    And I go to the home page
+    And I follow "first best practice"
+    And I fill in the following:
+      | Username | flyerhzm |
+      | Password | flyerhzm |
+    When I press "Login"
+    Then I should see "first best practice" page
+    And I should see success message "Login successful!"
+    And I should see "Logout"

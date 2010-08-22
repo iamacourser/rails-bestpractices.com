@@ -1,7 +1,7 @@
 = semantic_form_for [parent, comment] do |form|
   = form.inputs :name => "Post a comment" do
     - unless current_user
-      = form.input :username, :hint => "Note: if you a registered user, you can log in without input username."
+      = form.input :username, :hint => "Note: if you are a registered user, you can log in without input username."
     .wmd-notice
       %p 
         %b You may use ONLY these HTML tags to format your comment:

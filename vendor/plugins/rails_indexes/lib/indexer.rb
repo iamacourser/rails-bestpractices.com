@@ -99,7 +99,7 @@ module Indexer
     file_names = []
     
     Dir.chdir(Rails.root) do 
-      file_names = Dir["**/app/**/*.rb"].uniq.reject {|file_with_path| file_with_path.include?('test')}
+      file_names = Dir["**/app/**/*.rb"].uniq.reject {|file_with_path| file_with_path.include?('test') or file_with_path.include?('vendor')}
     end
     
     @indexes_required = Hash.new([])
@@ -187,7 +187,7 @@ module Indexer
       end
       
       # Check that all prerequisites are met
-      if model_name.present? && table_name.present?
+      if model_name.present? && table_name.present? && model_name.constantize.ancestors.include?(ActiveRecord::Base)
         primary_key = model_name.constantize.primary_key
         @indexes_required[table_name] += [primary_key] unless @indexes_required[table_name].include?(primary_key)
   
